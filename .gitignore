@@ -1,0 +1,24 @@
+# ------------------------------------------
+# Proyecto: Benito G. G.
+# Autor:    Miguel I. García López
+#           Florida Universitaria, Catarroja
+# ------------------------------------------
+#
+# --------------
+# Android Studio
+# --------------
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+# ----------------------
+# Thumbnails de imágenes
+# ----------------------
+Thumbs.db
+# ------------------
+# Directorio 'cosas'
+# ------------------
+/cosas
