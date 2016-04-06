@@ -8,8 +8,8 @@ Venancio, el periquito de Loli (Quiosco) se ha escapado de la jaula.
 El periquito está revoloteando en el Parque Zillo. Hay que dejar pan en el suelo (está en el Bar Manolo), para que baje a comérselo, y atraparlo.
 
 
-El misterio de los libros cambiados
------------------------------------
+El misterio del cambiazo librero
+--------------------------------
 Alguien ha cambiado de lugar el libro de recetas de Luiggi (Pizzería) y el de historia de la Biblioteca.
 
 Hay que dejar cada uno en su lugar (el de recetas está en la Biblioteca, y el de historia en la Pizzería).
@@ -42,3 +42,9 @@ A Salus (Taller) le ha desaparecido su martillo preferido.
 
 El martillo está en el Cine Shin (se necesita también para resolver el caso de la chuche).
 
+
+El caso del análisis perdido
+----------------------------
+El Doctor Zido (Consultorio), no encuentra el informe de un análisis.
+
+El informe está grabado en un pendrive (está en el Hotel Hucho). Se puede comprobar que tiene el informe, enchufándolo en el ordenador de Benito (está en su Oficina).
