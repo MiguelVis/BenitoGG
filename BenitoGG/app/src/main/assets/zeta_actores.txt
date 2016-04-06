@@ -1,0 +1,23 @@
+# Actores: Id (text), LugarId (text)
+#
+# Test:
+#
+testActorUno
+testLugarCentral
+#
+testActorDos
+testLugarCentral
+#
+# Juego:
+#
+prota
+oficina
+#
+alcalde
+bar_manolo
+#
+periquito
+parque_zillo
+#
+gato
+parque_verdor

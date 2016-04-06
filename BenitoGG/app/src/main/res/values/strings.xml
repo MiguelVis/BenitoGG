@@ -1,0 +1,116 @@
+<resources>
+
+    <!-- Cadenas de texto independientes de la aventura -->
+
+    <string name="app_name">Benito G.G.</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="boton_reset">Reinicializar juego</string>
+    <string name="action_settings">Ajustes</string>
+
+    <string name="pref_nombre">Tu nombre:</string>
+    <string name="pref_nombre_hint">P. ej. Benito</string>
+    <string name="pref_sonido">Sonido</string>
+    <string name="pref_zurdo">Modo zurdos</string>
+    <string name="pref_vertical">Orientación vertical</string>
+
+    <!-- Activity inicial -->
+
+    <string name="boton_jugar">Jugar</string>
+    <string name="boton_opciones">Opciones</string>
+    <string name="boton_info">Info.</string>
+
+    <!-- Activity de escenas -->
+
+    <string name="title_activity_escena">EscenaActivity</string>
+
+    <string name="boton_acciones">Acciones</string>
+
+    <!-- -->
+
+    <string name="kk">*KK*</string>
+
+    <!-- Textos complementarios para describir la escena actual -->
+
+    <string name="escena_salidas">Salidas:</string>
+    <string name="escena_norte">Norte -</string>
+    <string name="escena_sur">Sur -</string>
+    <string name="escena_este">Este -</string>
+    <string name="escena_oeste">Oeste -</string>
+
+    <string name="escena_hay_1_objeto">Hay un objeto aquí:</string>
+    <string name="escena_hay_varios_objetos">Hay varios objetos aquí:</string>
+
+    <string name="llevas_1_objeto">Llevas un objeto:</string>
+    <string name="llevas_varios_objetos">Llevas algunos objetos:</string>
+
+
+
+    <string name="enhorabuena">¡Enhorabuena!</string>
+
+    <string name="title_activity_tomar_dejar">TomarDejarActivity</string>
+
+    <!-- Activity de selección de acciones -->
+
+    <string name="boton_cancelar">Cancelar</string>
+
+    <string name="title_activity_mensaje">MensajeActivity</string>
+
+    <!-- Activity para mostrar mensajes -->
+
+    <string name="boton_volver">Volver</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_lugar">LugarActivity</string>
+
+    <string name="acciones_titulo_salidas">Salidas</string>
+    <string name="acciones_titulo_tomar_objeto">Tomar objeto</string>
+    <string name="acciones_titulo_dejar_objeto">Dejar objeto</string>
+    <string name="acciones_titulo_otras_acciones">Otras acciones</string>
+    <string name="acciones_titulo_mapa">Mapa</string>
+    <string name="acciones_titulo_casos">Casos</string>
+
+    <string name="acciones_no_hay_objetos">No hay objetos</string>
+    <string name="acciones_no_tienes_objetos">No tienes objetos</string>
+    <string name="acciones_no_hay_acciones">No hay acciones</string>
+
+
+    <string name="title_activity_mapa">MapaActivity</string>
+    <string name="title_activity_preferencias">Preferencias</string>
+    <string name="title_activity_opciones">OpcionesActivity</string>
+
+    <!-- Diálogos -->
+
+    <string name="dialogo_reset_titulo">Reinicializar juego</string>
+    <string name="dialogo_reset_texto">¿Reinicializar el juego? El estado actual del juego se perderá, y comenzará de nuevo.</string>
+    <string name="dialogo_reset_hecho">El juego ha sido reinicializado.</string>
+
+    <string name="dialogo_caso_resuelto_titulo">Caso resuelto</string>
+    <string name="dialogo_caso_resuelto_texto">¡Enhorabuena, has resuelto</string>
+
+    <string name="dialogo_tomar_objeto_titulo">Tomar objeto</string>
+
+    <string name="dialogo_si">Sí</string>
+    <string name="dialogo_cancelar">Cancelar</string>
+    <string name="dialogo_continuar">Continuar</string>
+
+    <string name="title_activity_juego">JuegoActivity</string>
+
+    <!-- Casos resueltos -->
+
+    <string name="casos_resueltos_todos">¡Has resuelto todos los casos!</string>
+    <string name="casos_resueltos_quedan">¡Aún quedan casos por resolver!</string>
+
+    <string name="boton_visitar_web">Visitar Web</string>
+
+    <string name="title_activity_casos">CasosActivity</string>
+
+    <string name="splash_presenta">presenta</string>
+
+    <string name="info_titulo_argumento">Argumento</string>
+    <string name="info_titulo_dedicatoria">Dedicatoria</string>
+    <string name="info_titulo_copyright">Copyright</string>
+
+</resources>

@@ -1,0 +1,114 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.benitogg.OpcionesFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/titulo_opciones"/>
+
+    <!-- -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_nombre"
+        style="@style/TextNormal"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="@string/pref_nombre_hint"
+        android:ems="10"
+        android:id="@+id/editTextNombre" />
+
+    <!-- Línea separadora, compuesta por dos views -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margen_vertical"
+        android:background="@color/linea_oscuro"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:background="@color/linea_claro"/>
+
+    <!-- -->
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_sonido"
+        android:id="@+id/checkBoxSonido" />
+
+    <!-- Línea separadora, compuesta por dos views -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margen_vertical"
+        android:background="@color/linea_oscuro"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:background="@color/linea_claro"/>
+
+    <!-- Opciones sólo para tablet -->
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_zurdo"
+        android:id="@+id/checkBoxZurdo" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_vertical"
+        android:id="@+id/checkBoxVertical" />
+
+    <!-- Línea separadora, compuesta por dos views -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margen_vertical"
+        android:background="@color/linea_oscuro"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:background="@color/linea_claro"/>
+
+    <!-- -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:text="@string/boton_reset"
+        android:id="@+id/buttonReset" />
+
+    <!-- -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/zurdos_friendly"/>
+
+</LinearLayout>

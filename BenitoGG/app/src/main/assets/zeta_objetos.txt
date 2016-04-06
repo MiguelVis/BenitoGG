@@ -1,0 +1,75 @@
+# Objetos: Id, Nombre, Lugar, Estado.
+#
+# Test:
+#
+testObjetoUno
+Objeto #1
+testLugarCentral
+?
+#
+testObjetoDos
+Objeto #2
+testLugarCentral
+?
+#
+# Juego:
+#
+pan
+Un trozo de pan
+quiosco
+?
+#
+lata_sardinas
+Una lata de sardinas
+oficina
+cerrado
+#
+abrelatas
+Un abrelatas
+oficina
+?
+#
+libro_recetas
+Un libro de recetas
+biblioteca
+?
+#
+libro_historia
+Un libro de historia
+pizzeria
+?
+#
+carretilla
+Una carretilla
+av_trola_5
+?
+#
+pedrusco
+Un pedrusco
+parque_verdor
+?
+#
+hucha
+Una hucha cerdito
+comisaria
+?
+#
+martillo
+Un martillo
+cine
+?
+#
+moneda
+Una moneda
+limbo
+?
+#
+chuche
+Una chuche
+limbo
+?
+#
+pendrive
+Un pendrive
+oficina
+desenchufado

@@ -1,0 +1,104 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.benitogg.AhoraFragment">
+
+    <!-- Layout para dispositivos tipo móvil -->
+
+    <TextView android:id="@+id/textViewTitulo"
+        android:text=" "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        style="@style/TextTitle"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:id="@+id/imageViewImagen"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:id="@+id/scrollView" >
+
+        <TextView android:id="@+id/textViewDetalle"
+            android:text="."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextNormal"
+            />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewNorte"
+            android:src="@drawable/btn_norte"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewSur"
+            android:src="@drawable/btn_sur"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewOeste"
+            android:src="@drawable/btn_oeste"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewEste"
+            android:src="@drawable/btn_este"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewMas"
+            android:src="@drawable/btn_mas"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+    <!--Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton_acciones"
+        android:id="@+id/buttonAcciones"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margen_vertical"
+        /-->
+
+</LinearLayout>
+

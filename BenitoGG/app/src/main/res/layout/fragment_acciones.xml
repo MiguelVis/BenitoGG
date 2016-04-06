@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.benitogg.AccionesFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/titulo_acciones"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewNorte"
+            android:src="@drawable/btn_norte"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewSur"
+            android:src="@drawable/btn_sur"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewOeste"
+            android:src="@drawable/btn_oeste"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewEste"
+            android:src="@drawable/btn_este"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acciones_titulo_tomar_objeto"
+        android:id="@+id/buttonTomarObjeto" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acciones_titulo_dejar_objeto"
+        android:id="@+id/buttonDejarObjeto" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acciones_titulo_otras_acciones"
+        android:id="@+id/buttonOtrasAcciones" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acciones_titulo_mapa"
+        android:id="@+id/buttonMapa" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acciones_titulo_casos"
+        android:id="@+id/buttonCasos" />
+
+
+</LinearLayout>
+

@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Dimensiones y medidas por defecto -->
+
+    <!-- Padding para los layouts de activity -->
+
+    <dimen name="activity_padding">8dp</dimen>
+
+    <!-- Margen de separación vertical entre elementos -->
+
+
+
+
+    <dimen name="margen_vertical">8dp</dimen>
+    <dimen name="margen_horizontal">8dp</dimen>
+
+    <dimen name="escena_imagen_height">100dp</dimen>
+
+    <dimen name="menu_imagen_height">256dp</dimen>
+
+    <dimen name="info_imagen_height">100dp</dimen>
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_big">24sp</dimen>
+
+
+</resources>

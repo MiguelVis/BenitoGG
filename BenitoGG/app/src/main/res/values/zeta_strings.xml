@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- http://developer.android.com/intl/es/guide/topics/resources/string-resource.html -->
+
+    <!-- Cadenas de texto dependientes de la aventura -->
+
+    <string name="zeta_copyright">&#169; 2016 Miguel I. García López</string>
+
+    <string name="info_argumento">Benito García Gómez, más conocido como <i>Benito G.G.</i>,
+        es un detective privado peculiar, inteligente pero un poco desastre,
+        cuya zona de acción es el barrio de <i>Chapuceros</i>, enclavado en los bajos
+        fondos de la ciudad de <i>Sanpufo</i>.
+        \n\nEn su quehacer diario, ha de habérselas
+        con maleantes casposos, gamberretes recalcitrantes, ancianas desconfiadas
+        y algún que otro misterio impenetrable.
+        \n\nBenito es famoso por haber llevado a cabo la resolución de casos difíciles,
+        como encontrar al gato de la señora Paquita (que no tenía gato; ahora sí),
+        y descubrir al ladrón de jamones de la fábrica <i>Pernil, S.L.</i> mediante un método
+        insólito: el de practicar análisis de sangre a todos los empleados (Pepe, el
+        encargado, tenía más colesterol que todos los habitantes del barrio juntos).</string>
+    <string name="info_dedicatoria">Dedicado a la memoria de mi madre, y al gran Gary Kildall.</string>
+
+    <!-- Tomar objeto -->
+
+    <string name="tomar_demasiados_objetos">No puedes tomar más objetos.</string>
+
+    <!-- Acciones -->
+
+    <string name="accion_atrapar_periquito">Atrapar el periquito</string>
+    <string name="accion_abrir_libro">Abrir el libro</string>
+    <string name="accion_cerrar_libro">Cerrar el libro</string>
+    <string name="accion_enchufar_pendrive">Enchufar el pendrive</string>
+    <string name="accion_abrir_lata">Abrir la lata</string>
+    <string name="accion_atrapar_gato">Atrapar el gato</string>
+    <string name="accion_romper_hucha">Romper la hucha</string>
+    <string name="accion_comprar_chuche">Comprar una chuche</string>
+
+    <!-- El caso del periquito extraviado -->
+
+    <string name="periquito_enjaulado">Venancio, su periquito, revolotea alegre en la jaula.</string>
+    <string name="periquito_escapado">Venancio, su periquito, ha escapado de la jaula, y te ruega que lo encuentres. Dice que te pagará en cromos del Coyote.</string>
+    <string name="periquito_revoloteando">Venancio, el periquito, está revoloteando por aquí.</string>
+    <string name="periquito_picoteando">Venancio, el periquito, está picoteando el pan.</string>
+
+    <!-- El caso de los libros cambiados -->
+
+    <string name="libros_extraviado_recetas">Dice que ha extraviado su libro de recetas.</string>
+    <string name="libros_extraviado_historia">Reme, la bibliotecaria, dice que se ha extraviado un libro de historia muy valioso.</string>
+    <string name="libros_encontrado_recetas">Está consultando su receta especial de pizza con acelgas.</string>
+    <string name="libros_encontrado_historia">Reme, la bibliotecaria, está quitándole el polvo a un libro de historia muy valioso.</string>
+
+    <!-- El caso del gato colorao -->
+
+    <string name="gato_casa">El gato Rodolfo ronronea en su cesta de mimbre.</string>
+    <string name="gato_escapado">Su gato Rodolfo se ha escapado, y aquello está lleno de ratones.</string>
+    <string name="gato_aqui">El gato Rodolfo está tomando el sol en la rama de un árbol.</string>
+    <string name="gato_comiendo">El gato Rodolfo ha olido las sardinas, y se ha acercado a comer.</string>
+
+    <!-- El caso del pedrusco birlado -->
+
+    <string name="pedrusco_birlado">Dice que ya no puede practicar el levantamiento de pedrusco a lo burro, porque se lo han robado.</string>
+    <string name="pedrusco_falta_carretilla">Necesitas algo para llevar el pedrusco, pesa demasiado para tí.</string>
+    <string name="pedrusco_encontrado">El pedrusco de entrenamiento ocupa un lugar de honor en el gimnasio.</string>
+
+    <!-- El caso de la chuche engorrinada -->
+
+    <string name="chuche_engorrinada">A Andresito se le ha caido una chuche en el barro, y no para de llorar.</string>
+    <string name="chuche_devorando">Andresito está chupeterreando una deliciosa chuche con sabor a lentejas.</string>
+
+    <!-- El caso del martillo rarillo -->
+
+    <string name="martillo_desaparecido">Salustiano, el mecánico jefe, está tratando de arreglar un faro a golpes de martillo pilón, porque no encuentra su martillo favorito.</string>
+    <string name="martillo_fregona">Salustiano, el mecánico jefe, está sacándole brillo a un coche con la fregona.</string>
+    <string name="martillo_taller">Salustiano, el mecánico jefe, está sacándole brillo a su martillo favorito.</string>
+
+    <!-- El caso del análisis perdido -->
+
+    <string name="analisis_perdido">Dice que no encuentra el análisis de un paciente.</string>
+    <string name="analisis_encontrado">Le está diciendo a un paciente, que tiene más colesterol que un bocadillo de tocino.</string>
+    <string name="analisis_pendrive">En el ordenador, aparecen los datos de un análisis de sangre.</string>
+
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Color de fondo de la App -->
+    <color name="fondo">#FFF8E1</color>
+
+    <color name="linea_claro">#FFFFFF</color>
+    <color name="linea_oscuro">#000000</color>
+
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

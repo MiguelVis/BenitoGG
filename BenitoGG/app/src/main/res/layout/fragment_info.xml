@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.benitogg.InfoFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:src="@drawable/titulo_info"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:src="@drawable/zeta_info"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextTitle"
+                android:text="@string/info_titulo_argumento"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextNormal"
+                android:text="@string/info_argumento"
+                android:layout_marginBottom="@dimen/margen_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextTitle"
+                android:text="@string/info_titulo_dedicatoria"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextNormal"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:text="@string/info_dedicatoria"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextTitle"
+                android:text="@string/info_titulo_copyright"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextNormal"
+                android:text="@string/zeta_copyright"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Línea separadora, compuesta por dos views -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margen_vertical"
+        android:background="@color/linea_oscuro"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/margen_vertical"
+        android:background="@color/linea_claro"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boton_visitar_web"
+        android:id="@+id/buttonWeb"
+        android:layout_gravity="center_horizontal|bottom" />
+
+</LinearLayout>
