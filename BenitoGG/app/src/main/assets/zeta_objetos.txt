@@ -16,17 +16,17 @@ testLugarCentral
 #
 pan
 Un trozo de pan
-quiosco
+bar_manolo
 ?
 #
 lata_sardinas
 Una lata de sardinas
-oficina
+ultramarinos
 cerrado
 #
 abrelatas
 Un abrelatas
-oficina
+bar_genaro
 ?
 #
 libro_recetas
@@ -71,5 +71,5 @@ limbo
 #
 pendrive
 Un pendrive
-oficina
+hotel
 desenchufado
