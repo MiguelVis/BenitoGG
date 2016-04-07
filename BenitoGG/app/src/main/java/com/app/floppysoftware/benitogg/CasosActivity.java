@@ -4,16 +4,19 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Activity para mostrar una lista de nombres de casos resueltos, y
- * un texto informativo. Utiliza el fragment CasosFragment. Es utilizada
- * únicamente para la versión tablet.
+ * Activity para mostrar la lista de nombres de casos, así como el
+ * estado en que se encuentran, y un texto informativo.
+ *
+ * Utiliza el fragment CasosFragment.
+ *
+ * Esta activity es utilizada únicamente para la versión tablet.
  */
 public class CasosActivity extends Activity {
 
     /**
      * Método llamado al crear la activity.
      *
-     * @param savedInstanceState  estado previamente guardado
+     * @param savedInstanceState  Estado previamente guardado
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
