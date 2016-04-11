@@ -88,7 +88,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
 
     /**
      * Comprobar que el valor de las preferencias de layout para zurdos y el CheckBox
-     * que lo cambia están coordinados.
+     * que lo cambia están coordinados. Sólo tablets en orientación horizontal.
      */
     public void testZurdos() {
 
@@ -102,9 +102,9 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         assertEquals(Preferencias.getZurdo(activity), checkBoxZurdo.isChecked());
 
         // Comprobaciones adicionales
-        if(esTablet) {  // FIXME!!!! Cómo comprobar que cambia el layout???
+        if(esTablet && !Preferencias.getVertical(activity)) {
 
-            // Tablet
+            // Tablet, orientación horizontal
 
             // Comprobar que el CheckBox está habilitado
             assertTrue(checkBoxZurdo.isEnabled());
