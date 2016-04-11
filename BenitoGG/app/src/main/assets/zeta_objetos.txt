@@ -73,3 +73,8 @@ pendrive
 Un pendrive
 hotel
 desenchufado
+#
+hueso
+Un hueso de pollo
+av_trola
+?

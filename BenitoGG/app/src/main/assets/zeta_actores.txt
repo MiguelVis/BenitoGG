@@ -13,11 +13,11 @@ testLugarCentral
 prota
 oficina
 #
-alcalde
-bar_manolo
-#
 periquito
 parque_zillo
 #
 gato
 parque_verdor
+#
+perro
+pl_mangui
