@@ -139,8 +139,8 @@ public class CasosFragment extends Fragment {
     }
 
     /**
-     * Ofuscar un texto, sustituyendo los caracteres en posiciones impares
-     * por el caracter '?'.
+     * Ofuscar un texto, sustituyendo los caracteres en posiciones impares,
+     * que no sean espacios, por el caracter '?'.
      *
      * @param texto   texto a ofuscar
      * @return        texto resultante
@@ -153,18 +153,12 @@ public class CasosFragment extends Fragment {
         // Recorrer el texto
         for(int i = 0; i < texto.length(); ++i) {
 
-            // Caracter en la posición actual / caracter '?'
-            char ch;
+            // Caracter en la posición actual
+            char ch = texto.charAt(i);
 
-            // Si la posición es par, dejar el caracter original;
-            // si la posición es impar, poner el caracter '?'.
-            if((i % 2) ==0) {
-
-                // Par
-                ch = texto.charAt(i);
-            } else {
-
-                // Impar
+            // Si la posición es impar, y el caracter no
+            // es un espacio, poner el caracter '?'.
+            if(ch != ' ' && (i % 2) == 1) {
                 ch = '?';
             }
 
