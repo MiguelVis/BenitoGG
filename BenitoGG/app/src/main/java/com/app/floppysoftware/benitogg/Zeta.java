@@ -15,6 +15,12 @@ public final class Zeta {
     // Máximo número de objetos en el bolsillo
     private static final int MAX_OBJETOS_BOLSILLO = 3;
 
+    // Prefijos de las localizaciones exteriores
+    private static final String PREFIJO_CALLE = "cl_";
+    private static final String PREFIJO_AVENIDA = "av_";
+    private static final String PREFIJO_PLAZA = "pl_";
+    private static final String PREFIJO_PARQUE = "pr_";
+
     // IDs de los lugares
     private static final String ID_QUIOSCO = "quiosco";
     private static final String ID_BIBLIOTECA = "biblioteca";
@@ -22,7 +28,7 @@ public final class Zeta {
     private static final String ID_PIZZERIA = "pizzeria";
     private static final String ID_PENSION = "pension";
     private static final String ID_GIMNASIO = "gimnasio";
-    private static final String ID_PARQUE_VERDOR = "parque_verdor";
+    private static final String ID_PARQUE_VERDOR = "pr_verdor";
     private static final String ID_TALLER = "taller";
     private static final String ID_CONSULTORIO = "consultorio";
 
@@ -32,6 +38,7 @@ public final class Zeta {
     // IDs de los actores
     private static final String ID_PERIQUITO = "periquito";
     private static final String ID_GATO = "gato";
+    private static final String ID_PERRO = "perro";
 
     // IDs de los objetos
     private static final String ID_PAN = "pan";
@@ -46,6 +53,7 @@ public final class Zeta {
     private static final String ID_HUCHA = "hucha";
     private static final String ID_MONEDA = "moneda";
     private static final String ID_CHUCHE = "chuche";
+    private static final String ID_HUESO = "hueso";
 
     // IDs del estado de los objetos
     private static final String ID_ENCHUFADO = "enchufado";
@@ -62,6 +70,7 @@ public final class Zeta {
     private static final int CASO_CHUCHE = 5;
     private static final int CASO_MARTILLO = 6;
     private static final int CASO_ANALISIS = 7;
+    private static final int CASO_PERRO_CANSINO = 8;
 
     // IDs de las acciones
     private static final int ID_ATRAPAR_PERIQUITO = 0;
@@ -356,7 +365,53 @@ public final class Zeta {
             }
         }
 
+        // -------------------------
+        // El caso del perro cansino
+        // -------------------------
 
+        if(bd.getActor(ID_PERRO).getLugar().equals(lugarId)) {
+
+            // El perro está aquí
+
+            if(bd.getCaso(CASO_PERRO_CANSINO).getResuelto()) {
+
+                // El caso está resuelto
+
+                // El perro está mordisqueando el hueso
+                detalle.add(R.string.perro_hueso);
+            } else {
+
+                // El perro está ladrando
+                detalle.add(R.string.perro_ladrando);
+            }
+        }
+    }
+
+    public static void protaCambiaLugar(BaseDatos bd, String idLugarOrigen, String idLugarDestino) {
+
+        // -------------------------
+        // El caso del perro cansino
+        // -------------------------
+
+        if(!bd.getCaso(CASO_PERRO_CANSINO).getResuelto()) {
+
+            Actor perro = bd.getActor(ID_PERRO);
+
+            // Si el perro está en el mismo lugar que el protagonista,
+            // y el lugar destino es exterior, cambiar al perro
+            // a dicho lugar (el perro persigue al protagonista).
+
+            if(perro.getLugar().equals(idLugarOrigen) &&
+                    (idLugarDestino.startsWith(PREFIJO_CALLE) ||
+                            idLugarDestino.startsWith(PREFIJO_AVENIDA) ||
+                            idLugarDestino.startsWith(PREFIJO_PLAZA) ||
+                            idLugarDestino.startsWith(PREFIJO_PARQUE))) {
+
+                // Mover al perro al lugar destino
+                perro.setLugar(idLugarDestino);
+                bd.updateActor(perro);
+            }
+        }
     }
 
     /**
@@ -570,6 +625,24 @@ public final class Zeta {
 
             // Caso resuelto
             return CASO_ANALISIS;
+        }
+
+        // -------------------------
+        // El caso del perro cansino
+        // -------------------------
+
+        // Si ha dejado el hueso donde está el perro, caso resuelto
+
+        if(!bd.getCaso(CASO_PERRO_CANSINO).getResuelto() &&
+                objeto.getId().equals(ID_HUESO) &&
+                bd.getActor(ID_PERRO).getLugar().equals(bd.getActor(Actor.PROTAGONISTA).getLugar())) {
+
+            // Dejar el hueso en el limbo
+            objeto.setLugar(ID_LIMBO);
+            bd.updateObjeto(objeto);
+
+            // Caso resuelto
+            return CASO_PERRO_CANSINO;
         }
 
         // No se ha resuelto ningún caso

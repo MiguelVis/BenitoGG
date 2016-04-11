@@ -29,3 +29,7 @@ El caso del martillo rarillo
 7
 El caso del análisis perdido
 0
+#
+8
+El caso del perro cansino
+0

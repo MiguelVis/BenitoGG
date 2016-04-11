@@ -48,3 +48,10 @@ El caso del análisis perdido
 El Doctor Zido (Consultorio), no encuentra el informe de un análisis.
 
 El informe está grabado en un pendrive (está en el Hotel Hucho). Se puede comprobar que tiene el informe, enchufándolo en el ordenador de Benito (está en su Oficina).
+
+
+El caso del perro cansino
+-------------------------
+Hay un perro muy pesado, que en cuanto ve a Benito, se dedica a perseguirle por la calle, ladrando todo el tiempo.
+
+El perro está en XXXXXXXXX. Hay que darle un hueso (está en XXXXXX), para que deje de perseguirle.

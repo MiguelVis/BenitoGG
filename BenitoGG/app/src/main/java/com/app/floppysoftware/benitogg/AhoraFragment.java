@@ -58,9 +58,6 @@ public class AhoraFragment extends Fragment {
     // Variable que indica si el dispositivo es una tablet
     private boolean esTablet = false;
 
-    //
-    private String lugarActualId = null;
-
     // Lístener que ha de implementar la activity
     private AhoraFragmentInteractionListener mListener;
 
@@ -140,25 +137,12 @@ public class AhoraFragment extends Fragment {
         }
 
         //
-        if(savedInstanceState != null) {
-            lugarActualId = savedInstanceState.getString(KEY_ID_LUGAR);
-            Log.i(TAG, "lugarActualId = " + lugarActualId);
-        }
-
-        //
         mostrarEscena();
 
         // Devolver layout inflado
         return v;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        // Recordar la Id del lugar actual
-        outState.putString(KEY_ID_LUGAR, lugarActualId);
-    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -422,14 +406,7 @@ public class AhoraFragment extends Fragment {
                 imageViewOeste.setEnabled(lugarActual.getLugarOeste() != null);
             }
 
-            //
-            if(lugarActualId == null || !lugarActualId.equals(lugarActual.getId())) {
-
-                lugarActualId = lugarActual.getId();
-
-                // FIXME!!!!!!!!!!!!!!!
-                mListener.emiteSonido(getResources().getIdentifier("zeta_sonido_" + "prueba", "raw", getActivity().getPackageName()));
-            }
+            ///mListener.emiteSonido(getResources().getIdentifier("zeta_sonido_" + "prueba", "raw", getActivity().getPackageName()));
         }
     }
 
@@ -477,6 +454,10 @@ public class AhoraFragment extends Fragment {
 
             switch(actionType) {
                 case AccionesFragment.ACTION_TYPE_GO :
+
+                    // Lugar actual (será el lugar de origen)
+                    String idLugarOrigen = lugarActual.getId();
+
                     switch (actionNumber) {
                         case AccionesFragment.ACTION_TYPE_GO_NORTH :
                             prota.setLugar(lugarActual.getLugarNorte());
@@ -491,9 +472,14 @@ public class AhoraFragment extends Fragment {
                             prota.setLugar(lugarActual.getLugarOeste());
                             break;
                     }
+
+                    //
                     bd.updateActor(prota);
+
+                    // Notificar el cambio de lugar
+                    Zeta.protaCambiaLugar(bd, idLugarOrigen, prota.getLugar());
                     break;
-                case AccionesFragment.ACTION_TYPE_PICK :
+                case AccionesFragment.ACTION_TYPE_PICK:
 
                     Objeto objLugar = lugarActualObjetos.get(actionNumber);
 

@@ -14,10 +14,10 @@ prota
 oficina
 #
 periquito
-parque_zillo
+pq_zillo
 #
 gato
-parque_verdor
+pq_verdor
 #
 perro
 pl_mangui

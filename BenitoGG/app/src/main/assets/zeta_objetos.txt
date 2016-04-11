@@ -46,7 +46,7 @@ av_trola_5
 #
 pedrusco
 Un pedrusco
-parque_verdor
+pq_verdor
 ?
 #
 hucha

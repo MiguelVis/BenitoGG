@@ -150,7 +150,7 @@ null
 cl_muermo_2
 null
 #
-parque_verdor
+pq_verdor
 Parque El Verdor
 Estás en el parque municipal El Verdor. Los niños juegan, gritan, saltan, corren...
 324
@@ -250,7 +250,7 @@ null
 null
 null
 #
-parque_zillo
+pq_zillo
 Parque Zillo
 Estás en el Parque Zillo. Dos personas mayores discuten acaloradamente. Una le dice a la otra:<br>- Lo que yo te diga, las migas de galleta con chorizo no valen nada. ¡Y me dan un ardor...!
 179
@@ -317,7 +317,7 @@ Avda. del Caco
 Estás en la Avenida del Caco.<br>Hay un perrito haciendo pis en el poste de una señal de tráfico.<br>¡Qué mono...! El poste, digo.
 179
 161
-parque_zillo
+pq_zillo
 cine
 pl_mangui
 av_caco
@@ -407,7 +407,7 @@ Avda. del Pufo
 Estás en la Avenida del Pufo.<br>Se oye jugar a lo lejos a los niños en el parque.<br>Una paloma despistada, deja un regalito encima de tu zapato reluciente (que ya no está reluciente, claro).
 324
 394
-parque_verdor
+pq_verdor
 null
 av_pufo_5
 av_pufo_3
@@ -439,7 +439,7 @@ Estás en la Calle del Muermo.<br>Una pareja pasea, mientras come unos helados c
 320
 cl_muermo
 av_pufo_3
-parque_verdor
+pq_verdor
 quiosco
 #
 cl_trilero
@@ -470,7 +470,7 @@ Estás en la Calle Jero.<br>De la pizzería salen unos aromas a queso y orégano
 pizzeria
 av_pufo_5
 cl_jero_2
-parque_verdor
+pq_verdor
 #
 cl_jero_2
 Calle Jero
@@ -540,7 +540,7 @@ Estás en la Calle de la Ganzúa.<br>Alguien, parado en mitad de la calle, mira 
 cl_butron
 pl_mangui
 ayuntamiento
-parque_zillo
+pq_zillo
 #
 cl_butron
 Calle Butrón

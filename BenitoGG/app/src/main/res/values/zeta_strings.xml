@@ -80,5 +80,10 @@
     <string name="analisis_encontrado">Le está diciendo a un paciente, que tiene más colesterol que un bocadillo de tocino.</string>
     <string name="analisis_pendrive">En el ordenador, aparecen los datos de un análisis de sangre.</string>
 
+    <!-- El caso del perro cansino -->
+
+    <string name="perro_ladrando">Hay un perro por aquí, que no para de ladrar.</string>
+    <string name="perro_hueso">Hay un perro mordisqueando silenciosamente un hueso.</string>
+
 
 </resources>
