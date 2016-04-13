@@ -1,0 +1,6 @@
+Objetos de atrezzo
+------------------
+
+Llave. Está en la peluquería.
+Lupa. Está en correos.
+Tijeras. Floristería.

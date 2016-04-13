@@ -76,5 +76,22 @@ desenchufado
 #
 hueso
 Un hueso de pollo
-av_trola
+bar_genaro
+?
+#
+# Objetos de atrezzo:
+#
+llave
+Una llave
+peluqueria
+?
+#
+lupa
+Una lupa
+correos
+?
+#
+tijeras
+Unas tijeras
+floristeria
 ?
