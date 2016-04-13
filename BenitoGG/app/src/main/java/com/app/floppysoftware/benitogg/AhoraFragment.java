@@ -553,7 +553,7 @@ public class AhoraFragment extends Fragment {
                 //mListener.casoResuelto(casoResuelto);
 
                 mensajeContinuar(R.drawable.ic_check, getString(R.string.dialogo_caso_resuelto_titulo),
-                        getString(R.string.dialogo_caso_resuelto_texto) + "\n\n'" + casoResuelto + "'!");
+                        getString(R.string.dialogo_caso_resuelto_texto) + " '" + casoResuelto + "'!");
             }
         }
     }
