@@ -1,6 +1,5 @@
 package com.app.floppysoftware.benitogg;
 
-
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,27 +13,37 @@ import android.widget.Button;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * Clase que implementa el fragment de información de la aplicación.
  */
 public class InfoFragment extends Fragment {
 
-    private Button buttonVisitarWeb;
-
+    /**
+     * Constructor.
+     */
     public InfoFragment() {
-        // Required empty public constructor
+        // Nada
     }
 
 
+    /**
+     * Método llamado para inflar el layout del fragment.
+     *
+     * @param inflater   inflater
+     * @param container  contenedor
+     * @param savedInstanceState  estado previamente guardado
+     * @return  layout inflado
+     */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // Inflar el layout del fragment
         View v =  inflater.inflate(R.layout.fragment_info, container, false);
 
-        buttonVisitarWeb = (Button) v.findViewById(R.id.buttonWeb);
+        // Tomar la referencia del botón para visitar la web
+        Button buttonVisitarWeb = (Button) v.findViewById(R.id.buttonWeb);
 
+        // Fijar listener del botón
         buttonVisitarWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +64,9 @@ public class InfoFragment extends Fragment {
                         url = url.concat("?nombre=" + URLEncoder.encode(nombre, "UTF-8"));
 
                     } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
+
+                        // Excepción
+                        e.printStackTrace(); // -- FIXME
                     }
                 }
 
@@ -67,15 +78,14 @@ public class InfoFragment extends Fragment {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
                 } catch (ActivityNotFoundException e) {
-                    e.printStackTrace();
+
+                    // Excepción
+                    e.printStackTrace();  // -- FIXME
                 }
             }
         });
 
+        // Devolver layout inflado
         return v;
     }
-
-
-
-
 }
