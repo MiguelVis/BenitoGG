@@ -48,16 +48,16 @@ public final class Contract {
          * create table Objetos (
          *    _id text primary key not null,
          *    nombre text not null,
-         *    lugar_id_fk text,
-         *    estado text,
+         *    lugar_id_fk text not null,
+         *    estado text not null,
          *    foreign key(lugar_id_fk) references Lugares(_id)
          * );
          */
         public static final String SQL_CREATE_TABLE = "create table " + TABLE_NAME + "(" +
                 ID_NAME + " " + ID_TYPE + " primary key not null," +
                 NOMBRE_NAME + " " + NOMBRE_TYPE + " not null," +
-                LUGAR_ID_NAME + " " + LUGAR_ID_TYPE + "," +
-                ESTADO_NAME + " " + ESTADO_TYPE + "," +
+                LUGAR_ID_NAME + " " + LUGAR_ID_TYPE + " not null," +
+                ESTADO_NAME + " " + ESTADO_TYPE + " not null," +
                 "foreign key(" + LUGAR_ID_NAME + ") references " + Lugares.TABLE_NAME + "(" + Lugares.ID_NAME + ")" +
                 ")";
 
@@ -192,13 +192,13 @@ public final class Contract {
          * create table Casos (
          *    _id int primary key not null,
          *    nombre text not null,
-         *    resuelto int
+         *    resuelto int not null,
          * );
          */
         public static final String SQL_CREATE_TABLE = "create table " + TABLE_NAME + "(" +
                 ID_NAME + " " + ID_TYPE + " not null," +
                 NOMBRE_NAME + " " + NOMBRE_TYPE + " not null," +
-                RESUELTO_NAME + " " + RESUELTO_TYPE +
+                RESUELTO_NAME + " " + RESUELTO_TYPE + " not null" +
                 ")";
 
         // Comando SQL de eliminación de la tabla
