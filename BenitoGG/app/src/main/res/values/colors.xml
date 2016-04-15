@@ -4,7 +4,7 @@
     <color name="fondo">#FFF8E1</color>
 
     <color name="linea_claro">#FFFFFF</color>
-    <color name="linea_oscuro">#000000</color>
+    <color name="linea_oscuro">#C0C0C0</color>
 
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
