@@ -353,12 +353,12 @@ public class AhoraFragment extends Fragment {
                 lugarLineas.add("   " + getString(R.string.escena_sur) + " " + tituloSur + ".");
             }
 
-            if(tituloEste != null) {
-                lugarLineas.add("   " + getString(R.string.escena_este) + " " + tituloEste + ".");
-            }
-
             if(tituloOeste != null) {
                 lugarLineas.add("   " + getString(R.string.escena_oeste) + " " + tituloOeste + ".");
+            }
+
+            if(tituloEste != null) {
+                lugarLineas.add("   " + getString(R.string.escena_este) + " " + tituloEste + ".");
             }
 
             // Lista de nombres de objetos que hay en el bolsillo

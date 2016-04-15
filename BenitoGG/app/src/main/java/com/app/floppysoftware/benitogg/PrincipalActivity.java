@@ -96,10 +96,12 @@ public class PrincipalActivity extends Activity implements
 
         // Si es móvil, hay que quitar el fragment de acciones,
         // y poner el anterior.
+        /**********
         if(!esTablet) {
             //
             getFragmentManager().popBackStack();
         }
+         **********/
 
         //
         switch(actionType) {
@@ -114,6 +116,12 @@ public class PrincipalActivity extends Activity implements
                 }
                 break;
             default :
+                // Si es móvil, hay que quitar el fragment de acciones,
+                // y poner el anterior.
+                if(!esTablet) {
+                    //
+                    getFragmentManager().popBackStack();
+                }
                 ahoraFragment.realizaAccion(actionType, actionNumber);
                 break;
         }
@@ -452,7 +460,8 @@ public class PrincipalActivity extends Activity implements
 
         //
 
-        ft.replace(R.id.frameLayoutMenu, fragment, tag);
+        //ft.replace(R.id.frameLayoutMenu, fragment, tag);
+        ft.add(R.id.frameLayoutMenu, fragment, tag);
         ft.addToBackStack(null);
 
         //

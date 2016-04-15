@@ -1,6 +1,8 @@
 package com.app.floppysoftware.benitogg;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -28,9 +30,10 @@ public class AccionesFragment extends Fragment {
     public static final int ACTION_TYPE_GO = 0;
     public static final int ACTION_TYPE_PICK = 1;
     public static final int ACTION_TYPE_DROP = 2;
-    public static final int ACTION_TYPE_OTHER = 3;
-    public static final int ACTION_TYPE_MAP = 4;
-    public static final int ACTION_TYPE_CASOS = 5;
+    public static final int ACTION_TYPE_INVENTARY = 3;
+    public static final int ACTION_TYPE_OTHER = 4;
+    public static final int ACTION_TYPE_MAP = 5;
+    public static final int ACTION_TYPE_CASOS = 6;
 
     public static final int ACTION_TYPE_GO_NORTH = 0;
     public static final int ACTION_TYPE_GO_SOUTH = 1;
@@ -48,6 +51,7 @@ public class AccionesFragment extends Fragment {
 
     private Button buttonTomarObjeto;
     private Button buttonDejarObjeto;
+    private Button buttonInventario;
     private Button buttonOtrasAcciones;
     private Button buttonMapa;
     private Button buttonCasos;
@@ -165,8 +169,12 @@ public class AccionesFragment extends Fragment {
             //imageViewOeste.setClickable(oeste);
 
             popupMenuTomarObjeto = creaPopupMenu(buttonTomarObjeto, arrayListObjetosLugar, ACTION_TYPE_PICK);
+
             //
             popupMenuDejarObjeto = creaPopupMenu(buttonDejarObjeto, arrayListObjetosBolsillo, ACTION_TYPE_DROP);
+
+            //
+            buttonInventario.setEnabled(!arrayListObjetosBolsillo.isEmpty());
 
             popupMenuOtrasAcciones = creaPopupMenu(buttonOtrasAcciones, arrayListOtrasAcciones, ACTION_TYPE_OTHER);
 
@@ -179,6 +187,7 @@ public class AccionesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /*******************
         // Tomar la lista de acciones desde los argumentos de entrada,
         // o crear una lista vacía
         if (getArguments() != null) {
@@ -188,6 +197,7 @@ public class AccionesFragment extends Fragment {
             // Crear lista vacía
             //arrayListOtrasAcciones = new ArrayList<String>();
         }
+         *****************/
     }
 
     @Override
@@ -210,7 +220,18 @@ public class AccionesFragment extends Fragment {
         //
         buttonTomarObjeto = (Button) v.findViewById(R.id.buttonTomarObjeto);
         buttonDejarObjeto = (Button) v.findViewById(R.id.buttonDejarObjeto);
+        buttonInventario = (Button) v.findViewById(R.id.buttonInventario);
         buttonOtrasAcciones = (Button) v.findViewById(R.id.buttonOtrasAcciones);
+
+        //
+        buttonInventario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                //mListener.onActionSelected(ACTION_TYPE_INVENTARY, -1);
+                verInventario();
+            }
+        });
 
         //
         buttonMapa = (Button) v.findViewById(R.id.buttonMapa);
@@ -351,5 +372,25 @@ public class AccionesFragment extends Fragment {
         }
     }
 
+    private void verInventario() {
+
+        String inventario = "";
+
+        for(String cosa : arrayListObjetosBolsillo) {
+            inventario = inventario.concat(cosa.concat("\n"));
+        }
+
+        AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
+        dlg.setTitle(R.string.dialogo_inventario_titulo)
+                .setIcon(R.drawable.ic_information)
+                .setMessage(inventario)
+                .setPositiveButton(R.string.dialogo_continuar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Nada
+                    }
+                })
+                .show();
+    }
 
 }

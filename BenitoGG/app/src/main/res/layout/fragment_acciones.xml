@@ -71,6 +71,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/acciones_titulo_inventario"
+        android:id="@+id/buttonInventario" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/acciones_titulo_otras_acciones"
         android:id="@+id/buttonOtrasAcciones" />
 

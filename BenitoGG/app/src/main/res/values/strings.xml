@@ -68,6 +68,7 @@
     <string name="acciones_titulo_salidas">Salidas</string>
     <string name="acciones_titulo_tomar_objeto">Tomar objeto</string>
     <string name="acciones_titulo_dejar_objeto">Dejar objeto</string>
+    <string name="acciones_titulo_inventario">Inventario</string>
     <string name="acciones_titulo_otras_acciones">Otras acciones</string>
     <string name="acciones_titulo_mapa">Mapa</string>
     <string name="acciones_titulo_casos">Casos</string>
@@ -91,6 +92,8 @@
     <string name="dialogo_caso_resuelto_texto">¡Enhorabuena, has resuelto</string>
 
     <string name="dialogo_tomar_objeto_titulo">Tomar objeto</string>
+
+    <string name="dialogo_inventario_titulo">Inventario</string>
 
     <string name="dialogo_si">Sí</string>
     <string name="dialogo_cancelar">Cancelar</string>
