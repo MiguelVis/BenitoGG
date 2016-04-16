@@ -13,9 +13,6 @@ public class SplashScreenActivity extends Activity {
 
     private final static String TAG = "SplashScreenActivity";
 
-    // Variable que indica si el dispositivo es una tablet
-    private boolean esTablet = false;
-
     private final static int NUM_PASOS = 8;  // 6 pasos, mas 2
     private final static long MILIS_PASO = 500;  // Milisegundos entre pasos
 
@@ -29,11 +26,11 @@ public class SplashScreenActivity extends Activity {
         // Llamar a la superclase
         super.onCreate(savedInstanceState);
 
-        // Averiguar si el dispositivo es una tablet o móvil
-        esTablet = getResources().getBoolean(R.bool.isTablet) && !Preferencias.getVertical(this);
+        // Averiguar si el dispositivo es una tablet en orientación horizontal
+        boolean esTabletHorizontal = getResources().getBoolean(R.bool.isTablet) && !Preferencias.getVertical(this);
 
         // Cambiar la orientación de la pantalla, dependiendo del tipo de dispositivo
-        if(esTablet) {
+        if(esTabletHorizontal) {
             // Tablet
             if(getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

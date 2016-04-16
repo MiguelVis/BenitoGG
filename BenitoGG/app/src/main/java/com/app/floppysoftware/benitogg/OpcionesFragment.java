@@ -25,10 +25,6 @@ public class OpcionesFragment extends Fragment {
     private CheckBox checkBoxSonido;    // Preferencia de sonido
     private CheckBox checkBoxZurdo;     // Preferencia de modo zurdo (sólo tablet en modo horizontal)
     private CheckBox checkBoxVertical;  // Preferencia de modo vertical (sólo tablet)
-    private Button buttonReset;         // Reinicializar la base de datos
-
-    // True si es una tablet, false en caso contrario
-    private boolean esTablet = false;
 
     // Lístener que ha de implementar la activity
     private OnOpcionesInteractionListener mListener;
@@ -73,7 +69,7 @@ public class OpcionesFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_opciones, container, false);
 
         // Averiguar si el dispositivo es una tablet
-        esTablet = getResources().getBoolean(R.bool.isTablet);
+        boolean esTablet = getResources().getBoolean(R.bool.isTablet);
 
         // View del nombre de usuario
         editTextNombre = (EditText) v.findViewById(R.id.editTextNombre);
@@ -88,7 +84,7 @@ public class OpcionesFragment extends Fragment {
         checkBoxVertical = (CheckBox) v.findViewById(R.id.checkBoxVertical);
 
         // View para reiniciar la base de datos
-        buttonReset = (Button) v.findViewById(R.id.buttonReset);
+        Button buttonReset = (Button) v.findViewById(R.id.buttonReset);
 
         // Listener para el CheckBox del sonido
         checkBoxSonido.setOnClickListener(new View.OnClickListener() {

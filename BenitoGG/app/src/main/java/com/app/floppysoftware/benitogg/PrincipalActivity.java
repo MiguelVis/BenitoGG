@@ -36,7 +36,6 @@ public class PrincipalActivity extends Activity implements
     private final static String TAG_FRAG_INFO = "FrInfo";
     private final static String TAG_FRAG_AHORA = "FrAhora";
     private final static String TAG_FRAG_ACCIONES = "FrAcciones";
-    private final static String TAG_FRAG_CASOS = "FrCasos";
 
     // Fragment para el menú de opciones
     private MenuFragment menuFragment;
@@ -47,10 +46,9 @@ public class PrincipalActivity extends Activity implements
     private InfoFragment infoFragment;
     private AhoraFragment ahoraFragment;
     private AccionesFragment accionesFragment;
-    private CasosFragment casosFragment;
 
     // Variable que indica si el dispositivo es una tablet
-    private boolean esTablet = false;
+    private boolean esTabletHorizontal = false;
 
     // Gestion del sonido
     private AudioManager audioManager;
@@ -72,7 +70,7 @@ public class PrincipalActivity extends Activity implements
 
         // Si es una tablet, el fragment de acciones está visible. Si es un móvil, no.
 
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             ponFragmentMovil(getAccionesFragment(), TAG_FRAG_ACCIONES);
         }
@@ -96,35 +94,13 @@ public class PrincipalActivity extends Activity implements
 
         // Si es móvil, hay que quitar el fragment de acciones,
         // y poner el anterior.
-        /**********
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
             //
             getFragmentManager().popBackStack();
         }
-         **********/
 
-        //
-        switch(actionType) {
-            case AccionesFragment.ACTION_TYPE_MAP :
-                 startActivity(new Intent(this, MapaActivity.class));
-                break;
-            case AccionesFragment.ACTION_TYPE_CASOS :
-                if(esTablet) {
-                    startActivity(new Intent(this, CasosActivity.class));
-                } else {
-                    ponFragmentMovil(getCasosFragment(), TAG_FRAG_CASOS);
-                }
-                break;
-            default :
-                // Si es móvil, hay que quitar el fragment de acciones,
-                // y poner el anterior.
-                if(!esTablet) {
-                    //
-                    getFragmentManager().popBackStack();
-                }
-                ahoraFragment.realizaAccion(actionType, actionNumber);
-                break;
-        }
+        // Realizar acción
+        ahoraFragment.realizaAccion(actionType, actionNumber);
     }
 
     /**
@@ -133,7 +109,7 @@ public class PrincipalActivity extends Activity implements
      */
     public void onOptionSelected(int opcion) {
 /*****************
-        if(esTablet) {
+        if(esTabletHorizontal) {
             // Habilitar todas las opciones del menú
             menuFragment.enableOpcion(MenuFragment.MENU_OPCION_JUGAR, true);
             menuFragment.enableOpcion(MenuFragment.MENU_OPCION_OPCIONES, true);
@@ -151,7 +127,7 @@ public class PrincipalActivity extends Activity implements
             case MenuFragment.MENU_OPCION_JUGAR :
 
                 //
-                if(esTablet) {
+                if(esTabletHorizontal) {
 
                     //
                     ponFragmentArea(getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
@@ -181,7 +157,7 @@ public class PrincipalActivity extends Activity implements
             case MenuFragment.MENU_OPCION_OPCIONES :
 
                 //
-                if(esTablet) {
+                if(esTabletHorizontal) {
                     ponFragmentArea(getOpcionesFragment(), TAG_FRAG_OPCIONES);
                 } else {
                     ponFragmentMovil(getOpcionesFragment(), TAG_FRAG_OPCIONES);
@@ -190,7 +166,7 @@ public class PrincipalActivity extends Activity implements
                 break;
             case MenuFragment.MENU_OPCION_INFO :
                 //
-                if(esTablet) {
+                if(esTabletHorizontal) {
                     ponFragmentArea(getInfoFragment(), TAG_FRAG_INFO);
                 } else {
                     ponFragmentMovil(getInfoFragment(), TAG_FRAG_INFO);
@@ -285,11 +261,11 @@ public class PrincipalActivity extends Activity implements
         super.onCreate(savedInstanceState);
 
         // Averiguar si el dispositivo es una tablet o móvil
-        esTablet = getResources().getBoolean(R.bool.isTablet) && !Preferencias.getVertical(this);
+        esTabletHorizontal = getResources().getBoolean(R.bool.isTablet) && !Preferencias.getVertical(this);
 
         // Cambiar la orientación de la pantalla. Esto puede ocasionar que la
         // activity se reinicie, si la orientación actual no es la solicitada.
-        if(esTablet) {
+        if(esTabletHorizontal) {
             if(getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             }
@@ -318,7 +294,7 @@ public class PrincipalActivity extends Activity implements
             ft.add(R.id.frameLayoutMenu, getMenuFragment(), TAG_FRAG_MENU);
 
             //
-            if (esTablet) {
+            if (esTabletHorizontal) {
 
                 ft.add(R.id.frameLayoutArea, getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
             }
@@ -336,7 +312,6 @@ public class PrincipalActivity extends Activity implements
             infoFragment = (InfoFragment) fm.findFragmentByTag(TAG_FRAG_INFO);
             ahoraFragment = (AhoraFragment) fm.findFragmentByTag(TAG_FRAG_AHORA);
             accionesFragment = (AccionesFragment) fm.findFragmentByTag(TAG_FRAG_ACCIONES);
-            casosFragment = (CasosFragment) fm.findFragmentByTag(TAG_FRAG_CASOS);
 
             //
             Log.i(TAG, "menuFragment = " + menuFragment);
@@ -345,7 +320,6 @@ public class PrincipalActivity extends Activity implements
             Log.i(TAG, "infoFragment = " + infoFragment);
             Log.i(TAG, "ahoraFragment = " + ahoraFragment);
             Log.i(TAG, "accionesFragment = " + accionesFragment);
-            Log.i(TAG, "casosFragment = " + casosFragment);
 
 
         }
@@ -357,7 +331,7 @@ public class PrincipalActivity extends Activity implements
 
             //onOptionSelected(MenuFragment.MENU_OPCION_OPCIONES);
 
-            //if(esTablet) {
+            //if(esTabletHorizontal) {
                 //menuFragment.enableOpcion(MenuFragment.MENU_OPCION_OPCIONES, false);
             //}
 
@@ -460,8 +434,7 @@ public class PrincipalActivity extends Activity implements
 
         //
 
-        //ft.replace(R.id.frameLayoutMenu, fragment, tag);
-        ft.add(R.id.frameLayoutMenu, fragment, tag);
+        ft.replace(R.id.frameLayoutMenu, fragment, tag);
         ft.addToBackStack(null);
 
         //
@@ -522,13 +495,6 @@ public class PrincipalActivity extends Activity implements
         return bienvenidaFragment;
     }
 
-    private CasosFragment getCasosFragment() {
-        if(casosFragment == null) {
-            casosFragment = new CasosFragment();
-        }
-
-        return casosFragment;
-    }
 
 
     /*********************

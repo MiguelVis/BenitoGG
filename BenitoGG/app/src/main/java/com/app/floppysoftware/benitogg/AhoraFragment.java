@@ -103,28 +103,28 @@ public class AhoraFragment extends Fragment {
             imageViewNorte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO, AccionesFragment.ACTION_TYPE_GO_NORTH);
+                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_NORTH, 0);
                 }
             });
 
             imageViewSur.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO, AccionesFragment.ACTION_TYPE_GO_SOUTH);
+                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_SOUTH, 0);
                 }
             });
 
             imageViewEste.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO, AccionesFragment.ACTION_TYPE_GO_EAST);
+                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_EAST, 0);
                 }
             });
 
             imageViewOeste.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO, AccionesFragment.ACTION_TYPE_GO_WEST);
+                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_WEST, 0);
                 }
             });
 
@@ -453,31 +453,17 @@ public class AhoraFragment extends Fragment {
             BaseDatos bd = new BaseDatos(getActivity(), false);
 
             switch(actionType) {
-                case AccionesFragment.ACTION_TYPE_GO :
-
-                    // Lugar actual (será el lugar de origen)
-                    String idLugarOrigen = lugarActual.getId();
-
-                    switch (actionNumber) {
-                        case AccionesFragment.ACTION_TYPE_GO_NORTH :
-                            prota.setLugar(lugarActual.getLugarNorte());
-                            break;
-                        case AccionesFragment.ACTION_TYPE_GO_SOUTH :
-                            prota.setLugar(lugarActual.getLugarSur());
-                            break;
-                        case AccionesFragment.ACTION_TYPE_GO_EAST :
-                            prota.setLugar(lugarActual.getLugarEste());
-                            break;
-                        case AccionesFragment.ACTION_TYPE_GO_WEST :
-                            prota.setLugar(lugarActual.getLugarOeste());
-                            break;
-                    }
-
-                    //
-                    bd.updateActor(prota);
-
-                    // Notificar el cambio de lugar
-                    Zeta.protaCambiaLugar(bd, idLugarOrigen, prota.getLugar());
+                case AccionesFragment.ACTION_TYPE_GO_NORTH :
+                    cambiaLugar(bd, lugarActual.getLugarNorte());
+                    break;
+                case AccionesFragment.ACTION_TYPE_GO_SOUTH :
+                    cambiaLugar(bd, lugarActual.getLugarSur());
+                    break;
+                case AccionesFragment.ACTION_TYPE_GO_EAST :
+                    cambiaLugar(bd, lugarActual.getLugarEste());
+                    break;
+                case AccionesFragment.ACTION_TYPE_GO_WEST :
+                    cambiaLugar(bd, lugarActual.getLugarOeste());
                     break;
                 case AccionesFragment.ACTION_TYPE_PICK:
 
@@ -556,6 +542,19 @@ public class AhoraFragment extends Fragment {
                         getString(R.string.dialogo_caso_resuelto_texto) + " '" + casoResuelto + "'!");
             }
         }
+    }
+
+
+
+    private void cambiaLugar(BaseDatos bd, String lugarId) {
+
+        String lugarOrigenId = lugarActual.getId();
+
+        prota.setLugar(lugarId);
+
+        bd.updateActor(prota);
+
+        Zeta.protaCambiaLugar(bd, lugarOrigenId, prota.getLugar());
     }
 
     private void mensajeContinuar(int icon, String titulo, String texto) {

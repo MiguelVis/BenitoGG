@@ -3,6 +3,7 @@ package com.app.floppysoftware.benitogg;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -26,19 +27,14 @@ public class AccionesFragment extends Fragment {
     // Log
     private static final String TAG = "AccionesFragment";
 
-    //
-    public static final int ACTION_TYPE_GO = 0;
-    public static final int ACTION_TYPE_PICK = 1;
-    public static final int ACTION_TYPE_DROP = 2;
-    public static final int ACTION_TYPE_INVENTARY = 3;
-    public static final int ACTION_TYPE_OTHER = 4;
-    public static final int ACTION_TYPE_MAP = 5;
-    public static final int ACTION_TYPE_CASOS = 6;
-
-    public static final int ACTION_TYPE_GO_NORTH = 0;
-    public static final int ACTION_TYPE_GO_SOUTH = 1;
-    public static final int ACTION_TYPE_GO_EAST = 2;
-    public static final int ACTION_TYPE_GO_WEST = 3;
+    // Códigos de las acciones
+    public static final int ACTION_TYPE_GO_NORTH = 0;  // Ir norte
+    public static final int ACTION_TYPE_GO_SOUTH = 1;  // Ir sur
+    public static final int ACTION_TYPE_GO_EAST = 2;   // Ir este
+    public static final int ACTION_TYPE_GO_WEST = 3;   // Ir oeste
+    public static final int ACTION_TYPE_PICK = 4;      // Tomar objeto
+    public static final int ACTION_TYPE_DROP = 5;      // Dejar objeto
+    public static final int ACTION_TYPE_OTHER = 6;     // Otras acciones
 
     private ListView listViewAcciones;
 
@@ -53,8 +49,6 @@ public class AccionesFragment extends Fragment {
     private Button buttonDejarObjeto;
     private Button buttonInventario;
     private Button buttonOtrasAcciones;
-    private Button buttonMapa;
-    private Button buttonCasos;
 
     private PopupMenu popupMenuTomarObjeto;
     private PopupMenu popupMenuDejarObjeto;
@@ -212,16 +206,37 @@ public class AccionesFragment extends Fragment {
         imageViewEste = (ImageView) v.findViewById(R.id.imageViewEste);
         imageViewOeste = (ImageView) v.findViewById(R.id.imageViewOeste);
 
-        imageViewNorte.setOnClickListener(onClickRumbo);
-        imageViewSur.setOnClickListener(onClickRumbo);
-        imageViewEste.setOnClickListener(onClickRumbo);
-        imageViewOeste.setOnClickListener(onClickRumbo);
+        imageViewNorte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onActionSelected(ACTION_TYPE_GO_NORTH, 0);
+            }
+        });
+        imageViewSur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onActionSelected(ACTION_TYPE_GO_SOUTH, 0);
+            }
+        });
+        imageViewEste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onActionSelected(ACTION_TYPE_GO_EAST, 0);
+            }
+        });
+        imageViewOeste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onActionSelected(ACTION_TYPE_GO_WEST, 0);
+            }
+        });
 
         //
         buttonTomarObjeto = (Button) v.findViewById(R.id.buttonTomarObjeto);
         buttonDejarObjeto = (Button) v.findViewById(R.id.buttonDejarObjeto);
-        buttonInventario = (Button) v.findViewById(R.id.buttonInventario);
         buttonOtrasAcciones = (Button) v.findViewById(R.id.buttonOtrasAcciones);
+
+        buttonInventario = (Button) v.findViewById(R.id.buttonInventario);
 
         //
         buttonInventario.setOnClickListener(new View.OnClickListener() {
@@ -234,22 +249,24 @@ public class AccionesFragment extends Fragment {
         });
 
         //
-        buttonMapa = (Button) v.findViewById(R.id.buttonMapa);
+        Button buttonMapa = (Button) v.findViewById(R.id.buttonMapa);
         buttonMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
-                mListener.onActionSelected(ACTION_TYPE_MAP, -1);
+               // mListener.onActionSelected(ACTION_TYPE_MAP, -1);
+                startActivity(new Intent(getActivity(), MapaActivity.class));
             }
         });
 
         //
-        buttonCasos = (Button) v.findViewById(R.id.buttonCasos);
+        Button buttonCasos = (Button) v.findViewById(R.id.buttonCasos);
         buttonCasos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
-                mListener.onActionSelected(ACTION_TYPE_CASOS, -1);
+                //mListener.onActionSelected(ACTION_TYPE_CASOS, -1);
+                startActivity(new Intent(getActivity(), CasosActivity.class));
             }
         });
 
@@ -291,24 +308,6 @@ public class AccionesFragment extends Fragment {
 
         isReady = false;
     }
-
-
-    View.OnClickListener onClickRumbo = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int actionType;
-            if(v == imageViewNorte)
-                actionType = ACTION_TYPE_GO_NORTH;
-            else if(v == imageViewSur)
-                actionType = ACTION_TYPE_GO_SOUTH;
-            else if(v == imageViewEste)
-                actionType = ACTION_TYPE_GO_EAST;
-            else
-                actionType = ACTION_TYPE_GO_WEST;
-
-            mListener.onActionSelected(ACTION_TYPE_GO, actionType);
-        }
-    };
 
     private class BotonListener implements View.OnClickListener {
 
