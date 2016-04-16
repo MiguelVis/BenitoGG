@@ -50,7 +50,6 @@ public class OpcionesFragment extends Fragment {
         // Nada, de momento
     }
 
-
     /**
      * Método llamado cuando se ha de crear la vista del fragment.
      *

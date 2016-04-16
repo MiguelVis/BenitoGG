@@ -20,6 +20,10 @@ import java.util.ArrayList;
 
 /**
  * Fragmento que implementa la lista de acciones de una escena.
+ *
+ * @author   Miguel I. García López
+ * @version  2.0
+ * @since    18 Mar 2016
  */
 public class AccionesFragment extends Fragment {
 

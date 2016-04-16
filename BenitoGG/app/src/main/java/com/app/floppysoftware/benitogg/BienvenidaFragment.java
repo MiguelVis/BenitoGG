@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 /**
  * Fragment de bienvenida. Su único propósito es servir de fragment
  * inicial cuando el dispositivo es una tablet.
+ *
+ * @author   Miguel I. García López
+ * @version  1.0
+ * @since    15 Mar 2016
  */
 public class BienvenidaFragment extends Fragment {
 
@@ -20,14 +24,13 @@ public class BienvenidaFragment extends Fragment {
         // Nada de momento
     }
 
-
     /**
      * Método para inflar el layout del fragment.
      *
-     * @param inflater   Inflater
-     * @param container  Contenedor
+     * @param inflater            Inflater
+     * @param container           Contenedor
      * @param savedInstanceState  Estado previamente guardado
-     * @return  Layout inflado
+     * @return                    Layout inflado
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

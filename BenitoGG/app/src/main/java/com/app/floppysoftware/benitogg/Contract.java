@@ -2,12 +2,16 @@ package com.app.floppysoftware.benitogg;
 
 /**
  * Clase que define valores estáticos para la base de datos.
+ *
+ * @author   Miguel I. García López
+ * @version  1.0
+ * @since    16 Mar 2016
  */
 public final class Contract {
 
     // Base de datos
-    public static final String DATABASE_NAME = "benitogg.db";  // Nombre
-    public static final int DATABASE_VERSION = 1;              // Versión
+    public static final String DATABASE_NAME = "benitogg.db";    // Nombre
+    public static final int DATABASE_VERSION = 1;                // Versión
 
     // Nombres de los ficheros de texto con los datos iniciales
     public static final String FICHERO_OBJETOS = "objetos";      // Objetos

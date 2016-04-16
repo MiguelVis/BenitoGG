@@ -6,6 +6,10 @@ import java.util.ArrayList;
  * Esta clase es dependiente de la aventura. Los métodos de esta clase no pueden acceder
  * al UI o a la base de datos, salvo que se indique lo contrario. Por lo general, los
  * métodos de esta clase se ejecutarán fuera del hilo del UI.
+ *
+ * @author   Miguel I. García López
+ * @version  1.0
+ * @since    18 Mar 2016
  */
 public final class Zeta {
 

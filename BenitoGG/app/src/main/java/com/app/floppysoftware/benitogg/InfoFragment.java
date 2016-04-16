@@ -15,6 +15,10 @@ import java.net.URLEncoder;
 
 /**
  * Clase que implementa el fragment de información de la aplicación.
+ *
+ * @author   Miguel I. García López
+ * @version  1.0
+ * @since    20 Mar 2016
  */
 public class InfoFragment extends Fragment {
 
