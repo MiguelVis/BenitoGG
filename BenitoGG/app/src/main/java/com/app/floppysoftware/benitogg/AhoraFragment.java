@@ -103,28 +103,28 @@ public class AhoraFragment extends Fragment {
             imageViewNorte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_NORTH, 0);
+                    realizaAccion(AccionesFragment.ACCION_NORTE, 0);
                 }
             });
 
             imageViewSur.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_SOUTH, 0);
+                    realizaAccion(AccionesFragment.ACCION_SUR, 0);
                 }
             });
 
             imageViewEste.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_EAST, 0);
+                    realizaAccion(AccionesFragment.ACCION_ESTE, 0);
                 }
             });
 
             imageViewOeste.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    realizaAccion(AccionesFragment.ACTION_TYPE_GO_WEST, 0);
+                    realizaAccion(AccionesFragment.ACCION_OESTE, 0);
                 }
             });
 
@@ -151,7 +151,7 @@ public class AhoraFragment extends Fragment {
             mListener = (AhoraFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement OnActionSelectedListener");
+                    + " must implement OnAccionesListener");
         }
     }
 
@@ -453,19 +453,19 @@ public class AhoraFragment extends Fragment {
             BaseDatos bd = new BaseDatos(getActivity(), false);
 
             switch(actionType) {
-                case AccionesFragment.ACTION_TYPE_GO_NORTH :
+                case AccionesFragment.ACCION_NORTE:
                     cambiaLugar(bd, lugarActual.getLugarNorte());
                     break;
-                case AccionesFragment.ACTION_TYPE_GO_SOUTH :
+                case AccionesFragment.ACCION_SUR:
                     cambiaLugar(bd, lugarActual.getLugarSur());
                     break;
-                case AccionesFragment.ACTION_TYPE_GO_EAST :
+                case AccionesFragment.ACCION_ESTE:
                     cambiaLugar(bd, lugarActual.getLugarEste());
                     break;
-                case AccionesFragment.ACTION_TYPE_GO_WEST :
+                case AccionesFragment.ACCION_OESTE:
                     cambiaLugar(bd, lugarActual.getLugarOeste());
                     break;
-                case AccionesFragment.ACTION_TYPE_PICK:
+                case AccionesFragment.ACCION_TOMAR:
 
                     Objeto objLugar = lugarActualObjetos.get(actionNumber);
 
@@ -479,7 +479,7 @@ public class AhoraFragment extends Fragment {
                         casoResueltoId = Zeta.objetoTomado(bd, objLugar, protaObjetos);
                     }
                     break;
-                case AccionesFragment.ACTION_TYPE_DROP :
+                case AccionesFragment.ACCION_DEJAR:
                     Objeto objBolsillo = protaObjetos.get(actionNumber);
                     objBolsillo.setLugar(lugarActual.getId());
                     bd.updateObjeto(objBolsillo);
@@ -487,7 +487,7 @@ public class AhoraFragment extends Fragment {
                     //
                     casoResueltoId = Zeta.objetoDejado(bd, objBolsillo, protaObjetos);
                     break;
-                case AccionesFragment.ACTION_TYPE_OTHER :
+                case AccionesFragment.ACCION_OTRAS:
 
                     casoResueltoId = Zeta.doAccion(bd, accionesIds.get(actionNumber));
 

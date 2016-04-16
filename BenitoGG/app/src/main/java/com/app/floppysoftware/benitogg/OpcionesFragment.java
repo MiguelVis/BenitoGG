@@ -10,9 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-
 /**
- * Clase que implementa el apartado de opciones del menú.
+ * Clase que implementa el apartado de opciones / configuración del menú.
  *
  * @author   Miguel I. García López
  * @version  1.0
@@ -184,7 +183,6 @@ public class OpcionesFragment extends Fragment {
 
         // Indicar la preferencia de modo vertical / horizontal
         checkBoxVertical.setChecked(Preferencias.getVertical(getActivity()));
-
     }
 
     /**
@@ -235,7 +233,8 @@ public class OpcionesFragment extends Fragment {
         // Llamar a la superclase
         super.onPause();
 
-        // Grabar en las preferencias el nombre del usuario
+        // Grabar en las preferencias el nombre del usuario (el resto de preferencias
+        // se guarda en el listener correspondiente).
         Preferencias.setNombre(getActivity(), editTextNombre.getText().toString());
     }
 }

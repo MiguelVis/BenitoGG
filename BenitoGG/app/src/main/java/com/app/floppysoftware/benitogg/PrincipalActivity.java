@@ -17,19 +17,22 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+/**
+ * Clase principal del juego.
+ */
 public class PrincipalActivity extends Activity implements
         MenuFragment.OnFragmentInteractionListener,
-        AccionesFragment.OnActionSelectedListener,
+        AccionesFragment.OnAccionesListener,
         AhoraFragment.AhoraFragmentInteractionListener,
         OpcionesFragment.OnOpcionesInteractionListener {
 
-    //
+    // Tag para log
     private final static String TAG = "PrincipalActivity";
 
-    //
+    // Parámetro extra
     private final static String EXTRA_VERTICAL = "ExtraVertical";
 
-    //
+    // Tags para los fragments
     private final static String TAG_FRAG_MENU = "FrMenu";
     private final static String TAG_FRAG_BIENVENIDA = "FrBienvenida";
     private final static String TAG_FRAG_OPCIONES = "FrOpciones";
@@ -90,7 +93,7 @@ public class PrincipalActivity extends Activity implements
     /**************************************************/
 
 
-    public void onActionSelected(int actionType, int actionNumber) {
+    public void onAccionSeleccionada(int actionType, int actionNumber) {
 
         // Si es móvil, hay que quitar el fragment de acciones,
         // y poner el anterior.
