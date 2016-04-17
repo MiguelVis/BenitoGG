@@ -29,9 +29,6 @@ public class AhoraFragment extends Fragment {
 
     private Lugar lugarActual = null;
     private ArrayList<Objeto> lugarActualObjetos = null;
-    private ArrayList<Actor> lugarActualActores = null;
-
-    //private ArrayList<Dicho> lugarActualDichos = null;
 
     private ArrayList<String> lugarActualNombreObjetosLugar;
 
@@ -233,8 +230,6 @@ public class AhoraFragment extends Fragment {
             // Leer objetos en el lugar
             lugarActualObjetos = bd.getObjetos(lugarActual.getId());
 
-            // Leer actores en el lugar
-            lugarActualActores = bd.getActores(lugarActual.getId());
 
             // Leer los dichos de los actores que hay en el lugar
             //lugarActualDichos = new ArrayList<>();
@@ -501,10 +496,11 @@ public class AhoraFragment extends Fragment {
 
                 Caso caso = bd.getCaso(casoResueltoId);
 
-                if(!caso.getResuelto()) {
-                    bd.resuelveCaso(casoResueltoId);
-                    casoResuelto = caso.getNombre();
-                }
+                caso.setResuelto(true);
+
+                bd.updateCaso(caso);
+
+                casoResuelto = caso.getNombre();
             }
 
             //

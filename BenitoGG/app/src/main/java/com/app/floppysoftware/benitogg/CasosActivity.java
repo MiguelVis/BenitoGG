@@ -86,7 +86,7 @@ public class CasosActivity extends Activity {
             BaseDatos bd = new BaseDatos(CasosActivity.this, false);
 
             // Tomar lista de casos
-            ArrayList<Caso> casos = bd.getCasos(null);
+            ArrayList<Caso> casos = bd.getCasos();
 
             // Cerrar base de datos
             bd.cerrar();

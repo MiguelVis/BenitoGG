@@ -4,117 +4,176 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * Clase que implementa el helper de la base de datos.
+ *
+ * @author   Miguel I. García López
+ * @version  1.0
+ * @since    16 Mar 2016
+ */
 public class DbHelper extends SQLiteOpenHelper {
 
+    // Las líneas que comiencen por el caracter de comentario
+    // serán ignoradas.
     private static final String COMENTARIO = "#";
 
+    // Contexto
     private Context context;
 
+    // Flag de reset
     private boolean reset;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param context
-     * @param reset
+     * @param context  Contexto
+     * @param reset    True si la base de datos ha de ser reinicializada
      */
     public DbHelper(Context context, boolean reset) {
 
+        // Llamar a la superclase
         super(context, Contract.DATABASE_NAME, null, Contract.DATABASE_VERSION);
 
+        // Fijar atributos según parámetros de entrada
         this.context = context;
         this.reset = reset;
     }
 
+    /**
+     * Método llamado cuando se tenga que crear la base de datos.
+     *
+     * @param db  Base de datos
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //db.execSQL(BdContract.SQL_DROP_TABLE);     // Drop table
-        //db.execSQL(BdContract.SQL_CREATE_TABLE);   // Create table
-        //db.execSQL(BdContract.SQL_INSERT_DEFAULT); // Insert default rows
-
-        createAndPopulate(db, true);
+        // Crear base de datos, e insertar datos
+        // en las tablas.
+        creaBaseDatos(db);
     }
 
+    /**
+     * Método llamado cuando se tenga que abrir la base de datos.
+     *
+     * @param db  Base de datos
+     */
     @Override
     public void onOpen(SQLiteDatabase db) {
+
+        // Si se ha de reinicializar la base de datos,
+        // eliminar las tablas.
         if(reset) {
-            db.execSQL(Contract.Actores.SQL_DROP_TABLE);
-            db.execSQL(Contract.Objetos.SQL_DROP_TABLE);
-            //db.execSQL(Contract.Dichos.SQL_DROP_TABLE);
-            db.execSQL(Contract.Casos.SQL_DROP_TABLE);
 
-            createAndPopulate(db, false);
+            // Eliminar las tablas
+            try {
+                db.execSQL(Contract.Lugares.SQL_DROP_TABLE);
+                db.execSQL(Contract.Actores.SQL_DROP_TABLE);
+                db.execSQL(Contract.Objetos.SQL_DROP_TABLE);
+                db.execSQL(Contract.Casos.SQL_DROP_TABLE);
+            } catch(SQLException ex) {
+                // Hubo una excepción
+                ex.printStackTrace();
+            }
+
+            // Crear base de datos, e insertar datos
+            // en las tablas.
+            creaBaseDatos(db);
         }
-
     }
 
+    /**
+     * Método llamado al actualizar la base de datos.
+     *
+     * @param db          Base de datos
+     * @param oldVersion  Versión antigua
+     * @param newVersion  Versión nueva
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        // Nothing yet
+        // Nada
     }
 
-    private void createAndPopulate(SQLiteDatabase db, boolean todo) {
-        // FIXME: Exceptions
+    /**
+     * Crear base de datos, e insertar datos en las tablas.
+     *
+     * @param db  Base de datos
+     */
+    private void creaBaseDatos(SQLiteDatabase db) {
 
-        if(todo) {
-            db.execSQL(Contract.Lugares.SQL_CREATE_TABLE);
-
-
-            Log.i("DbHelper", Contract.Lugares.SQL_CREATE_TABLE);
-        }
-
-        db.execSQL(Contract.Actores.SQL_CREATE_TABLE);
-        db.execSQL(Contract.Objetos.SQL_CREATE_TABLE);
-        //db.execSQL(Contract.Dichos.SQL_CREATE_TABLE);
-        db.execSQL(Contract.Casos.SQL_CREATE_TABLE);
-
-        if(todo) {
-            populate(db, Contract.FICHERO_LUGARES, Contract.Lugares.TABLE_NAME);
-        }
-
-        populate(db, Contract.FICHERO_ACTORES, Contract.Actores.TABLE_NAME);
-        populate(db, Contract.FICHERO_OBJETOS, Contract.Objetos.TABLE_NAME);
-        //populate(db, "zeta_dichos_no_vale.txt", Contract.Dichos.TABLE_NAME);
-        populate(db, Contract.FICHERO_CASOS, Contract.Casos.TABLE_NAME);
-
-    }
-
-    private void populate(SQLiteDatabase db, String fileName, String tableName) {
-        InputStream is = null;
-        InputStreamReader isr = null;
-        BufferedReader r = null;
-        String line = null;
-        String values = null;
-
+        // Crear tablas
         try {
-            is = context.getAssets().open("zeta_" + fileName + ".txt");
-            // Lee y convierte de ANSI (windows-1252) a Unicode -- nota: SQLite utiliza UTF8. -- grabando los txt como UTF8, da error en cur.moveToFirst();
-            // isr = new InputStreamReader(is, "windows-1252");
-            isr = new InputStreamReader(is);
-            r = new BufferedReader(isr);
+            db.execSQL(Contract.Lugares.SQL_CREATE_TABLE);
+            db.execSQL(Contract.Actores.SQL_CREATE_TABLE);
+            db.execSQL(Contract.Objetos.SQL_CREATE_TABLE);
+            db.execSQL(Contract.Casos.SQL_CREATE_TABLE);
+        } catch(SQLException ex) {
+            // Hubo una excepción
+            ex.printStackTrace();
+        }
 
+        // Insertar datos en las tablas
+        insertarDatos(db, Contract.FICHERO_LUGARES, Contract.Lugares.TABLE_NAME);
+        insertarDatos(db, Contract.FICHERO_ACTORES, Contract.Actores.TABLE_NAME);
+        insertarDatos(db, Contract.FICHERO_OBJETOS, Contract.Objetos.TABLE_NAME);
+        insertarDatos(db, Contract.FICHERO_CASOS, Contract.Casos.TABLE_NAME);
+    }
+
+    /**
+     * Insertar datos iniciales en una tabla.
+     *
+     * @param db             Base de datos
+     * @param nombreFichero  Nombre del fichero con los datos iniciales
+     * @param nombreTabla    Nombre de la tabla
+     */
+    private void insertarDatos(SQLiteDatabase db, String nombreFichero, String nombreTabla) {
+
+        // Variables para el fichero con los datos iniciales
+        InputStream is = null;         // InputStream
+        InputStreamReader isr = null;  // InputStreamReader
+        BufferedReader br = null;      // BufferedReader
+
+        // Datos
+        String line = null;   // Línea leída
+        String values = null; // Valores a insertar
+
+        // Leer los datos desde el fichero
+        // e insertarlos en la tabla.
+        try {
+
+            // InputStream; abrir el fichero con los datos iniciales
+            is = context.getAssets().open("zeta_" + nombreFichero + ".txt");
+
+            // InputStreamReader
+            isr = new InputStreamReader(is);
+
+            // BufferedReader
+            br = new BufferedReader(isr);
+
+            // Leer los datos del fichero,
+            // línea a línea.
             do {
 
-                // Leer línea
-                line = r.readLine();
+                // Leer una línea
+                line = br.readLine();
 
-                // Un registro finaliza con el fin del fichero, una línea en blanco, o un comentario
+                // Un registro finaliza con el fin del fichero,
+                // una línea en blanco,
+                // o un comentario.
                 if(line == null || line.length() == 0 || line.startsWith(COMENTARIO)) {
 
-                    // Insertar registro si hay datos leídos, pendientes de escribir
+                    // Insertar registro si hay datos leídos,
+                    // pendientes de escribir.
                     if(values != null) {
 
-                        // Escribir registro
-                        db.execSQL("insert into " + tableName + " values (" + values + ");");
+                        // Insertar registro en la tabla
+                        db.execSQL("insert into " + nombreTabla + " values (" + values + ");");
 
                         // Invalidar datos
                         values = null;
@@ -122,47 +181,65 @@ public class DbHelper extends SQLiteOpenHelper {
                 } else {
                     // Línea con datos
 
-                    // Entrecomillar el valor, si no es un número o null (se supone que
-                    // es una cadena de texto).
+                    // Entrecomillar el dato leído si no es un número o la cadena 'null' (se supone que
+                    // es una cadena de texto válida).
                     if(!Character.isDigit(line.charAt(0)) && !line.equals("null")) {
                         line = "'" + line + "'";
                     }
 
-                    // Añadir datos
+                    // Añadir a los datos existentes
                     if(values == null) {
+
+                        // No hay datos todavía, inicializarlos con el dato leído
                         values = line;
                     } else {
+
+                        // Añadir dato a los existentes
                         values = values.concat("," + line);
                     }
                 }
+
+              // Seguir leyendo hasta el final
+              // del fichero.
             } while (line != null);
 
         }
-        catch (SQLException | IOException e) {
-            e.printStackTrace();
+        catch (SQLException | IOException ex) {
+
+            // Hubo una excepción
+            ex.printStackTrace();
         }
 
-        if(r != null) {
+        // Cerrar BufferedReader
+        if(br != null) {
             try {
-                r.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                br.close();
+            } catch (IOException ex) {
+
+                // Excepción
+                ex.printStackTrace();
             }
         }
 
+        // Cerrar InputStreamReader
         if(isr != null) {
             try {
                 isr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ex) {
+
+                // Excepción
+                ex.printStackTrace();
             }
         }
 
-        if(isr != null) {
+        // Cerrar InputStream
+        if(is != null) {
             try {
                 is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ex) {
+
+                // Excepción
+                ex.printStackTrace();
             }
         }
     }

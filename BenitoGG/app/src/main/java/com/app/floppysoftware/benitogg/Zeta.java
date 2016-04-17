@@ -32,7 +32,7 @@ public final class Zeta {
     private static final String ID_PIZZERIA = "pizzeria";
     private static final String ID_PENSION = "pension";
     private static final String ID_GIMNASIO = "gimnasio";
-    private static final String ID_PARQUE_VERDOR = "pr_verdor";
+    private static final String ID_PARQUE_VERDOR = "pq_verdor";
     private static final String ID_TALLER = "taller";
     private static final String ID_CONSULTORIO = "consultorio";
 

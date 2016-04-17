@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Clase principal del juego.
  */
 public class PrincipalActivity extends Activity implements
-        MenuFragment.OnFragmentInteractionListener,
+        MenuFragment.OnMenuListener,
         AccionesFragment.OnAccionesListener,
         AhoraFragment.AhoraFragmentInteractionListener,
         OpcionesFragment.OnOpcionesInteractionListener {
@@ -110,7 +110,7 @@ public class PrincipalActivity extends Activity implements
      *
      * @param opcion
      */
-    public void onOptionSelected(int opcion) {
+    public void onOpcionSeleccionada(int opcion) {
 /*****************
         if(esTabletHorizontal) {
             // Habilitar todas las opciones del menú
@@ -332,13 +332,13 @@ public class PrincipalActivity extends Activity implements
 
             getIntent().removeExtra(EXTRA_VERTICAL);
 
-            //onOptionSelected(MenuFragment.MENU_OPCION_OPCIONES);
+            //onOpcionSeleccionada(MenuFragment.MENU_OPCION_OPCIONES);
 
             //if(esTabletHorizontal) {
                 //menuFragment.enableOpcion(MenuFragment.MENU_OPCION_OPCIONES, false);
             //}
 
-            menuFragment.forceOpcion(MenuFragment.MENU_OPCION_OPCIONES);
+            menuFragment.forzarOpcion(MenuFragment.MENU_OPCION_OPCIONES);
         }
     }
 
