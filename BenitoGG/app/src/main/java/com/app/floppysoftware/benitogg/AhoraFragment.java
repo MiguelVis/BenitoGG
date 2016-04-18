@@ -30,12 +30,7 @@ public class AhoraFragment extends Fragment {
     private Lugar lugarActual = null;
     private ArrayList<Objeto> lugarActualObjetos = null;
 
-    private ArrayList<String> lugarActualNombreObjetosLugar;
-
-    private ArrayList<String> lugarActualNombreObjetosBolsillo;
-
-    private ArrayList<String> accionesTitulos = null;
-    private ArrayList<Integer> accionesIds;
+    private ArrayList<Accion> otrasAcciones = null;
 
     private Actor prota = null;
     private ArrayList<Objeto> protaObjetos = null;
@@ -61,9 +56,9 @@ public class AhoraFragment extends Fragment {
     public interface AhoraFragmentInteractionListener {
 
         public void setAcciones(boolean norte, boolean sur, boolean este, boolean oeste,
-            ArrayList<String> objetosLugar,
-            ArrayList<String> objetosBolsillo,
-            ArrayList<String> otrasAcciones);
+                                ArrayList<Objeto> objetosLugar,
+                                ArrayList<Objeto> objetosBolsillo,
+                                ArrayList<Accion> otrasAcciones);
 
         public void emiteSonido(int resId);
     }
@@ -173,9 +168,9 @@ public class AhoraFragment extends Fragment {
                 lugarActual.getLugarSur() != null,
                 lugarActual.getLugarEste() != null,
                 lugarActual.getLugarOeste() != null,
-                lugarActualNombreObjetosLugar,
-                lugarActualNombreObjetosBolsillo,
-                accionesTitulos);
+                lugarActualObjetos,
+                protaObjetos,
+                otrasAcciones);
     }
 
     private void mostrarEscena() {
@@ -277,14 +272,14 @@ public class AhoraFragment extends Fragment {
             bd.cerrar();
 
             /*****************
-            if(!parcheDetalle.isEmpty()) {
+             if(!parcheDetalle.isEmpty()) {
 
-                lugarLineas.add("");
+             lugarLineas.add("");
 
-                for (int strId : parcheDetalle) {
-                    lugarLineas.add(getString(strId));
-                }
-            }
+             for (int strId : parcheDetalle) {
+             lugarLineas.add(getString(strId));
+             }
+             }
              ******************/
 
             for (int strId : parcheDetalle) {
@@ -297,22 +292,7 @@ public class AhoraFragment extends Fragment {
             }
 
             // Acciones
-            accionesTitulos = new ArrayList<>();
-            accionesIds = new ArrayList<>();
-
-            // Parcheo acciones
-            //ArrayList<Accion> parcheAcciones = Zeta.getAcciones(lugarActual, lugarActualActores, lugarActualObjetos, protaObjetos);
-
-            for(Accion ac : parcheAcciones) {
-                otraAccion(ac.getId(), ac.getStringId());
-            }
-
-            // Lista de nombres de objetos que hay en el lugar
-            lugarActualNombreObjetosLugar = new ArrayList<>();
-
-            for(Objeto objLugar : lugarActualObjetos) {
-                lugarActualNombreObjetosLugar.add(objLugar.getNombre());
-            }
+            otrasAcciones = parcheAcciones;
 
             // Indicar los objetos que hay en el lugar
             if(lugarActualObjetos != null && !lugarActualObjetos.isEmpty()) {
@@ -354,13 +334,6 @@ public class AhoraFragment extends Fragment {
 
             if(tituloEste != null) {
                 lugarLineas.add("   " + getString(R.string.escena_este) + " " + tituloEste + ".");
-            }
-
-            // Lista de nombres de objetos que hay en el bolsillo
-            lugarActualNombreObjetosBolsillo = new ArrayList<>();
-
-            for(Objeto objBolsillo : protaObjetos) {
-                lugarActualNombreObjetosBolsillo.add(objBolsillo.getNombre());
             }
 
             String escenaDetalle = "";
@@ -405,15 +378,6 @@ public class AhoraFragment extends Fragment {
         }
     }
 
-    private void otraAccion(int id, String titulo) {
-        accionesTitulos.add(titulo);
-        accionesIds.add(id);
-    }
-
-    private void otraAccion(int id, int tituloId) {
-        otraAccion(id, getString(tituloId));
-    }
-
     public void realizaAccion(int actionType, int actionNumber) {
 
         new RealizaAccion().execute(actionType, actionNumber);
@@ -425,7 +389,6 @@ public class AhoraFragment extends Fragment {
      */
     private class RealizaAccion extends AsyncTask<Integer, Void, Void> {
 
-        private int tomarObjetoError = 0;
         private String casoResuelto = null;
 
         /**
@@ -464,15 +427,12 @@ public class AhoraFragment extends Fragment {
 
                     Objeto objLugar = lugarActualObjetos.get(actionNumber);
 
-                    if((tomarObjetoError = Zeta.puedeTomarObjeto(bd, objLugar, protaObjetos)) == 0) {
+                    //
+                    objLugar.setLugar(Lugar.BOLSILLO);
+                    bd.updateObjeto(objLugar);
 
-                        //
-                        objLugar.setLugar(Lugar.BOLSILLO);
-                        bd.updateObjeto(objLugar);
-
-                        //
-                        casoResueltoId = Zeta.objetoTomado(bd, objLugar, protaObjetos);
-                    }
+                    //
+                    casoResueltoId = Zeta.objetoTomado(bd, objLugar, protaObjetos);
                     break;
                 case AccionesFragment.ACCION_DEJAR:
                     Objeto objBolsillo = protaObjetos.get(actionNumber);
@@ -484,7 +444,7 @@ public class AhoraFragment extends Fragment {
                     break;
                 case AccionesFragment.ACCION_OTRAS:
 
-                    casoResueltoId = Zeta.doAccion(bd, accionesIds.get(actionNumber));
+                    casoResueltoId = Zeta.doAccion(bd, otrasAcciones.get(actionNumber).getId());
 
                     break;
                 default :
@@ -521,11 +481,7 @@ public class AhoraFragment extends Fragment {
             // Refrescar la escena
             mostrarEscena();
 
-            if(tomarObjetoError > 0) {
-
-                mensajeContinuar(R.drawable.ic_information, getString(R.string.dialogo_tomar_objeto_titulo), getString(tomarObjetoError));
-
-            } else if(casoResuelto != null) {
+            if(casoResuelto != null) {
 
                 // Mostrar mensaje, si se ha resuelto un caso
 
@@ -534,7 +490,8 @@ public class AhoraFragment extends Fragment {
 
                 //mListener.casoResuelto(casoResuelto);
 
-                mensajeContinuar(R.drawable.ic_check, getString(R.string.dialogo_caso_resuelto_titulo),
+                Mensaje.continuar(getActivity(), R.drawable.ic_check,
+                        getString(R.string.dialogo_caso_resuelto_titulo),
                         getString(R.string.dialogo_caso_resuelto_texto) + " '" + casoResuelto + "'!");
             }
         }
@@ -552,20 +509,4 @@ public class AhoraFragment extends Fragment {
 
         Zeta.protaCambiaLugar(bd, lugarOrigenId, prota.getLugar());
     }
-
-    private void mensajeContinuar(int icon, String titulo, String texto) {
-        AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
-        dlg.setTitle(titulo)
-                .setIcon(icon)
-                .setMessage(texto)
-                .setPositiveButton(R.string.dialogo_continuar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Nada
-                    }
-                })
-                .show();
-    }
-
-
 }

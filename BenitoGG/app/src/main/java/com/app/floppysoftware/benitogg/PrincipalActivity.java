@@ -67,9 +67,9 @@ public class PrincipalActivity extends Activity implements
     /****************************************************/
 
     public void setAcciones(boolean norte, boolean sur, boolean este, boolean oeste,
-                            ArrayList<String> objetosLugar,
-                            ArrayList<String> objetosBolsillo,
-                            ArrayList<String> otrasAcciones) {
+                            ArrayList<Objeto> objetosLugar,
+                            ArrayList<Objeto> objetosBolsillo,
+                            ArrayList<Accion> otrasAcciones) {
 
         // Si es una tablet, el fragment de acciones está visible. Si es un móvil, no.
 
@@ -234,13 +234,19 @@ public class PrincipalActivity extends Activity implements
 
                             @Override
                             protected void onPostExecute(Void result) {
-                                AlertDialog.Builder dlg = new AlertDialog.Builder(PrincipalActivity.this);
 
+                                Mensaje.continuar(PrincipalActivity.this, R.drawable.ic_information,
+                                        getString(R.string.dialogo_reset_titulo),
+                                        getString(R.string.dialogo_reset_hecho));
+
+                                /***************
+                                 * AlertDialog.Builder dlg = new AlertDialog.Builder(PrincipalActivity.this);
                                 alertDialog = dlg.setTitle(R.string.dialogo_reset_titulo)
                                         .setIcon(R.drawable.ic_information)
                                         .setMessage(R.string.dialogo_reset_hecho)
                                         .setPositiveButton(R.string.dialogo_continuar, null)
                                         .show();
+                                 ******************/
                             }
                         }.execute();
 

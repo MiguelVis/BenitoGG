@@ -1,8 +1,6 @@
 package com.app.floppysoftware.benitogg;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -59,10 +57,10 @@ public class AccionesFragment extends Fragment {
     private PopupMenu popupMenuDejarObjeto;    // Dejar objetos
     private PopupMenu popupMenuOtrasAcciones;  // Otra acciones
 
-    // ArrayList para las acciones
-    private ArrayList<String> arrayListObjetosLugar;      // Tomar objeto: objetos en el lugar
-    private ArrayList<String> arrayListObjetosBolsillo;   // Dejar objeto: objetos que lleva el protagonista
-    private ArrayList<String> arrayListOtrasAcciones;     // Otras acciones: lista de acciones posibles
+    // ArrayList de los objetos y acciones
+    private ArrayList<Objeto> arrayListObjetosLugar;      // Tomar objeto: objetos en el lugar
+    private ArrayList<Objeto> arrayListObjetosBolsillo;   // Dejar objeto: objetos que lleva el protagonista
+    private ArrayList<Accion> arrayListOtrasAcciones;     // Otras acciones: lista de acciones posibles
 
     // Flags que indican el estado de visualización de las acciones
     private boolean fragmentOk;         // True si el fragment está listo para refrescarse
@@ -102,9 +100,9 @@ public class AccionesFragment extends Fragment {
      * @param otrasAcciones    Otras acciones
      */
     public void setAcciones(boolean norte, boolean sur, boolean este, boolean oeste,
-                            ArrayList<String> objetosLugar,
-                            ArrayList<String> objetosBolsillo,
-                            ArrayList<String> otrasAcciones) {
+                            ArrayList<Objeto> objetosLugar,
+                            ArrayList<Objeto> objetosBolsillo,
+                            ArrayList<Accion> otrasAcciones) {
 
         // Salidas
         hayNorte = norte;
@@ -115,7 +113,7 @@ public class AccionesFragment extends Fragment {
         // Objetos del lugar
         arrayListObjetosLugar = objetosLugar;
 
-       // Objetos que lleva el protagonista
+        // Objetos que lleva el protagonista
         arrayListObjetosBolsillo = objetosBolsillo;
 
         // Otras acciones
@@ -331,13 +329,28 @@ public class AccionesFragment extends Fragment {
             imageViewOeste.setEnabled(hayOeste);
 
             // Actualizar el Popup para tomar objetos
-            popupMenuTomarObjeto = creaPopupMenu(buttonTomarObjeto, arrayListObjetosLugar, ACCION_TOMAR);
+            ArrayList<String> nombreObjetosLugar = new ArrayList<>();
+
+            for(Objeto obj: arrayListObjetosLugar) {
+                nombreObjetosLugar.add(obj.getNombre());
+            }
+            popupMenuTomarObjeto = creaPopupMenu(buttonTomarObjeto, nombreObjetosLugar, ACCION_TOMAR);
 
             // Actualizar el Popup para dejar objetos
-            popupMenuDejarObjeto = creaPopupMenu(buttonDejarObjeto, arrayListObjetosBolsillo, ACCION_DEJAR);
+            ArrayList<String> nombreObjetosBolsillo = new ArrayList<>();
+
+            for(Objeto obj: arrayListObjetosBolsillo) {
+                nombreObjetosBolsillo.add(obj.getNombre());
+            }
+            popupMenuDejarObjeto = creaPopupMenu(buttonDejarObjeto, nombreObjetosBolsillo, ACCION_DEJAR);
 
             // Actualizar el Popup de otras acciones
-            popupMenuOtrasAcciones = creaPopupMenu(buttonOtrasAcciones, arrayListOtrasAcciones, ACCION_OTRAS);
+            ArrayList<String> nombreOtrasAcciones = new ArrayList<>();
+
+            for(Accion acc: arrayListOtrasAcciones) {
+                nombreOtrasAcciones.add(getString(acc.getStringId()));
+            }
+            popupMenuOtrasAcciones = creaPopupMenu(buttonOtrasAcciones, nombreOtrasAcciones, ACCION_OTRAS);
 
             // Habilitar / deshabilitar el botón de inventario,
             // según lleve objetos o no el protagonista.
@@ -370,7 +383,7 @@ public class AccionesFragment extends Fragment {
                 popupMenuOtrasAcciones.show();
             }
         }
-    };
+    }
 
     /**
      * Crear Popup asociado a un botón. En el caso de que la lista de items
@@ -444,21 +457,35 @@ public class AccionesFragment extends Fragment {
             int accionId = item.getGroupId() - 1;
 
             // Posición del elemento en la lista
-            int pos = 0;
+            int pos = item.getItemId() - 1;
 
             // Filtrar las acciones posibles, y
             // obtener la posición del elemento seleccionado.
             switch(accionId) {
 
                 case ACCION_TOMAR:  // Tomar objeto
-                case ACCION_DEJAR:  // Dejar objeto
-                case ACCION_OTRAS:  // Otros objetos
 
-                    // Tomar posición del elemento seleccionado
-                    pos = item.getItemId() - 1;
+                    // Comprobar que el objeto puede ser tomado
+                    int errId = Zeta.puedeTomarObjeto(arrayListObjetosLugar.get(pos), arrayListObjetosBolsillo);
+
+                    // Mostrar mensaje de error, si no puede ser tomado
+                    if(errId > 0) {
+
+                        // Mostrar mensaje de error
+                        Mensaje.continuar(getActivity(), R.drawable.ic_information,
+                                getString(R.string.dialogo_tomar_objeto_titulo),
+                                getString(errId));
+
+                        // Retornar
+                        return true;
+                    }
+
+                    // El objeto puede ser tomado
+                    break;
+                case ACCION_DEJAR:  // Dejar objeto
+                case ACCION_OTRAS:  // Otras acciones
                     break;
                 default :
-
                     // Indicar que no ha sido tratado el evento
                     return false;
             }
@@ -481,25 +508,13 @@ public class AccionesFragment extends Fragment {
         String inventario = "";
 
         // Construir la cadena de texto
-        for(String cosa : arrayListObjetosBolsillo) {
+        for(Objeto cosa : arrayListObjetosBolsillo) {
 
             // Añadir una línea por objeto
-            inventario = inventario.concat(cosa.concat("\n"));
+            inventario = inventario.concat(cosa.getNombre().concat("\n"));
         }
 
-        // Crear un AlertDialog para la lisa de objetos
-        AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
-
-        // Mostrar la lista de objetos mediante un AlertDialog
-        dlg.setTitle(R.string.dialogo_inventario_titulo)
-                .setIcon(R.drawable.ic_information)
-                .setMessage(inventario)
-                .setPositiveButton(R.string.dialogo_continuar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Nada
-                    }
-                })
-                .show();
+        // Mostrar mensaje con el inventario
+        Mensaje.continuar(getActivity(), R.drawable.ic_information, getString(R.string.dialogo_inventario_titulo), inventario);
     }
 }

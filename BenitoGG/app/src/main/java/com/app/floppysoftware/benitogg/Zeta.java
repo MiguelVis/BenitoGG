@@ -476,7 +476,7 @@ public final class Zeta {
         }
     }
 
-    public static int puedeTomarObjeto(BaseDatos bd, Objeto objeto, ArrayList<Objeto> bolsillo) {
+    public static int puedeTomarObjeto(Objeto objeto, ArrayList<Objeto> bolsillo) {
 
         // Comprobar si puede cargar más objetos
         if(bolsillo.size() >= MAX_OBJETOS_BOLSILLO) {
@@ -485,7 +485,14 @@ public final class Zeta {
         }
 
         // El pedrusco sólo se puede coger si ya tenemos la carretilla
-        if(objeto.getId().equals(ID_PEDRUSCO) && !bd.getObjeto(ID_CARRETILLA).getLugar().equals(Lugar.BOLSILLO)) {
+        if(objeto.getId().equals(ID_PEDRUSCO)) {
+
+            for(Objeto obj : bolsillo) {
+                if(obj.getId().equals(ID_CARRETILLA)) {
+                    // Ok
+                    return 0;
+                }
+            }
 
             return R.string.pedrusco_falta_carretilla;
         }
