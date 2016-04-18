@@ -432,7 +432,7 @@ public class AhoraFragment extends Fragment {
                     bd.updateObjeto(objLugar);
 
                     //
-                    casoResueltoId = Zeta.objetoTomado(bd, objLugar, protaObjetos);
+                    casoResueltoId = Zeta.objetoTomado(bd, objLugar);
                     break;
                 case AccionesFragment.ACCION_DEJAR:
                     Objeto objBolsillo = protaObjetos.get(actionNumber);
@@ -440,7 +440,7 @@ public class AhoraFragment extends Fragment {
                     bd.updateObjeto(objBolsillo);
 
                     //
-                    casoResueltoId = Zeta.objetoDejado(bd, objBolsillo, protaObjetos);
+                    casoResueltoId = Zeta.objetoDejado(bd, objBolsillo);
                     break;
                 case AccionesFragment.ACCION_OTRAS:
 
