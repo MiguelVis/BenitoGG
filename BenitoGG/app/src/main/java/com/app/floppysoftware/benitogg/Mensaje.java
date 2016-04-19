@@ -17,6 +17,9 @@ import android.content.DialogInterface;
  */
 public class Mensaje {
 
+    // Último AlertDialog construido
+    private static AlertDialog alertDialog;
+
     /**
      * Mostrar AlertDialog con mensaje para el usuario, y
      * el botón 'Continuar'.
@@ -36,9 +39,8 @@ public class Mensaje {
         // Crear un AlertDialog
         AlertDialog.Builder dlgBuilder = new AlertDialog.Builder(contexto);
 
-        // Mostrar AlertDialog según parámetros de entrada,
-        // y devolverlo.
-        return dlgBuilder.setTitle(titulo)
+        // Mostrar AlertDialog según parámetros de entrada.
+        alertDialog =  dlgBuilder.setTitle(titulo)
                 .setIcon(icono)
                 .setMessage(texto)
                 .setPositiveButton(R.string.dialogo_continuar, new DialogInterface.OnClickListener() {
@@ -48,5 +50,37 @@ public class Mensaje {
                     }
                 })
                 .show();
+
+        // Devolverlo
+        return alertDialog;
+    }
+
+    public static AlertDialog preguntarSiCancelar(Context contexto, int icono, String titulo, String texto,
+                                                  DialogInterface.OnClickListener onClickSi,
+                                                  DialogInterface.OnClickListener onClickCancelar) {
+
+        // Crear un AlertDialog
+        AlertDialog.Builder dlgBuilder = new AlertDialog.Builder(contexto);
+
+        // Mostrar AlertDialog según parámetros de entrada.
+        alertDialog =  dlgBuilder.setTitle(titulo)
+                .setIcon(icono)
+                .setMessage(texto)
+                .setPositiveButton(R.string.dialogo_si, onClickSi)
+                .setNegativeButton(R.string.dialogo_cancelar, onClickCancelar)
+                .show();
+
+        // Devolverlo
+        return alertDialog;
+    }
+
+    /**
+     * Devolver referencia al último AlertDialog construido.
+     *
+     * @return  último AlertDialog creado, o null si no se ha creado ninguno
+     */
+    public static AlertDialog getAlertDialog() {
+
+        return alertDialog;
     }
 }

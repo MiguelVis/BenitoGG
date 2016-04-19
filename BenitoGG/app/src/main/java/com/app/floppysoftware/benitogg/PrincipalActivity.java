@@ -61,7 +61,7 @@ public class PrincipalActivity extends Activity implements
     private int sonidoId;
 
     // Último Alert Dialog activo (utilizado en depuración)
-    private AlertDialog alertDialog;
+    ////////////private AlertDialog alertDialog;
 
 
     /****************************************************/
@@ -222,6 +222,51 @@ public class PrincipalActivity extends Activity implements
 
     public void onResetJuego() {
 
+        DialogInterface.OnClickListener onClickSi = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Dejar la BD al estado inicial
+                //new ReinicializaJuego().execute();
+                new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        // Dejar la BD al estado inicial
+                        BaseDatos bd = new BaseDatos(PrincipalActivity.this, true);
+                        bd.cerrar();
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void result) {
+
+                        Mensaje.continuar(PrincipalActivity.this, R.drawable.ic_information,
+                                getString(R.string.dialogo_reset_titulo),
+                                getString(R.string.dialogo_reset_hecho));
+
+                        //
+                        opcionesFragment.resetFinalizado();
+
+                    }
+                }.execute();
+            }
+        };
+
+        DialogInterface.OnClickListener onClickCancelar = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //
+                opcionesFragment.resetFinalizado();
+            }
+        };
+
+        Mensaje.preguntarSiCancelar(this,
+                R.drawable.ic_question,
+                getString(R.string.dialogo_reset_titulo),
+                getString(R.string.dialogo_reset_texto),
+                onClickSi,
+                onClickCancelar);
+
+        /***********************
         //
         AlertDialog.Builder dlg = new AlertDialog.Builder(this);
 
@@ -253,14 +298,6 @@ public class PrincipalActivity extends Activity implements
                                 //
                                 opcionesFragment.resetFinalizado();
 
-                                /***************
-                                 * AlertDialog.Builder dlg = new AlertDialog.Builder(PrincipalActivity.this);
-                                alertDialog = dlg.setTitle(R.string.dialogo_reset_titulo)
-                                        .setIcon(R.drawable.ic_information)
-                                        .setMessage(R.string.dialogo_reset_hecho)
-                                        .setPositiveButton(R.string.dialogo_continuar, null)
-                                        .show();
-                                 ******************/
                             }
                         }.execute();
 
@@ -274,6 +311,7 @@ public class PrincipalActivity extends Activity implements
                     }
                 })
                 .show();
+        *******************************/
     }
 
 
@@ -696,8 +734,8 @@ public class PrincipalActivity extends Activity implements
     };
 
 
-    public AlertDialog getAlertDialog() {
-        return alertDialog;
-    }
+    //public AlertDialog getAlertDialog() {
+    //    return alertDialog;
+    //}
 
 }

@@ -1,7 +1,6 @@
 package com.app.floppysoftware.benitogg;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -36,7 +35,7 @@ public class AccionesFragment extends Fragment {
     public static final int ACCION_TOMAR = 4;  // Tomar objeto
     public static final int ACCION_DEJAR = 5;  // Dejar objeto
     public static final int ACCION_OTRAS = 6;  // Otras acciones
-    public static final int ACCION_MAPA = 7;   // Mostrar mapa
+    public static final int ACCION_MAPA  = 7;  // Mostrar mapa
     public static final int ACCION_CASOS = 8;  // Mostrar casos
 
     // ImageViews de los botones de dirección
@@ -80,6 +79,9 @@ public class AccionesFragment extends Fragment {
 
         // Acción seleccionada
         public void onAccionSeleccionada(int accionId, int param);
+
+        // Emitir un sonido
+        public void emiteSonido(int resId);
     }
 
     /**
@@ -168,7 +170,7 @@ public class AccionesFragment extends Fragment {
         imageViewNorte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onAccionSeleccionada(ACCION_NORTE, 0);
+                mListener.onAccionSeleccionada(ACCION_NORTE, -1);
             }
         });
 
@@ -176,7 +178,7 @@ public class AccionesFragment extends Fragment {
         imageViewSur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onAccionSeleccionada(ACCION_SUR, 0);
+                mListener.onAccionSeleccionada(ACCION_SUR, -1);
             }
         });
 
@@ -184,7 +186,7 @@ public class AccionesFragment extends Fragment {
         imageViewEste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onAccionSeleccionada(ACCION_ESTE, 0);
+                mListener.onAccionSeleccionada(ACCION_ESTE, -1);
             }
         });
 
@@ -192,7 +194,7 @@ public class AccionesFragment extends Fragment {
         imageViewOeste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onAccionSeleccionada(ACCION_OESTE, 0);
+                mListener.onAccionSeleccionada(ACCION_OESTE, -1);
             }
         });
 
@@ -223,7 +225,6 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
 
                 // Mostrar el mapa
-                //startActivity(new Intent(getActivity(), MapaActivity.class));
                 mListener.onAccionSeleccionada(ACCION_MAPA, -1);
             }
         });
@@ -237,7 +238,6 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
 
                 // Mostrar lista de casos
-                //startActivity(new Intent(getActivity(), CasosActivity.class));
                 mListener.onAccionSeleccionada(ACCION_CASOS, -1);
             }
         });
@@ -346,6 +346,7 @@ public class AccionesFragment extends Fragment {
             for(Objeto obj: arrayListObjetosBolsillo) {
                 nombreObjetosBolsillo.add(obj.getNombre());
             }
+
             popupMenuDejarObjeto = creaPopupMenu(buttonDejarObjeto, nombreObjetosBolsillo, ACCION_DEJAR);
 
             // Actualizar el Popup de otras acciones
@@ -354,6 +355,7 @@ public class AccionesFragment extends Fragment {
             for(Accion acc: arrayListOtrasAcciones) {
                 nombreOtrasAcciones.add(getString(acc.getStringId()));
             }
+
             popupMenuOtrasAcciones = creaPopupMenu(buttonOtrasAcciones, nombreOtrasAcciones, ACCION_OTRAS);
 
             // Habilitar / deshabilitar el botón de inventario,
@@ -475,6 +477,9 @@ public class AccionesFragment extends Fragment {
                     // Mostrar mensaje de error, si no puede ser tomado
                     if(errId > 0) {
 
+                        // Sonido
+                        mListener.emiteSonido(R.raw.error);
+
                         // Mostrar mensaje de error
                         Mensaje.continuar(getActivity(), R.drawable.ic_information,
                                 getString(R.string.dialogo_tomar_objeto_titulo),
@@ -487,6 +492,7 @@ public class AccionesFragment extends Fragment {
                     // El objeto puede ser tomado
                     break;
                 default:
+                    // Resto de acciones
                     break;
             }
 

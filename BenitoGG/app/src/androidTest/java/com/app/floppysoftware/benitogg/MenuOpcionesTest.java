@@ -188,7 +188,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         TouchUtils.clickView(this, buttonReset);
 
         // Tomar cuadro de diálogo
-        alertDialog = activity.getAlertDialog();
+        alertDialog = Mensaje.getAlertDialog();
 
         // Comprobar que no es nulo
         assertNotNull(alertDialog);
@@ -232,7 +232,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         TouchUtils.clickView(this, buttonReset);
 
         // Tomar cuadro de diálogo
-        alertDialog = activity.getAlertDialog();
+        alertDialog = Mensaje.getAlertDialog();
 
         // Comprobar que no es nulo
         assertNotNull(alertDialog);
@@ -247,7 +247,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         TouchUtils.clickView(this, buttonContinuar);
 
         // Tomar cuadro de diálogo tras el reset
-        alertDialog = activity.getAlertDialog();
+        alertDialog = Mensaje.getAlertDialog();
 
         // Comprobar que no es nulo
         assertNotNull(alertDialog);

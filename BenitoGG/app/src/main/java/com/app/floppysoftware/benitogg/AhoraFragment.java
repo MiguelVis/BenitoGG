@@ -490,6 +490,8 @@ public class AhoraFragment extends Fragment {
 
                 //mListener.casoResuelto(casoResuelto);
 
+                mListener.emiteSonido(R.raw.caso_resuelto);
+
                 Mensaje.continuar(getActivity(), R.drawable.ic_check,
                         getString(R.string.dialogo_caso_resuelto_titulo),
                         getString(R.string.dialogo_caso_resuelto_texto) + " '" + casoResuelto + "'!");
