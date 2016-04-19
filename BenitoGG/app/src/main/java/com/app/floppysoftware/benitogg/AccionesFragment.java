@@ -36,6 +36,8 @@ public class AccionesFragment extends Fragment {
     public static final int ACCION_TOMAR = 4;  // Tomar objeto
     public static final int ACCION_DEJAR = 5;  // Dejar objeto
     public static final int ACCION_OTRAS = 6;  // Otras acciones
+    public static final int ACCION_MAPA = 7;   // Mostrar mapa
+    public static final int ACCION_CASOS = 8;  // Mostrar casos
 
     // ImageViews de los botones de dirección
     private ImageView imageViewNorte;
@@ -221,7 +223,8 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
 
                 // Mostrar el mapa
-                startActivity(new Intent(getActivity(), MapaActivity.class));
+                //startActivity(new Intent(getActivity(), MapaActivity.class));
+                mListener.onAccionSeleccionada(ACCION_MAPA, -1);
             }
         });
 
@@ -234,7 +237,8 @@ public class AccionesFragment extends Fragment {
             public void onClick(View v) {
 
                 // Mostrar lista de casos
-                startActivity(new Intent(getActivity(), CasosActivity.class));
+                //startActivity(new Intent(getActivity(), CasosActivity.class));
+                mListener.onAccionSeleccionada(ACCION_CASOS, -1);
             }
         });
 
@@ -482,12 +486,8 @@ public class AccionesFragment extends Fragment {
 
                     // El objeto puede ser tomado
                     break;
-                case ACCION_DEJAR:  // Dejar objeto
-                case ACCION_OTRAS:  // Otras acciones
+                default:
                     break;
-                default :
-                    // Indicar que no ha sido tratado el evento
-                    return false;
             }
 
             // Indicar a la activity la acción y elemento seleccionados

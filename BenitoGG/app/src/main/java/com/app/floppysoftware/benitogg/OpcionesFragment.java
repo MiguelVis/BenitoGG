@@ -24,6 +24,7 @@ public class OpcionesFragment extends Fragment {
     private CheckBox checkBoxSonido;    // Preferencia de sonido
     private CheckBox checkBoxZurdo;     // Preferencia de modo zurdo (sólo tablet en modo horizontal)
     private CheckBox checkBoxVertical;  // Preferencia de modo vertical (sólo tablet)
+    private Button buttonReset;         // Botón para resetear la base de datos
 
     // Lístener que ha de implementar la activity
     private OnOpcionesInteractionListener mListener;
@@ -40,6 +41,16 @@ public class OpcionesFragment extends Fragment {
         public void onCambioZurdo();     // Cambio de modo diestro / zurdo
         public void onCambioSonido();    // Cambio de preferencia de sonido
         public void onResetJuego();      // Resetear la base de datos
+    }
+
+    /**
+     * La activity llamará a este método, cuando el reseteado
+     * de la base de datos haya finalizado.
+     */
+    public void resetFinalizado() {
+
+        // Habilitar el botón de reset
+        buttonReset.setEnabled(true);
     }
 
     /**
@@ -82,7 +93,7 @@ public class OpcionesFragment extends Fragment {
         checkBoxVertical = (CheckBox) v.findViewById(R.id.checkBoxVertical);
 
         // View para reiniciar la base de datos
-        Button buttonReset = (Button) v.findViewById(R.id.buttonReset);
+        buttonReset = (Button) v.findViewById(R.id.buttonReset);
 
         // Listener para el CheckBox del sonido
         checkBoxSonido.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +126,6 @@ public class OpcionesFragment extends Fragment {
                     mListener.onCambioZurdo();
                 }
             });
-
         } else {
 
             // No es una tablet, o está activado el
@@ -139,7 +149,6 @@ public class OpcionesFragment extends Fragment {
                     mListener.onCambioVertical();
                 }
             });
-
         } else {
 
             // No es una tablet: inhabilitar el CheckBox
@@ -150,6 +159,11 @@ public class OpcionesFragment extends Fragment {
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Deshabilitar el botón de reset, para evitar
+                // que se vuelva a pulsar, mientras dura
+                // la operación de reseteado de la base de datos.
+                buttonReset.setEnabled(false);
 
                 // Informar a la activity
                 mListener.onResetJuego();

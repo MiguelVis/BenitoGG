@@ -95,15 +95,26 @@ public class PrincipalActivity extends Activity implements
 
     public void onAccionSeleccionada(int actionType, int actionNumber) {
 
-        // Si es móvil, hay que quitar el fragment de acciones,
-        // y poner el anterior.
-        if(!esTabletHorizontal) {
-            //
-            getFragmentManager().popBackStack();
-        }
+        switch(actionType) {
+            case AccionesFragment.ACCION_MAPA:
+                startActivity(new Intent(this, MapaActivity.class));
+                break;
+            case AccionesFragment.ACCION_CASOS:
+                startActivity(new Intent(this, CasosActivity.class));
+                break;
+            default:
+                // Si el dispositivo no es una tablet en modo horizontal,
+                // hay que quitar el fragment de acciones,
+                // y poner el anterior.
+                if (!esTabletHorizontal) {
+                    //
+                    getFragmentManager().popBackStack();
+                }
 
-        // Realizar acción
-        ahoraFragment.realizaAccion(actionType, actionNumber);
+                // Realizar acción
+                ahoraFragment.realizaAccion(actionType, actionNumber);
+                break;
+        }
     }
 
     /**
@@ -239,6 +250,9 @@ public class PrincipalActivity extends Activity implements
                                         getString(R.string.dialogo_reset_titulo),
                                         getString(R.string.dialogo_reset_hecho));
 
+                                //
+                                opcionesFragment.resetFinalizado();
+
                                 /***************
                                  * AlertDialog.Builder dlg = new AlertDialog.Builder(PrincipalActivity.this);
                                 alertDialog = dlg.setTitle(R.string.dialogo_reset_titulo)
@@ -252,7 +266,13 @@ public class PrincipalActivity extends Activity implements
 
                     }
                 })
-                .setNegativeButton(R.string.dialogo_cancelar, null)
+                .setNegativeButton(R.string.dialogo_cancelar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                        opcionesFragment.resetFinalizado();
+                    }
+                })
                 .show();
     }
 
