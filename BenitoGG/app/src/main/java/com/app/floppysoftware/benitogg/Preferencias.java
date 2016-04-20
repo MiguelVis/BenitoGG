@@ -8,8 +8,8 @@ import android.content.SharedPreferences;
  * Clase que implementa las preferencias del usuario.
  *
  * @author   Miguel I. García López
- * @version  1.0
- * @since    09 Mar 2016
+ * @version  2.0
+ * @since    20 Abr 2016
  */
 public final class Preferencias {
 
@@ -21,6 +21,7 @@ public final class Preferencias {
     private static final String KEY_SONIDO = "sonido";       // Sonido
     private static final String KEY_ZURDO = "zurdo";         // Modo zurdo (para tablets en horizontal)
     private static final String KEY_VERTICAL = "vertical";   // Modo vertical (para tablets)
+    private static final String KEY_RESET = "reset";         // Reset de la base de datos
 
     /**
      * Constructor que impide crear objetos de esta clase.
@@ -136,5 +137,29 @@ public final class Preferencias {
 
         // Cambiar la preferencia del modo vertical
         getShPrefs(context).edit().putBoolean(KEY_VERTICAL, onoff).commit();
+    }
+
+    /**
+     * Devolver preferencia del reset del juego.
+     *
+     * @param context  Contexto
+     * @return  Preferencia del reset (true si se desea, false en caso contrario)
+     */
+    public static boolean getReset(Context context) {
+
+        // Devolver preferencia del reset, o false si no ha sido fijado
+        return getShPrefs(context).getBoolean(KEY_RESET, false);
+    }
+
+    /**
+     * Cambiar la preferencia del reset del juego.
+     *
+     * @param context  Contexto
+     * @param onoff  True para activarlo, false para desactivarlo
+     */
+    public static void setReset(Context context, boolean onoff) {
+
+        // Cambiar la preferencia del reset
+        getShPrefs(context).edit().putBoolean(KEY_RESET, onoff).commit();
     }
 }

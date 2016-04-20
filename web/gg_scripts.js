@@ -7,23 +7,23 @@
 */
 
 /**
- *  Devuelve el nombre del jugador, leyéndolo de los
- *  argumentos de la URL, o un nombre ficticio, si
- *  no existe o no es correcto.
+ *  Devuelve el valor de un parámetro, leyéndolo de los
+ *  argumentos de la URL.
  *
- *  @return   Nombre del jugador
+ *  @return   Valor del parámetro, o el valor por defecto,
+ *            si no existe, o parece incorrecto.
  */
-function nombreJugador() {
-	
+function getValor(parametro, defecto) {
+
 	// Tomar URL
 	var url = decodeURI(new String(document.location.href));
 
 	// Comprobar si es el primer argumento
-	var posArgs = url.indexOf("?nombre=");
+	var posArgs = url.indexOf("?" + parametro + "=");
 	
 	// Si no es el 1º, comprobar si es alguno posterior
 	if(posArgs == -1) {
-		posArgs = url.indexOf("&nombre=");
+		posArgs = url.indexOf("&" + parametro + "=");
 	}
 	
 	// Tratar el argumento si se ha encontrado
@@ -55,6 +55,45 @@ function nombreJugador() {
 	}
 	
 	// No existe el argumento, o no parece válido;
-	// devolver cadena ficticia
-	return "amig@";	
+	// devolver el valor por defecto.
+	return defecto;
+}
+
+/**
+ *  Devuelve el nombre del jugador, leyéndolo de los
+ *  argumentos de la URL, o un nombre ficticio, si
+ *  no existe o no es correcto.
+ *
+ *  @return   Nombre del jugador
+ */
+function nombreJugador() {
+
+	// Devolver el valor del parámetro que contiene
+	// el nombre del jugador, o un valor ficticio.
+	return getValor("nombre", "amig@");
+}
+
+/**
+ *  Devuelve la edad del jugador, leyéndola de los
+ *  argumentos de la URL, o el valor 0, si
+ *  no existe o no es correcta.
+ *
+ *  @return   Edad del jugador
+ */
+function edadJugador() {
+
+	// Devolver el valor del parámetro que contiene
+	// la edad del jugador, o el valor 0, si no
+	// existe el dato.
+	var edad = getValor("edad", 0);
+	
+	// Comprobar la validez de la edad,
+	// reemplazando el dato por 0, si no
+	// parece correcta.
+	if(edad < 1 || edad > 99 || isNaN(edad)) {
+		edad = 0;
+	}
+	
+	// Devolver edad
+	return edad;
 }

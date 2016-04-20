@@ -55,7 +55,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Crear base de datos, e insertar datos
         // en las tablas.
-        creaBaseDatos(db);
+        creaBaseDatos(db, true);
     }
 
     /**
@@ -72,7 +72,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             // Eliminar las tablas
             try {
-                db.execSQL(Contract.Lugares.SQL_DROP_TABLE);
+                ////////db.execSQL(Contract.Lugares.SQL_DROP_TABLE);
                 db.execSQL(Contract.Actores.SQL_DROP_TABLE);
                 db.execSQL(Contract.Objetos.SQL_DROP_TABLE);
                 db.execSQL(Contract.Casos.SQL_DROP_TABLE);
@@ -83,7 +83,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             // Crear base de datos, e insertar datos
             // en las tablas.
-            creaBaseDatos(db);
+            creaBaseDatos(db, false);
         }
     }
 
@@ -105,11 +105,13 @@ public class DbHelper extends SQLiteOpenHelper {
      *
      * @param db  Base de datos
      */
-    private void creaBaseDatos(SQLiteDatabase db) {
+    private void creaBaseDatos(SQLiteDatabase db, boolean lugares) {
 
         // Crear tablas
         try {
-            db.execSQL(Contract.Lugares.SQL_CREATE_TABLE);
+            if(lugares) {
+                db.execSQL(Contract.Lugares.SQL_CREATE_TABLE);
+            }
             db.execSQL(Contract.Actores.SQL_CREATE_TABLE);
             db.execSQL(Contract.Objetos.SQL_CREATE_TABLE);
             db.execSQL(Contract.Casos.SQL_CREATE_TABLE);
@@ -119,7 +121,9 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
         // Insertar datos en las tablas
-        insertarDatos(db, Contract.FICHERO_LUGARES, Contract.Lugares.TABLE_NAME);
+        if(lugares) {
+            insertarDatos(db, Contract.FICHERO_LUGARES, Contract.Lugares.TABLE_NAME);
+        }
         insertarDatos(db, Contract.FICHERO_ACTORES, Contract.Actores.TABLE_NAME);
         insertarDatos(db, Contract.FICHERO_OBJETOS, Contract.Objetos.TABLE_NAME);
         insertarDatos(db, Contract.FICHERO_CASOS, Contract.Casos.TABLE_NAME);

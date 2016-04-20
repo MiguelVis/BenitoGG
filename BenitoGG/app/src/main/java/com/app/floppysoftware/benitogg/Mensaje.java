@@ -34,7 +34,8 @@ public class Mensaje {
      *
      * @return          AlertDialog
      */
-    public static AlertDialog continuar(Context contexto, int icono, String titulo, String texto) {
+    public static AlertDialog continuar(Context contexto, int icono, String titulo, String texto,
+                                        DialogInterface.OnClickListener onClickContinuar) {
 
         // Crear un AlertDialog
         AlertDialog.Builder dlgBuilder = new AlertDialog.Builder(contexto);
@@ -43,12 +44,8 @@ public class Mensaje {
         alertDialog =  dlgBuilder.setTitle(titulo)
                 .setIcon(icono)
                 .setMessage(texto)
-                .setPositiveButton(R.string.dialogo_continuar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Nada
-                    }
-                })
+                .setPositiveButton(R.string.dialogo_continuar, onClickContinuar)
+                .setCancelable(false)
                 .show();
 
         // Devolverlo
@@ -68,6 +65,7 @@ public class Mensaje {
                 .setMessage(texto)
                 .setPositiveButton(R.string.dialogo_si, onClickSi)
                 .setNegativeButton(R.string.dialogo_cancelar, onClickCancelar)
+                .setCancelable(false)
                 .show();
 
         // Devolverlo

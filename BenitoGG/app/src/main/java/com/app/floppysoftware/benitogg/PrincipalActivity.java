@@ -226,36 +226,13 @@ public class PrincipalActivity extends Activity implements
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Dejar la BD al estado inicial
-                //new ReinicializaJuego().execute();
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... params) {
-                        // Dejar la BD al estado inicial
-                        BaseDatos bd = new BaseDatos(PrincipalActivity.this, true);
-                        bd.cerrar();
-                        return null;
-                    }
+                Preferencias.setReset(PrincipalActivity.this, true);
 
-                    @Override
-                    protected void onPostExecute(Void result) {
+                Mensaje.continuar(PrincipalActivity.this, R.drawable.ic_information,
+                        getString(R.string.dialogo_reset_titulo),
+                        getString(R.string.dialogo_reset_hecho),
+                        null);
 
-                        Mensaje.continuar(PrincipalActivity.this, R.drawable.ic_information,
-                                getString(R.string.dialogo_reset_titulo),
-                                getString(R.string.dialogo_reset_hecho));
-
-                        //
-                        opcionesFragment.resetFinalizado();
-
-                    }
-                }.execute();
-            }
-        };
-
-        DialogInterface.OnClickListener onClickCancelar = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //
-                opcionesFragment.resetFinalizado();
             }
         };
 
@@ -264,7 +241,7 @@ public class PrincipalActivity extends Activity implements
                 getString(R.string.dialogo_reset_titulo),
                 getString(R.string.dialogo_reset_texto),
                 onClickSi,
-                onClickCancelar);
+                null);
 
         /***********************
         //

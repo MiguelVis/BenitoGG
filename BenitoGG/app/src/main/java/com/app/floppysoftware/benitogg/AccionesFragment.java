@@ -483,7 +483,8 @@ public class AccionesFragment extends Fragment {
                         // Mostrar mensaje de error
                         Mensaje.continuar(getActivity(), R.drawable.ic_information,
                                 getString(R.string.dialogo_tomar_objeto_titulo),
-                                getString(errId));
+                                getString(errId),
+                                null);
 
                         // Retornar
                         return true;
@@ -521,6 +522,6 @@ public class AccionesFragment extends Fragment {
         }
 
         // Mostrar mensaje con el inventario
-        Mensaje.continuar(getActivity(), R.drawable.ic_information, getString(R.string.dialogo_inventario_titulo), inventario);
+        Mensaje.continuar(getActivity(), R.drawable.ic_information, getString(R.string.dialogo_inventario_titulo), inventario, null);
     }
 }
