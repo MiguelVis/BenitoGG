@@ -148,7 +148,7 @@ public final class Preferencias {
     public static boolean getReset(Context context) {
 
         // Devolver preferencia del reset, o false si no ha sido fijado
-        return getShPrefs(context).getBoolean(KEY_RESET, false);
+        return getShPrefs(context).getBoolean(KEY_RESET, true);
     }
 
     /**

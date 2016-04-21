@@ -47,6 +47,9 @@
 
     <!-- Diálogos -->
 
+    <string name="dialogo_carga_titulo">Cargando</string>
+    <string name="dialogo_carga_texto">Será un momentito...</string>
+
     <string name="dialogo_reset_titulo">Reinicializar juego</string>
     <string name="dialogo_reset_texto">¿Reinicializar el juego? El estado actual del juego se perderá, y comenzará de nuevo.</string>
     <string name="dialogo_reset_hecho">El juego ha sido reinicializado.</string>

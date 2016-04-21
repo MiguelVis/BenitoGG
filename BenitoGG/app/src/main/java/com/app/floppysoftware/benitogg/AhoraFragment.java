@@ -3,6 +3,7 @@ package com.app.floppysoftware.benitogg;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -198,6 +199,41 @@ public class AhoraFragment extends Fragment {
      */
     private class MostrarEscena extends AsyncTask<Void, Void, String> {
 
+        // True si se ha de reinicializar la base de datos
+        boolean reset;
+
+        // ProgressDialog a mostrar durante la reinicialización
+        // de la base de datos.
+        ProgressDialog progressDialog;
+
+        /**
+         * Tarea a ejecutar en el UI, antes de doInBackground().
+         */
+        @Override
+        protected void onPreExecute() {
+
+            // ¿Se ha de reinicializar el juego?
+            reset = Preferencias.getReset(getActivity());
+
+            // Si se ha de reinicializar el juego...
+            if(reset) {
+
+                // Mostrar imagen del reloj
+                imageViewImagen.setImageResource(R.drawable.reloj);
+
+                // Mostrar ProgressDialog durante el proceso de
+                // reinicializado.
+                progressDialog = ProgressDialog.show(getActivity(),
+                        getString(R.string.dialogo_carga_titulo),
+                        getString(R.string.dialogo_carga_texto),
+                        true,
+                        false);
+
+                // La próxima vez no se reinicializará
+                Preferencias.setReset(getActivity(), false);
+            }
+        }
+
         /**
          * Tarea a realizar en background, fuera del thread del UI. Lee
          * la base de datos.
@@ -207,16 +243,6 @@ public class AhoraFragment extends Fragment {
          */
         @Override
         protected String doInBackground(Void... params) {
-
-            // ¿Se ha de reinicializar el juego?
-            boolean reset = Preferencias.getReset(getActivity());
-
-            // Si se ha de reinicializar el juego...
-            if(reset) {
-
-                // La próxima vez no se reinicializará
-                Preferencias.setReset(getActivity(), false);
-            }
 
             // Abrir base de datos
             BaseDatos bd = new BaseDatos(getActivity(), reset);
@@ -377,6 +403,12 @@ public class AhoraFragment extends Fragment {
          */
         @Override
         protected void onPostExecute(String detalle) {
+
+            // Quitar el ProgressDialog de reinicialización de la
+            // base de datos, si está activo.
+            if(progressDialog != null) {
+                progressDialog.dismiss();
+            }
 
             // Mostrar la descripción completa del lugar
             textViewTitulo.setText(lugarActual.getTitulo());

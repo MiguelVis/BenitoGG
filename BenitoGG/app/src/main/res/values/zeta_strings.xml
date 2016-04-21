@@ -18,7 +18,8 @@
         como encontrar al gato de la señora Paquita (que no tenía gato; ahora sí),
         y descubrir al ladrón de jamones de la fábrica <i>Pernil, S.L.</i> mediante un método
         insólito: el de practicar análisis de sangre a todos los empleados (Pepe, el
-        encargado, tenía más colesterol que todos los habitantes del barrio juntos).</string>
+        encargado, tenía más colesterol que todos los habitantes del barrio juntos).
+        \n\n¿Ayudarás a Benito a resolver los misteriosos casos que le aguardan?</string>
     <string name="info_dedicatoria">Dedicado a la memoria de mi madre, y al gran Gary Kildall.</string>
 
     <!-- Tomar objeto -->
@@ -39,7 +40,7 @@
     <!-- El caso del periquito extraviado -->
 
     <string name="periquito_enjaulado">Venancio, su periquito, revolotea alegre en la jaula.</string>
-    <string name="periquito_escapado">Venancio, su periquito, ha escapado de la jaula, y te ruega que lo encuentres. Dice que te pagará en cromos del Coyote.</string>
+    <string name="periquito_escapado">Venancio, su periquito, ha escapado de la jaula, y te ruega que lo encuentres. Dice que te pagará con cromos del Coyote.</string>
     <string name="periquito_revoloteando">Venancio, el periquito, está revoloteando por aquí.</string>
     <string name="periquito_picoteando">Venancio, el periquito, está picoteando el pan.</string>
 
