@@ -26,13 +26,13 @@ public class OpcionesFragment extends Fragment {
     private CheckBox checkBoxVertical;  // Preferencia de modo vertical (sólo tablet)
 
     // Lístener que ha de implementar la activity
-    private OnOpcionesInteractionListener mListener;
+    private OnOpcionesListener mListener;
 
     /**
      * Interfaz que ha de implementar la activity que utilice
      * este fragment.
      */
-    public interface OnOpcionesInteractionListener {
+    public interface OnOpcionesListener {
 
         // Métodos a implementar
 
@@ -198,13 +198,13 @@ public class OpcionesFragment extends Fragment {
         try {
 
             // Tomar la referencia del listener
-            mListener = (OnOpcionesInteractionListener) activity;
+            mListener = (OnOpcionesListener) activity;
 
         } catch (ClassCastException e) {
 
             // No ha sido implementado
             throw new ClassCastException(activity.toString()
-                    + " must implement OnOpcionesInteractionListener");
+                    + " must implement OnOpcionesListener");
         }
     }
 

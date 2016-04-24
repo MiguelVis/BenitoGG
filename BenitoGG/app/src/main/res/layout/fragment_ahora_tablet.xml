@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/fondo"
-    tools:context="com.app.floppysoftware.benitogg.AhoraFragment">
+    tools:context="com.app.floppysoftware.benitogg.EscenaFragment">
 
     <TextView android:id="@+id/textViewTitulo"
         android:text=" "

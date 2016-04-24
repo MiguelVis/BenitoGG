@@ -1,7 +1,6 @@
 package com.app.floppysoftware.benitogg;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -11,25 +10,30 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
 
 /**
- * Clase principal del juego.
+ * Clase principal del juego. Implementa el menú, así como
+ * el juego.
+ *
+ * @author   Miguel I. García López
+ * @version  1.1
+ * @since    08 Mar 2016
  */
 public class PrincipalActivity extends Activity implements
         MenuFragment.OnMenuListener,
         AccionesFragment.OnAccionesListener,
-        AhoraFragment.AhoraFragmentInteractionListener,
-        OpcionesFragment.OnOpcionesInteractionListener {
+        EscenaFragment.OnEscenaListener,
+        OpcionesFragment.OnOpcionesListener {
 
-    // Tag para log
-    private final static String TAG = "PrincipalActivity";
+    // Tag para el log
+    private final static String TAG = "Principal";
 
-    // Parámetro extra
+    // Parámetro extra para indicar que la activity se está
+    // recreando, debido a un cambio de orientación.
     private final static String EXTRA_VERTICAL = "ExtraVertical";
 
     // Tags para los fragments
@@ -37,47 +41,57 @@ public class PrincipalActivity extends Activity implements
     private final static String TAG_FRAG_BIENVENIDA = "FrBienvenida";
     private final static String TAG_FRAG_OPCIONES = "FrOpciones";
     private final static String TAG_FRAG_INFO = "FrInfo";
-    private final static String TAG_FRAG_AHORA = "FrAhora";
+    private final static String TAG_FRAG_ESCENA = "FrEscena";
     private final static String TAG_FRAG_ACCIONES = "FrAcciones";
 
-    //
+    // Nº máximo de sonidos que pueden estar activos
+    // simultáneamente.
     private final static int MAX_SONIDOS = 3;
 
-    // Fragment para el menú de opciones
+    // Fragments
     private MenuFragment menuFragment;
-
-    //
     private BienvenidaFragment bienvenidaFragment;
     private OpcionesFragment opcionesFragment;
     private InfoFragment infoFragment;
-    private AhoraFragment ahoraFragment;
+    private EscenaFragment escenaFragment;
     private AccionesFragment accionesFragment;
 
-    // Variable que indica si el dispositivo es una tablet
+    // Variable que indica si el dispositivo es una tablet,
+    // con orientación horizontal.
     private boolean esTabletHorizontal = false;
 
     // Gestion del sonido
-    private AudioManager audioManager;
-    private SoundPool soundPool;
-    private boolean puedoSonar = false;
-    private int[] sonidos = new int[MAX_SONIDOS];
-    private int indiceSonido;
+    private AudioManager audioManager;             // AudioManager
+    private SoundPool soundPool;                   // SoundPool
+    private boolean puedoSonar = false;            // True si se puede emitir sonidos, false en caso contrario
+    private int[] sonidos = new int[MAX_SONIDOS];  // Array para los sonidos
+    private int indiceSonido;                      // Índice actual en el array
 
-    // Último Alert Dialog activo (utilizado en depuración)
-    ////////////private AlertDialog alertDialog;
+    // ----------------------------------------------------
+    // Implementación de la interfaz del fragment de escena
+    // ----------------------------------------------------
 
-
-    /****************************************************/
-
+    /**
+     * Actualizar las acciones disponibles.
+     *
+     * @param norte            True si hay salida al norte, false en caso contrario
+     * @param sur              True si hay salida al sur, false en caso contrario
+     * @param este             True si hay salida al este, false en caso contrario
+     * @param oeste            True si hay salida al oeste, false en caso contrario
+     * @param objetosLugar     Objetos que hay en el lugar
+     * @param objetosBolsillo  Objetos que lleva el protagonista
+     * @param otrasAcciones    Otras acciones disponibles
+     */
     public void setAcciones(boolean norte, boolean sur, boolean este, boolean oeste,
                             ArrayList<Objeto> objetosLugar,
                             ArrayList<Objeto> objetosBolsillo,
                             ArrayList<Accion> otrasAcciones) {
 
-        // Si es una tablet, el fragment de acciones está visible. Si es un móvil, no.
-
+        // Si es una tablet con orientación horizontal, el fragment de acciones está visible;
+        // si es un móvil, no.
         if(!esTabletHorizontal) {
 
+            // Móvil, o tablet con orientación vertical: poner el fragment
             ponFragmentMovil(getAccionesFragment(), TAG_FRAG_ACCIONES);
         }
 
@@ -85,24 +99,58 @@ public class PrincipalActivity extends Activity implements
         accionesFragment.setAcciones(norte, sur, este, oeste, objetosLugar, objetosBolsillo, otrasAcciones);
     }
 
+    /**
+     * Emitir un sonido. Este método también está definido en
+     * la interfaz del fragment de acciones, por lo que está
+     * compartido.
+     *
+     * @param resId   Id del recurso de sonido
+     */
     public void emiteSonido(int resId) {
 
-        emiteUnSonido(resId);
+        // Si se puede emitir el sonido...
+        if(puedoSonar) {
+
+            // Si el array de sonidos está al completo,
+            // inicializar el índice al primero.
+            if(indiceSonido >= MAX_SONIDOS) {
+                indiceSonido = 0;
+            }
+
+            // Descargar sonido correspondiente
+            // al índice.
+            if(sonidos[indiceSonido] != -1) {
+                soundPool.unload(sonidos[indiceSonido]);
+            }
+
+            // Cargar el sonido
+            sonidos[indiceSonido] = soundPool.load(this, resId, 1);
+
+            // Actualizar el índice
+            ++indiceSonido;
+        }
     }
 
+    // ------------------------------------------------------
+    // Implementación de la interfaz del fragment de acciones
+    // ------------------------------------------------------
 
+    /**
+     * Ejecutar la acción seleccionada.
+     *
+     * @param accionId  Id de la acción
+     * @param param     Parámetro auxiliar
+     */
+    public void onAccionSeleccionada(int accionId, int param) {
 
-
-    /**************************************************/
-
-
-    public void onAccionSeleccionada(int actionType, int actionNumber) {
-
-        switch(actionType) {
+        // Ejecutar la acción correspondiente
+        switch(accionId) {
             case AccionesFragment.ACCION_MAPA:
+                // Mostrar mapa
                 startActivity(new Intent(this, MapaActivity.class));
                 break;
             case AccionesFragment.ACCION_CASOS:
+                // Mostrar lista de casos
                 startActivity(new Intent(this, CasosActivity.class));
                 break;
             default:
@@ -110,278 +158,294 @@ public class PrincipalActivity extends Activity implements
                 // hay que quitar el fragment de acciones,
                 // y poner el anterior.
                 if (!esTabletHorizontal) {
-                    //
+                    // Quitar el fragment actual (acciones),
+                    // y volver al anterior.
                     getFragmentManager().popBackStack();
                 }
 
                 // Realizar acción
-                ahoraFragment.realizaAccion(actionType, actionNumber);
+                escenaFragment.realizaAccion(accionId, param);
                 break;
         }
     }
 
+    // --------------------------------------------------
+    // Implementación de la interfaz del fragment de menú
+    // --------------------------------------------------
+
     /**
+     * Ejecutar la opción seleccionada.
      *
-     * @param opcion
+     * @param opcion  Id de la opción
      */
     public void onOpcionSeleccionada(int opcion) {
-/*****************
-        if(esTabletHorizontal) {
-            // Habilitar todas las opciones del menú
-            menuFragment.enableOpcion(MenuFragment.MENU_OPCION_JUGAR, true);
-            menuFragment.enableOpcion(MenuFragment.MENU_OPCION_OPCIONES, true);
-            menuFragment.enableOpcion(MenuFragment.MENU_OPCION_INFO, true);
 
-            // Desactivar la opción seleccionada
-            menuFragment.enableOpcion(opcion, false);
-        }
-*************/
-        //
-
-
+        // Ejecutar la opción
         switch(opcion) {
-
             case MenuFragment.MENU_OPCION_JUGAR :
 
-                //
+                // Actuar según sea tablet con orientación horizontal,
+                // o no.
                 if(esTabletHorizontal) {
 
-                    //
+                    // Tablet con orientación horizontal
+
+                    // Poner primero el fragment de bienvenida en el área,
+                    // para que se pueda volver a él.
                     ponFragmentArea(getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
 
-                    //
-                    FragmentManager fm = getFragmentManager();
+                    // Comenzar transacción
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
 
-                    //
-                    FragmentTransaction ft = fm.beginTransaction();
+                    // Reemplazar el fragment actual en el área, por el de la escena
+                    ft.replace(R.id.frameLayoutArea, getEscenaFragment(), TAG_FRAG_ESCENA);
 
-                    //
-                    ft.replace(R.id.frameLayoutArea, getAhoraFragment(), TAG_FRAG_AHORA);
-                    //
+                    // Reemplazar el fragment actual en el menú, por el de las acciones
                     ft.replace(R.id.frameLayoutMenu, getAccionesFragment(), TAG_FRAG_MENU);
 
-                    //
+                    // Añadirlo al BackStack, para que se pueda restaurar
+                    // al estado previo (fragment de bienvenida + fragment de menú).
                     ft.addToBackStack(null);
 
-                    //
+                    // Activar los cambios
                     ft.commit();
                 } else {
 
-                    ponFragmentMovil(getAhoraFragment(), TAG_FRAG_AHORA);
-                }
+                    // Móvil, o tablet con orientación vertical
 
+                    // Poner el fragment de la escena
+                    ponFragmentMovil(getEscenaFragment(), TAG_FRAG_ESCENA);
+                }
                 break;
             case MenuFragment.MENU_OPCION_OPCIONES :
 
-                //
+                // Actuar según sea tablet con orientación horizontal,
+                // o no.
                 if(esTabletHorizontal) {
+
+                    // Tablet con orientación horizontal
                     ponFragmentArea(getOpcionesFragment(), TAG_FRAG_OPCIONES);
                 } else {
+
+                    // Móvil, o tablet con orientación vertical
                     ponFragmentMovil(getOpcionesFragment(), TAG_FRAG_OPCIONES);
                 }
 
                 break;
             case MenuFragment.MENU_OPCION_INFO :
-                //
+
+                // Actuar según sea tablet con orientación horizontal,
+                // o no.
                 if(esTabletHorizontal) {
+
+                    // Tablet con orientación horizontal
                     ponFragmentArea(getInfoFragment(), TAG_FRAG_INFO);
                 } else {
+
+                    // Móvil, o tablet con orientación vertical
                     ponFragmentMovil(getInfoFragment(), TAG_FRAG_INFO);
                 }
                 break;
             default :
+
+                // Opción desconocida (no debería ocurrir...)
                 break;
         }
     }
 
-    /*************************************/
+    // ------------------------------------------------------
+    // Implementación de la interfaz del fragment de opciones
+    // ------------------------------------------------------
 
+    /**
+     * Cambiar al modo diestro o zurdo.
+     */
     public void onCambioZurdo() {
 
-        recreate();  // >= API 11
-
-        //Intent intent = getIntent();
-        //finish();
-        //startActivity(intent);
+        // Recrear la activity; de esta forma
+        // se pondrá cada fragment (opciones y menú) en su lugar.
+        recreate();
     }
 
+    /**
+     * Cambiar al modo vertical u horizontal.
+     */
     public void onCambioVertical() {
 
+        // Crear un nuevo intent y lanzar la activity; de esta
+        // forma, se inicializará con la orientación que
+        // corresponda.
         Intent intent = getIntent();
-        intent.putExtra(EXTRA_VERTICAL, true); // FIXME?? duplica el extra?
+
+        // Poner extra para indicar el cambio
+        intent.putExtra(EXTRA_VERTICAL, true);
+
+        // Finalizar esta activity
         finish();
+
+        // Lanzar el intent
         startActivity(intent);
 
+        // Nota: No se utiliza el método recreate() como en onCambioZurdo(),
+        // porque Android restauraría los fragments, dando lugar
+        // a errores e inconsistencias.
     }
 
+    /**
+     * Activar / desactivar el sonido.
+     */
     public void onCambioSonido() {
 
+        // Activar o desactivar el sonido,
+        // según la preferencia actual.
         if(Preferencias.getSonido(this)) {
+
+            // Activar sonido
             holaSonido();
         } else {
+
+            // Desactivar sonido
             adiosSonido();
         }
     }
 
+    /**
+     * Resetear juego.
+     */
     public void onResetJuego() {
 
+        // Listener para el botón SI
         DialogInterface.OnClickListener onClickSi = new DialogInterface.OnClickListener() {
+
+            /**
+             * Método llamado al pulsar el botón SI.
+             *
+             * @param dialog Diálogo
+             * @param which  Botón pulsado
+             */
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Dejar la BD al estado inicial
+
+                // Señalar en las preferencias que se ha de
+                // reinicializar la base de datos.
                 Preferencias.setReset(PrincipalActivity.this, true);
 
-                Mensaje.continuar(PrincipalActivity.this, R.drawable.ic_information,
+                // Cuadro de diálogo, para indicar al usuario
+                // que el juego ha sido reinicializado.
+                Mensaje.continuar(PrincipalActivity.this,
+                        R.drawable.ic_information,
                         getString(R.string.dialogo_reset_titulo),
                         getString(R.string.dialogo_reset_hecho),
                         null);
-
             }
         };
 
+        // Cuadro de diálogo, para preguntar al usuario
+        // si quiere proceder con el reset o no.
         Mensaje.preguntarSiCancelar(this,
                 R.drawable.ic_question,
                 getString(R.string.dialogo_reset_titulo),
                 getString(R.string.dialogo_reset_texto),
                 onClickSi,
                 null);
-
-        /***********************
-        //
-        AlertDialog.Builder dlg = new AlertDialog.Builder(this);
-
-        //
-        alertDialog = dlg.setTitle(R.string.dialogo_reset_titulo)
-                .setIcon(R.drawable.ic_question)
-                .setMessage(R.string.dialogo_reset_texto)
-                .setPositiveButton(R.string.dialogo_si, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Dejar la BD al estado inicial
-                        //new ReinicializaJuego().execute();
-                        new AsyncTask<Void, Void, Void>() {
-                            @Override
-                            protected Void doInBackground(Void... params) {
-                                // Dejar la BD al estado inicial
-                                BaseDatos bd = new BaseDatos(PrincipalActivity.this, true);
-                                bd.cerrar();
-                                return null;
-                            }
-
-                            @Override
-                            protected void onPostExecute(Void result) {
-
-                                Mensaje.continuar(PrincipalActivity.this, R.drawable.ic_information,
-                                        getString(R.string.dialogo_reset_titulo),
-                                        getString(R.string.dialogo_reset_hecho));
-
-                                //
-                                opcionesFragment.resetFinalizado();
-
-                            }
-                        }.execute();
-
-                    }
-                })
-                .setNegativeButton(R.string.dialogo_cancelar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //
-                        opcionesFragment.resetFinalizado();
-                    }
-                })
-                .show();
-        *******************************/
     }
 
-
-    /*****************************************/
-
     /**
+     * Método llamado al crear la activity.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState  Estado previamente guardado
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //
+        // Llamar a la superclase
         super.onCreate(savedInstanceState);
 
-        // Averiguar si el dispositivo es una tablet o móvil
+        // Averiguar si el dispositivo es una tablet
+        // con orientación horizontal.
         esTabletHorizontal = getResources().getBoolean(R.bool.isTablet) && !Preferencias.getVertical(this);
 
-        // Cambiar la orientación de la pantalla. Esto puede ocasionar que la
+        // Cambiar la orientación de la pantalla y poner el layout. Esto puede ocasionar que la
         // activity se reinicie, si la orientación actual no es la solicitada.
         if(esTabletHorizontal) {
+
+            // Tablet con orientación horizontal
+
             if(getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             }
 
+            // Poner layout, dependiendo de la preferencia diestro / zurdo.
             setContentView(Preferencias.getZurdo(this) ? R.layout.activity_principal_tablet_zurdo : R.layout.activity_principal_tablet);
         } else {
+
+            // Móvil, o tablet con orientación vertical
 
             if(getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             }
 
+            // Poner layout
             setContentView(R.layout.activity_principal);
         }
 
+        // Poner los fragments iniciales
+
+        // Tomar referencia del FragmentManager
         FragmentManager fm = getFragmentManager();
 
+        // Si es la 1ª vez que se ejecuta la activity...
         if(savedInstanceState == null) {
 
-            //
-            Log.i(TAG, "onCreate - 1st run");
+            // Log
+            Log.d(TAG, "onCreate - primera vez");
 
-            //
+            // Comenzar transacción
             FragmentTransaction ft = fm.beginTransaction();
 
-            //
+            // Añadir el fragment del menú
             ft.add(R.id.frameLayoutMenu, getMenuFragment(), TAG_FRAG_MENU);
 
-            //
+            // Si es una tablet con orientación horizontal, añadir
+            // el fragment inicial de bienvenida.
             if (esTabletHorizontal) {
-
                 ft.add(R.id.frameLayoutArea, getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
             }
 
-            //
+            // Activar los cambios
             ft.commit();
         } else {
 
-            //
-            Log.i(TAG, "onCreate - Restoring");
+            // Restaurando el estado de la activity
 
+            // Log
+            Log.d(TAG, "onCreate - restaurar");
+
+            // Tomar referencias de los fragments
             menuFragment = (MenuFragment) fm.findFragmentByTag(TAG_FRAG_MENU);
             bienvenidaFragment = (BienvenidaFragment) fm.findFragmentByTag(TAG_FRAG_BIENVENIDA);
             opcionesFragment = (OpcionesFragment) fm.findFragmentByTag(TAG_FRAG_OPCIONES);
             infoFragment = (InfoFragment) fm.findFragmentByTag(TAG_FRAG_INFO);
-            ahoraFragment = (AhoraFragment) fm.findFragmentByTag(TAG_FRAG_AHORA);
+            escenaFragment = (EscenaFragment) fm.findFragmentByTag(TAG_FRAG_ESCENA);
             accionesFragment = (AccionesFragment) fm.findFragmentByTag(TAG_FRAG_ACCIONES);
 
-            //
-            Log.i(TAG, "menuFragment = " + menuFragment);
-            Log.i(TAG, "bienvenidaFragment = " + bienvenidaFragment);
-            Log.i(TAG, "opcionesFragment = " + opcionesFragment);
-            Log.i(TAG, "infoFragment = " + infoFragment);
-            Log.i(TAG, "ahoraFragment = " + ahoraFragment);
-            Log.i(TAG, "accionesFragment = " + accionesFragment);
-
-
+            // Log
+            Log.d(TAG, "menuFragment = " + menuFragment);
+            Log.d(TAG, "bienvenidaFragment = " + bienvenidaFragment);
+            Log.d(TAG, "opcionesFragment = " + opcionesFragment);
+            Log.d(TAG, "infoFragment = " + infoFragment);
+            Log.d(TAG, "escenaFragment = " + escenaFragment);
+            Log.d(TAG, "accionesFragment = " + accionesFragment);
         }
 
-        //
+        // Si se está restaurando la activity debido a un cambio
+        // de orientación...
         if(getIntent().getBooleanExtra(EXTRA_VERTICAL, false)) {
 
+            // Quitar el extra
             getIntent().removeExtra(EXTRA_VERTICAL);
 
-            //onOpcionSeleccionada(MenuFragment.MENU_OPCION_OPCIONES);
-
-            //if(esTabletHorizontal) {
-                //menuFragment.enableOpcion(MenuFragment.MENU_OPCION_OPCIONES, false);
-            //}
-
+            // Forzar la activación de las opciones
             menuFragment.forzarOpcion(MenuFragment.MENU_OPCION_OPCIONES);
         }
     }
@@ -401,7 +465,7 @@ public class PrincipalActivity extends Activity implements
         }
 
         // Log
-        Log.i(TAG, "onStart()");
+        Log.d(TAG, "onStart()");
     }
 
     /**
@@ -414,7 +478,7 @@ public class PrincipalActivity extends Activity implements
         super.onResume();
 
         // Log
-        Log.i(TAG, "onResume()");
+        Log.d(TAG, "onResume()");
 
         // Reanudar sonido
         if(puedoSonar) {
@@ -432,7 +496,7 @@ public class PrincipalActivity extends Activity implements
         super.onPause();
 
         // Log
-        Log.i(TAG, "onPause()");
+        Log.d(TAG, "onPause()");
 
         // Pausar sonido
         if(puedoSonar) {
@@ -450,7 +514,7 @@ public class PrincipalActivity extends Activity implements
         super.onStop();
 
         // Log
-        Log.i(TAG, "onStop()");
+        Log.d(TAG, "onStop()");
 
         // Finalizar gestión del sonido
         if(puedoSonar) {
@@ -458,174 +522,155 @@ public class PrincipalActivity extends Activity implements
         }
     }
 
+    /**
+     * Reemplazar el fragment del area (tablets con
+     * orientación horizontal).
+     *
+     * @param fragment  Fragment
+     * @param tag       Tag
+     */
     private void ponFragmentArea(Fragment fragment, String tag) {
 
-        //
-        FragmentManager fm = getFragmentManager();
-
-        //
-        FragmentTransaction ft = fm.beginTransaction();
-
-        //
-        ft.replace(R.id.frameLayoutArea, fragment, tag);
-
-        //
-        ft.commit();
-    }
-
-
-    private void ponFragmentMovil(Fragment fragment, String tag) {
-
-        //
+        // Iniciar transacción
         FragmentTransaction ft = getFragmentManager().beginTransaction();
 
-        //
+        // Reemplazar fragment actual, por el nuevo
+        ft.replace(R.id.frameLayoutArea, fragment, tag);
 
-        ft.replace(R.id.frameLayoutMenu, fragment, tag);
-        ft.addToBackStack(null);
-
-        //
+        // Activar los cambios
         ft.commit();
     }
 
+    /**
+     * Reemplazar el fragment del menú (móvil, y tablets
+     * con orientación vertical).
+     *
+     * @param fragment  Fragment
+     * @param tag       Tag
+     */
+    private void ponFragmentMovil(Fragment fragment, String tag) {
+
+        // Iniciar transacción
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+        // Reemplazar el fragment actual, por el nuevo
+        ft.replace(R.id.frameLayoutMenu, fragment, tag);
+
+        // Ponerlo en el BackStack, para que se pueda volver
+        // a la disposición anterior.
+        ft.addToBackStack(null);
+
+        // Activar los cambios
+        ft.commit();
+    }
+
+    /**
+     * Devolver fragment de acciones, creando uno nuevo
+     * si fuera necesario.
+     *
+     * @return  fragment
+     */
     private AccionesFragment getAccionesFragment() {
 
-        if(accionesFragment == null) {
-            accionesFragment = new AccionesFragment();
-        }
-
-        return accionesFragment;
+        return (accionesFragment = (accionesFragment != null ? accionesFragment : new AccionesFragment()));
     }
 
-    private AhoraFragment getAhoraFragment() {
+    /**
+     * Devolver fragment de la escena, creando uno nuevo
+     * si fuera necesario.
+     *
+     * @return  fragment
+     */
+    private EscenaFragment getEscenaFragment() {
 
-        if(ahoraFragment == null) {
-            ahoraFragment = new AhoraFragment();
-        }
-
-        return ahoraFragment;
+        return (escenaFragment = (escenaFragment != null ? escenaFragment : new EscenaFragment()));
     }
 
+    /**
+     * Devolver fragment de opciones, creando uno nuevo
+     * si fuera necesario.
+     *
+     * @return  fragment
+     */
     private OpcionesFragment getOpcionesFragment() {
 
-        if(opcionesFragment == null) {
-            opcionesFragment = new OpcionesFragment();
-        }
-
-        return opcionesFragment;
+        return (opcionesFragment = (opcionesFragment != null ? opcionesFragment : new OpcionesFragment()));
     }
 
+    /**
+     * Devolver fragment de información, creando uno nuevo
+     * si fuera necesario.
+     *
+     * @return  fragment
+     */
     private InfoFragment getInfoFragment() {
 
-        if(infoFragment == null) {
-            infoFragment = new InfoFragment();
-        }
-
-        return infoFragment;
+        return (infoFragment = (infoFragment != null ? infoFragment : new InfoFragment()));
     }
 
+    /**
+     * Devolver fragment del menú, creando uno nuevo
+     * si fuera necesario.
+     *
+     * @return  fragment
+     */
     private MenuFragment getMenuFragment() {
 
-        if(menuFragment == null) {
-            menuFragment = new MenuFragment();
-        }
-
-        return menuFragment;
+        return (menuFragment = (menuFragment != null ? menuFragment : new MenuFragment()));
     }
 
+    /**
+     * Devolver fragment de bienvenida, creando uno nuevo
+     * si fuera necesario.
+     *
+     * @return  fragment
+     */
     private BienvenidaFragment getBienvenidaFragment() {
 
-        if(bienvenidaFragment == null) {
-            bienvenidaFragment = new BienvenidaFragment();
-        }
-
-        return bienvenidaFragment;
+        return (bienvenidaFragment = (bienvenidaFragment != null ? bienvenidaFragment : new BienvenidaFragment()));
     }
 
+    // ------------------
+    // Gestión del sonido
+    // ------------------
 
-
-    /*********************
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch(id) {
-            case R.id.action_reset :
-                // Dejar la BD al estado inicial
-                BaseDatos bd = new BaseDatos(this, true);
-                bd.cerrar();
-                return true;
-            case R.id.action_settings :
-                Intent intent = new Intent(this, PreferenciasActivity.class);
-                //intent.putExtra(EscenaActivity.EXTRA_IN_RESET, false);
-                // Con éste método, la activity llamada, no nos puede
-                // devolver datos:
-                startActivity(intent);
-                return true;
-            default :
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    ***********/
-
-    private void emiteUnSonido(int resId) {
-        if(puedoSonar) {
-            //soundPool.play(soundId, 1.0f, 1.0f, 0, 0, 1.0f);
-
-            if(indiceSonido >= MAX_SONIDOS) {
-                indiceSonido = 0;
-            }
-
-            if(sonidos[indiceSonido] != -1) {
-                soundPool.unload(sonidos[indiceSonido]);
-            }
-
-            sonidos[indiceSonido] = soundPool.load(this, resId, 1);
-
-            ++indiceSonido;
-        }
-    }
-
-        /**
+    /**
      * Inicializar la gestión del sonido
      * y cargar los recursos necesarios.
      */
     private void holaSonido() {
 
-        // Por defecto, no podemos utilizar el sonido
+        // Por defecto, no se puede utilizar el sonido
         puedoSonar = false;
 
-        //
+        // No hay sonidos cargados en el array
         indiceSonido = 0;
 
+        // Inicializar array de sonidos
         for(int i = 0; i < MAX_SONIDOS; ++i) {
             sonidos[i] = -1;
         }
 
-        // Capturar servicio de audio
+        // Capturar el servicio de audio
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         // Solicitar el foco de audio
         int result = audioManager.requestAudioFocus(audioFocusChangeListener,
                 AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
-        // Fijar resultado
+        // Tomar resultado
         puedoSonar = (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED);
 
         // Listener para gestionar la carga de sonidos
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-        // Creamos el manejador del sonido -- nota: deprecated en API 21, pero
+        // Crear el manejador del sonido -- nota: deprecated en API 21, pero
         // la app ha de correr también en dispositivos con APIs anteriores.
         soundPool = new SoundPool(MAX_SONIDOS, AudioManager.STREAM_MUSIC, 0);
 
         // Listener para gestionar la carga de sonidos
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+
             /**
              * Método que será llamado cuando un sonido sea cargado.
              *
@@ -650,23 +695,23 @@ public class PrincipalActivity extends Activity implements
      */
     private void adiosSonido() {
 
-        //
+        // Proceder con el SoundPool
         if(soundPool != null) {
-            // Descargar las canciones
-            // soundPool.unload(soundId);
 
+            // Liberar recursos del SoundPool
             soundPool.release();
 
+            // Inhabilitar la referencia del SoundPool
             soundPool = null;
         }
 
-        // AudioPlayer. No hacer nada, si no fue inicializado.
+        // Proceder con el AudioManager
         if(audioManager != null) {
 
             // Abandonar el foco de audio
             audioManager.abandonAudioFocus(audioFocusChangeListener);
 
-            // Inhabilitar AudioManager
+            // Inhabilitar referencia del AudioManager
             audioManager = null;
         }
 
@@ -692,8 +737,6 @@ public class PrincipalActivity extends Activity implements
 
         soundPool.autoResume();
     }
-
-
 
     /**
      * Lístener para el foco de audio.
@@ -728,10 +771,4 @@ public class PrincipalActivity extends Activity implements
             }
         }
     };
-
-
-    //public AlertDialog getAlertDialog() {
-    //    return alertDialog;
-    //}
-
 }

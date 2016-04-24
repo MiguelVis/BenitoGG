@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
-import android.media.Image;
 import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.os.Bundle;
@@ -21,8 +20,8 @@ import android.widget.ImageView;
  */
 public class SplashScreenActivity extends Activity {
 
-    // Tag para log
-    private final static String TAG = "SplashScreenActivity";
+    // Tag para el log
+    private final static String TAG = "SplashScreen";
 
     // Valores
     private final static int NUM_PASOS = 9;      // 6 pasos, más 3
@@ -182,7 +181,7 @@ public class SplashScreenActivity extends Activity {
         }
 
         // Log
-        Log.i(TAG, "onStart()");
+        Log.d(TAG, "onStart()");
     }
 
     /**
@@ -195,7 +194,7 @@ public class SplashScreenActivity extends Activity {
         super.onStop();
 
         // Log
-        Log.i(TAG, "onStop()");
+        Log.d(TAG, "onStop()");
 
         // Finalizar gestión del sonido
         if(puedoSonar) {
@@ -236,7 +235,8 @@ public class SplashScreenActivity extends Activity {
         // Indicar el tipo de Audio Stream vinculado a los controles de volumen
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-        // Creamos el manejador del sonido
+        // Crear el manejador del sonido -- nota: deprecated en API 21, pero
+        // la app ha de correr también en dispositivos con APIs anteriores.
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
         // Listener para gestionar la carga de sonidos
@@ -271,11 +271,6 @@ public class SplashScreenActivity extends Activity {
 
         // Proceder con el SoundPool
         if(soundPool != null) {
-            // Descargar el sonido
-            if(sonidoCargado) {
-                soundPool.unload(sonidoId);
-                sonidoCargado = false;
-            }
 
             // Liberar recursos del SoundPool
             soundPool.release();

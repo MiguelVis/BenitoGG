@@ -2,9 +2,7 @@ package com.app.floppysoftware.benitogg;
 
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -21,9 +19,9 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AhoraFragment extends Fragment {
+public class EscenaFragment extends Fragment {
 
-    private static final String TAG ="AhoraFragment";
+    private static final String TAG ="EscenaFragment";
 
     // Claves para el bundle
     private static final String KEY_ID_LUGAR = "key_id_lugar";  // Id del lugar actual, utilizado para detectar cambios
@@ -54,9 +52,9 @@ public class AhoraFragment extends Fragment {
     private boolean esTablet = false;
 
     // Lístener que ha de implementar la activity
-    private AhoraFragmentInteractionListener mListener;
+    private OnEscenaListener mListener;
 
-    public interface AhoraFragmentInteractionListener {
+    public interface OnEscenaListener {
 
         public void setAcciones(boolean norte, boolean sur, boolean este, boolean oeste,
                                 ArrayList<Objeto> objetosLugar,
@@ -66,7 +64,7 @@ public class AhoraFragment extends Fragment {
         public void emiteSonido(int resId);
     }
 
-    public AhoraFragment() {
+    public EscenaFragment() {
         // Required empty public constructor
     }
 
@@ -160,7 +158,7 @@ public class AhoraFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (AhoraFragmentInteractionListener) activity;
+            mListener = (OnEscenaListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnAccionesListener");
