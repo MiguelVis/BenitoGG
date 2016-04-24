@@ -73,6 +73,7 @@ create table Lugares (
 	_id text primary key not null,
 	titulo text not null,
 	detalle text not null,
+	sonido text,
 	lugar_norte_fk text,
 	lugar_sur_fk text,
 	lugar_este_fk text,

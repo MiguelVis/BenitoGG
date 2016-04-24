@@ -76,7 +76,7 @@ public final class Preferencias {
     public static boolean getSonido(Context context) {
 
         // Devolver preferencia del sonido, o false si no ha sido fijado
-        return getShPrefs(context).getBoolean(KEY_SONIDO, false);
+        return getShPrefs(context).getBoolean(KEY_SONIDO, true);
     }
 
     /**

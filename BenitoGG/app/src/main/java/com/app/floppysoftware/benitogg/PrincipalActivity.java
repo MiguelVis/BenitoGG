@@ -40,6 +40,9 @@ public class PrincipalActivity extends Activity implements
     private final static String TAG_FRAG_AHORA = "FrAhora";
     private final static String TAG_FRAG_ACCIONES = "FrAcciones";
 
+    //
+    private final static int MAX_SONIDOS = 3;
+
     // Fragment para el menú de opciones
     private MenuFragment menuFragment;
 
@@ -57,8 +60,8 @@ public class PrincipalActivity extends Activity implements
     private AudioManager audioManager;
     private SoundPool soundPool;
     private boolean puedoSonar = false;
-    private boolean sonidoCargado = false;
-    private int sonidoId;
+    private int[] sonidos = new int[MAX_SONIDOS];
+    private int indiceSonido;
 
     // Último Alert Dialog activo (utilizado en depuración)
     ////////////private AlertDialog alertDialog;
@@ -574,15 +577,17 @@ public class PrincipalActivity extends Activity implements
         if(puedoSonar) {
             //soundPool.play(soundId, 1.0f, 1.0f, 0, 0, 1.0f);
 
-            if(sonidoCargado) {
-
-                soundPool.unload(sonidoId);
-
-                sonidoCargado = false;
+            if(indiceSonido >= MAX_SONIDOS) {
+                indiceSonido = 0;
             }
 
-            sonidoId = soundPool.load(this, resId, 1);
+            if(sonidos[indiceSonido] != -1) {
+                soundPool.unload(sonidos[indiceSonido]);
+            }
 
+            sonidos[indiceSonido] = soundPool.load(this, resId, 1);
+
+            ++indiceSonido;
         }
     }
 
@@ -594,6 +599,13 @@ public class PrincipalActivity extends Activity implements
 
         // Por defecto, no podemos utilizar el sonido
         puedoSonar = false;
+
+        //
+        indiceSonido = 0;
+
+        for(int i = 0; i < MAX_SONIDOS; ++i) {
+            sonidos[i] = -1;
+        }
 
         // Capturar servicio de audio
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -607,19 +619,18 @@ public class PrincipalActivity extends Activity implements
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-        // Creamos el manejador del sonido
-        soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        // Creamos el manejador del sonido -- nota: deprecated en API 21, pero
+        // la app ha de correr también en dispositivos con APIs anteriores.
+        soundPool = new SoundPool(MAX_SONIDOS, AudioManager.STREAM_MUSIC, 0);
 
         //
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
 
-                if(sampleId == sonidoId && status == 0) {
+                if(sampleId == sonidos[indiceSonido - 1] && status == 0) {
 
                     soundPool.play(sampleId, 1.0f, 1.0f, 0, 0, 1.0f);
-
-                    sonidoCargado = true;
                 }
             }
         });

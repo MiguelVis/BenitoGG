@@ -28,6 +28,8 @@ public class AhoraFragment extends Fragment {
     // Claves para el bundle
     private static final String KEY_ID_LUGAR = "key_id_lugar";  // Id del lugar actual, utilizado para detectar cambios
 
+    private String ultimoLugarId = null;
+
     private Lugar lugarActual = null;
     private ArrayList<Objeto> lugarActualObjetos = null;
 
@@ -73,6 +75,10 @@ public class AhoraFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        //
+        if(savedInstanceState != null) {
+            ultimoLugarId = savedInstanceState.getString(KEY_ID_LUGAR);
+        }
         // Averiguar si el dispositivo es una tablet o móvil
         esTablet = getResources().getBoolean(R.bool.isTablet)  && !Preferencias.getVertical(getActivity());
 
@@ -169,7 +175,21 @@ public class AhoraFragment extends Fragment {
 
     }
 
+    /**
+     * Método llamado cuando se precise guardar el estado del
+     * fragment.
+     *
+     * @param outState  Estado
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
 
+        // Llamar a la superclase
+        super.onSaveInstanceState(outState);
+
+        // Guardar id del lugar actual
+        outState.putString(KEY_ID_LUGAR, lugarActual.getId());
+    }
 
 
 
@@ -429,6 +449,14 @@ public class AhoraFragment extends Fragment {
                 imageViewMas.setEnabled(true);
             }
 
+            if(!lugarActual.getId().equals(ultimoLugarId)) {
+
+                ultimoLugarId = lugarActual.getId();
+
+                if(lugarActual.getSonido() != null) {
+                    mListener.emiteSonido(getResources().getIdentifier("zeta_" + lugarActual.getSonido(), "raw", getActivity().getPackageName()));
+                }
+            }
             ///mListener.emiteSonido(getResources().getIdentifier("zeta_sonido_" + "prueba", "raw", getActivity().getPackageName()));
         }
     }

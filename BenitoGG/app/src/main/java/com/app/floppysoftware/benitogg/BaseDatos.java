@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Clase que implementa la base de datos del juego.
  *
  * @author   Miguel I. García López
- * @version  1.0
+ * @version  1.1
  * @since    16 Mar 2016
  */
 public class BaseDatos {
@@ -90,6 +90,7 @@ public class BaseDatos {
                 String id = cur.getString(cur.getColumnIndex(Contract.Lugares.ID_NAME));
                 String titulo = cur.getString(cur.getColumnIndex(Contract.Lugares.TITULO_NAME));
                 String detalle = cur.getString(cur.getColumnIndex(Contract.Lugares.DETALLE_NAME)).replace(NUEVA_LINEA_IN, NUEVA_LINEA_OUT);
+                String sonido = cur.getString(cur.getColumnIndex(Contract.Lugares.SONIDO_NAME));
                 int x = cur.getInt(cur.getColumnIndex(Contract.Lugares.X_NAME));
                 int y = cur.getInt(cur.getColumnIndex(Contract.Lugares.Y_NAME));
                 String lugarNorte = cur.getString(cur.getColumnIndex(Contract.Lugares.LUGAR_NORTE_NAME));
@@ -98,7 +99,7 @@ public class BaseDatos {
                 String lugarOeste = cur.getString(cur.getColumnIndex(Contract.Lugares.LUGAR_OESTE_NAME));
 
                 // Añadir lugar al array
-                lugares.add(new Lugar(id, titulo, detalle, x, y, lugarNorte, lugarSur, lugarEste, lugarOeste));
+                lugares.add(new Lugar(id, titulo, detalle, sonido, x, y, lugarNorte, lugarSur, lugarEste, lugarOeste));
             }
 
             // Cerrar cursor
@@ -135,6 +136,7 @@ public class BaseDatos {
                 // Obtener datos del lugar
                 String titulo = cur.getString(cur.getColumnIndex(Contract.Lugares.TITULO_NAME));
                 String detalle = cur.getString(cur.getColumnIndex(Contract.Lugares.DETALLE_NAME)).replace(NUEVA_LINEA_IN, NUEVA_LINEA_OUT);
+                String sonido = cur.getString(cur.getColumnIndex(Contract.Lugares.SONIDO_NAME));
                 int x = cur.getInt(cur.getColumnIndex(Contract.Lugares.X_NAME));
                 int y = cur.getInt(cur.getColumnIndex(Contract.Lugares.Y_NAME));
                 String lugarNorte = cur.getString(cur.getColumnIndex(Contract.Lugares.LUGAR_NORTE_NAME));
@@ -143,7 +145,7 @@ public class BaseDatos {
                 String lugarOeste = cur.getString(cur.getColumnIndex(Contract.Lugares.LUGAR_OESTE_NAME));
 
                 // Crear lugar con los datos
-                lugar = new Lugar(lugarId, titulo, detalle, x, y, lugarNorte, lugarSur, lugarEste, lugarOeste);
+                lugar = new Lugar(lugarId, titulo, detalle, sonido, x, y, lugarNorte, lugarSur, lugarEste, lugarOeste);
             }
 
             // Cerrar el cursor

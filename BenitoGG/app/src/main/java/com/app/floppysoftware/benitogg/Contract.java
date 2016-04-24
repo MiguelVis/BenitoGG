@@ -81,6 +81,7 @@ public final class Contract {
         public static final String ID_NAME = "_id";                      // Id
         public static final String TITULO_NAME = "titulo";               // Título
         public static final String DETALLE_NAME = "detalle";             // Detalle
+        public static final String SONIDO_NAME = "sonido";               // Sonido
         public static final String X_NAME = "x";                         // Posición X en el mapa
         public static final String Y_NAME = "y";                         // Posición Y en el mapa
         public static final String LUGAR_NORTE_NAME = "lugar_norte_fk";  // Salida al norte
@@ -92,6 +93,7 @@ public final class Contract {
         public static final String ID_TYPE = "text";                     // Id
         public static final String TITULO_TYPE = "text";                 // Título
         public static final String DETALLE_TYPE = "text";                // Detalle
+        public static final String SONIDO_TYPE = "text";                 // Sonido
         public static final String X_TYPE = "int";                       // Posición X en el mapa
         public static final String Y_TYPE = "int";                       // Posición Y en el mapa
         public static final String LUGAR_NORTE_TYPE = "text";            // Salida al norte
@@ -106,6 +108,7 @@ public final class Contract {
          *    _id text primary key not null,
          *    titulo text not null,
          *    detalle text not null,
+         *    sonido text,
          *    lugar_norte_fk text,
          *    lugar_sur_fk text,
          *    lugar_este_fk text,
@@ -120,6 +123,7 @@ public final class Contract {
                 ID_NAME + " " + ID_TYPE + " primary key not null," +
                 TITULO_NAME + " " + TITULO_TYPE + " not null," +
                 DETALLE_NAME + " " + DETALLE_TYPE + " not null," +
+                SONIDO_NAME + " " + SONIDO_TYPE + "," +
                 X_NAME + " " + X_TYPE + " not null," +
                 Y_NAME + " " + Y_TYPE + " not null," +
                 LUGAR_NORTE_NAME + " " + LUGAR_NORTE_TYPE + "," +

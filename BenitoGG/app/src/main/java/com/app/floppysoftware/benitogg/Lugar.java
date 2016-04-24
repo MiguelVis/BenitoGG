@@ -4,7 +4,7 @@ package com.app.floppysoftware.benitogg;
  * Clase que implementa un lugar del mapa.
  *
  * @author   Miguel I. García López
- * @version  1.0
+ * @version  1.1
  * @since    08 Mar 2016
  */
 public class Lugar {
@@ -16,6 +16,7 @@ public class Lugar {
     private String id;           // Id
     private String titulo;       // Título
     private String detalle;      // Detalle
+    private String sonido;       // Sonido
     private int x;               // Posición X en el mapa
     private int y;               // Posición Y en el mapa
     private String lugarNorte;   // Lugar al que se llega saliendo por el norte (o null, si no hay salida)
@@ -29,6 +30,7 @@ public class Lugar {
      * @param id          Id
      * @param titulo      Título
      * @param detalle     Detalle
+     * @param sonido      Sonido
      * @param x           Posición X en el mapa
      * @param y           Posición Y en el mapa
      * @param lugarNorte  Lugar al que se llega saliendo por el norte (o null, si no hay salida)
@@ -36,13 +38,14 @@ public class Lugar {
      * @param lugarEste   Lugar al que se llega saliendo por el este  (o null, si no hay salida)
      * @param lugarOeste  Lugar al que se llega saliendo por el oeste (o null, si no hay salida)
      */
-    public Lugar(String id, String titulo, String detalle, int x, int y,
+    public Lugar(String id, String titulo, String detalle, String sonido, int x, int y,
                  String lugarNorte, String lugarSur, String lugarEste, String lugarOeste) {
 
         // Asignar atributos según parámetros de entrada
         this.id = id;
         this.titulo = titulo;
         this.detalle = detalle;
+        this.sonido = sonido;
         this.x = x;
         this.y = y;
         this.lugarNorte = lugarNorte;
@@ -76,6 +79,15 @@ public class Lugar {
      */
     public String getDetalle() {
         return detalle;
+    }
+
+    /**
+     * Devolver sonido del lugar.
+     *
+     * @return  Sonido
+     */
+    public String getSonido() {
+        return sonido;
     }
 
     /**

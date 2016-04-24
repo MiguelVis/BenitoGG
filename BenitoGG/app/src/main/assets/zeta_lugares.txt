@@ -1,4 +1,4 @@
-# Lugares: Id (text), Título (text), Detalle (text), X (int), Y (int), Norte (text), Sur (text), Este (text), Oeste (text)
+# Lugares: Id (text), Título (text), Detalle (text), Sonido (text), X (int), Y (int), Norte (text), Sur (text), Este (text), Oeste (text)
 #
 # En el detalle, <br> será sustituido por un carácter de nueva línea.
 #
@@ -7,6 +7,7 @@
 testLugarCentro
 Lugar Centro
 Estás en el lugar Centro
+null
 0
 0
 testLugarNorte
@@ -17,6 +18,7 @@ testLugarOeste
 testLugarNorte
 Lugar Norte
 Estás en el lugar Norte
+null
 0
 0
 null
@@ -27,6 +29,7 @@ null
 testLugarSur
 Lugar Sur
 Estás en el lugar Sur
+null
 0
 0
 testLugarCentro
@@ -37,6 +40,7 @@ null
 testLugarEste
 Lugar Este
 Estás en el lugar Este
+null
 0
 0
 null
@@ -47,6 +51,7 @@ testLugarCentro
 testLugarOeste
 Lugar Oeste
 Estás en el lugar Oeste
+null
 0
 0
 null
@@ -61,6 +66,7 @@ null
 bolsillo
 Bolsillo
 Bolsillo de Benito G. G.
+null
 0
 0
 null
@@ -71,6 +77,7 @@ null
 limbo
 Limbo
 Enviar aquí los objetos que no han de aparecer en otro lugar.
+null
 0
 0
 null
@@ -83,6 +90,7 @@ null
 ayuntamiento
 Ayuntamiento
 Estás en el Ayuntamiento.<br>D. Remigio, el Alcalde, sale a saludarte nada más verte:<br>- ¿Qué, Benito, a pagar la contribución? Ya sabes que la subimos el mes pasado, ¿verdad?
+null
 290
 76
 null
@@ -93,6 +101,7 @@ cl_ganzua
 biblioteca
 Biblioteca
 Estás en la biblioteca municipal.<br>Hay una persona leyendo un grueso tomo de jardinería, lo cual resulta muy extraño, pues normalmente no hay nadie.
+silencio
 324
 124
 null
@@ -103,6 +112,7 @@ null
 comisaria
 Comisaría de Policía
 Estás en la Comisaria de Policía.<br>El inspector Romuáldez está rellenando unos formularios de color verde. La de trastos que hay en la sección de objetos perdidos...
+null
 456
 239
 null
@@ -113,6 +123,7 @@ null
 bar_manolo
 Bar Manolo
 Estás en el Bar Manolo, cuya especialidad son las tapas rancias de autor.<br>El menú de hoy parece interesante: de primero, bocadillo de fideos; de segundo, croquetas de sardina; café y postre casero incluidos en el suplicio.
+null
 426
 197
 av_trola_2
@@ -123,6 +134,7 @@ null
 peluqueria
 Peluquería
 Estás en la peluquería.<br>Hay una montaña de rulos a la izquierda. Dos señoras, un tanto remilgadas, cuchichean mientras te miran de reojo.
+null
 151
 239
 null
@@ -133,6 +145,7 @@ cl_trilero
 oficina
 Oficina de Benito G.G.
 Estás en tu oficina.<br>Un día de estos, habrá que limpiar y quitar el polvo, ¿eh, Benito?
+null
 290
 239
 null
@@ -143,6 +156,7 @@ cl_muermo
 quiosco
 Quiosco Loli
 Estás en el Quiosco de Loli.<br>Los estantes están repletos de golosinas y cromos de futbolistas.<br>La revista Jelou!, viene con una noticia impactante en la portada: el Conde Nao ha escrito un libro lleno de letras. Increíble.
+null
 221
 320
 null
@@ -153,6 +167,7 @@ null
 pq_verdor
 Parque El Verdor
 Estás en el parque municipal El Verdor.<br>Los niños juegan, gritan, saltan, corren, te pisan si te descuidas...
+null
 324
 320
 null
@@ -163,6 +178,7 @@ cl_muermo_2
 gimnasio
 Gimnasio Tirillas
 Estás en el Gimnasio Tirillas.<br>Josechu, el instructor de Kárate, está partiendo un ladrillo con la oreja izquierda, mientras sus alumnos hacen muecas de dolor.
+null
 604
 239
 null
@@ -173,6 +189,7 @@ null
 consultorio
 Consultorio
 Estás en el consultorio médico.<br>El Doctor Zido acaba de salir de la consulta. Cada vez está más encogido, el pobre.
+null
 179
 362
 null
@@ -183,6 +200,7 @@ null
 hotel
 Hotel Hucho
 Estás en el Hotel Hucho.<br>Gustavo Porrot, el gerente, está observando con lupa una manchita en la pared. Se cree Poirot, el pobre.
+null
 324
 197
 av_trola
@@ -193,6 +211,7 @@ null
 cine
 Cine Shin
 Estás en el Cine Shin.<br>Exuperio, su propietario, es un cascarrabias que sólo pone películas del Oeste. Por enésima vez, hoy comienza una reposición de ´Con Balas y a lo Loco´, según indica un cartel que está clavado en la pared.
+null
 179
 197
 av_caco_2
@@ -203,6 +222,7 @@ null
 correos
 Oficina de Correos
 Estás en la oficina de Correos.<br>Un chaval está empeñado en enviar una carta con pegatinas de dinosaurios, en lugar de sellos.
+null
 151
 320
 null
@@ -213,6 +233,7 @@ cl_trilero_2
 ultramarinos
 Ultramarinos Concha
 Estás en Ultramarinos Concha.<br>Hay latas de conserva para dar y vender. Bueno, sólo para vender. Concha está pesando unas patatas, mientras su clienta la mira sin perder detalle (ya sabes, tiene fama de trucar el peso, a la mínima que te descuides).
+null
 221
 239
 null
@@ -223,6 +244,7 @@ null
 pizzeria
 Pizzería
 Estás en la Pizzería.<br>Luiggi, el cocinero, tiene harina hasta en las orejas. ¿Cómo hará las pizzas este hombre? Mejor no pensarlo mucho.
+null
 426
 261
 null
@@ -233,6 +255,7 @@ null
 banco
 Banco Chambroso
 Estás en el Banco Chambroso.<br>Fermín Pastoso, el director, está atendiendo a una señora inmensa, igual que su caja de caudales.
+null
 359
 76
 null
@@ -243,6 +266,7 @@ null
 floristeria
 Floristería Rosa
 Estás en la Floristería Rosa.<br>Hay unas flores de plástico muy bonitas, que huelen a ambientador barato.
+null
 324
 57
 cl_butron_2
@@ -253,6 +277,7 @@ null
 pq_zillo
 Parque Zillo
 Estás en el Parque Zillo.<br>Dos personas mayores discuten acaloradamente. Una le dice a la otra:<br>- Lo que yo te diga, las migas de galleta con chorizo no valen nada. ¡Y me dan un ardor...!
+null
 179
 100
 null
@@ -263,6 +288,7 @@ null
 bar_genaro
 Bar Genaro
 Estás en el Bar Genaro.<br>Es competencia directa del Bar Manolo, por lo que no se hablan desde hace años. Las croquetas parecen erizos de mar. Es más, huelen igual. O peor.
+null
 521
 239
 null
@@ -273,6 +299,7 @@ cl_timo
 pension
 Pensión Engracia
 Estás en la Pensión de la Sra. Engracia.<br>El comedor está listo para la comida. De la cocina surge un jaleo de platos rotos. Y un olor raro, para ser comida... comestible, se entiende.
+null
 560
 197
 av_trola_4
@@ -283,6 +310,7 @@ null
 taller
 Taller Salus
 Estás en el Taller Salus, especialistas en reparar vehículos de alta gama y baja estopa. La de grasa que hay por aquí.
+null
 560
 261
 null
@@ -295,6 +323,7 @@ null
 pl_mangui
 Plaza del Mangui
 Estás en la Plaza del Mangui.<br>El sol, radiante, ilumina todos los rincones de la plaza.<br>Los pájaros cantan, las nubes se levantan, y todo eso que se suele decir en estos casos.
+null
 253
 161
 cl_ganzua
@@ -305,6 +334,7 @@ av_caco_2
 av_caco
 Avda. del Caco
 Estás en la Avenida del Caco.<br>La gente va y viene, sumida en sus propios pensamientos, ajena a lo que le rodea.<br>Y claro, más de uno se da de morros con una farola mal puesta.
+null
 113
 161
 null
@@ -315,6 +345,7 @@ null
 av_caco_2
 Avda. del Caco
 Estás en la Avenida del Caco.<br>Hay un perrito haciendo pis en el poste de una señal de tráfico.<br>¡Qué mono...! El poste, digo.
+null
 179
 161
 pq_zillo
@@ -325,6 +356,7 @@ av_caco
 av_trola
 Avda. de la Trola
 Estás en la Avenida de la Trola.<br>El bullicio de los negocios llega hasta la calle.<br>¡Qué jaleo, oiga!
+null
 324
 161
 biblioteca
@@ -335,6 +367,7 @@ pl_mangui
 av_trola_2
 Avda. de la Trola
 Estás en la Avenida de la Trola.<br>El tráfico es bastante intenso, el ruido descomunal, y la contaminación, pues qué quieres que te dig... ¡cof, cof, cof!
+claxon
 391
 161
 cl_cerrojo
@@ -345,6 +378,7 @@ av_trola
 av_trola_3
 Avda. de la Trola
 Estás en la Avenida de la Trola.<br>Dos chiquillos discuten por un trozo de chicle de segunda mano. Por el color, parece de fresa ácida.
+null
 489
 161
 null
@@ -355,6 +389,7 @@ av_trola_2
 av_trola_4
 Avda. de la Trola
 Estás en la Avenida de la Trola.<br>Hasta aquí llegan los efluvios de las ¿comidas? que se preparan en las cercanías.
+null
 560
 161
 null
@@ -365,6 +400,7 @@ av_trola_3
 av_trola_5
 Avda. de la Trola
 Estas en la Avenida de la Trola.<br>Dos jubilados con las manos en los bolsillos, observan atentamente cómo trabajan unos obreros en la calle.
+null
 627
 161
 null
@@ -375,6 +411,7 @@ av_trola_4
 av_pufo
 Avda. del Pufo
 Estás en la Avenida del Pufo.<br>Se oye una sirena de ambulancia a lo lejos: ¡ni, no, ni, no, ni...!<br>En fin, ya sabes.
+ambulancia
 113
 394
 cl_trilero_2
@@ -385,6 +422,7 @@ null
 av_pufo_2
 Avda. del Pufo
 Estás en la Avenida del Pufo.<br>La cola de los enfermos que esperan su turno, llega hasta la calle.<br>Las toses, también.
+toses
 179
 394
 consultorio
@@ -394,7 +432,8 @@ av_pufo
 #
 av_pufo_3
 Avda. del Pufo
-Estás en la Avenida del Pufo.<br>La zona está bastante tranquila. Los cacos deben estar de vacaciones, o durmiendo la siesta.
+Estás en la Avenida del Pufo.<br>La zona está bastante tranquila. Los cacos deben estar de vacaciones, o durmiendo la siesta.<br>Benito, ándate con ojo que hay un charco de... ¡chof, chof! Bueno, ya es igual...
+charco
 253
 394
 cl_muermo_2
@@ -405,6 +444,7 @@ av_pufo_2
 av_pufo_4
 Avda. del Pufo
 Estás en la Avenida del Pufo.<br>Se oye jugar a lo lejos a los niños en el parque.<br>Una paloma despistada, deja un regalito encima de tu zapato reluciente (que ya no está reluciente, claro).
+null
 324
 394
 pq_verdor
@@ -415,6 +455,7 @@ av_pufo_3
 av_pufo_5
 Avda. del Pufo
 Estás en la Avenida del Pufo.<br>Alguien pasa con una caja de cartón en la mano.<br>¡Hum... parece pizza de acelgas, mi favorita!
+null
 391
 394
 cl_jero
@@ -425,6 +466,7 @@ av_pufo_4
 cl_muermo
 Calle Muermo
 Estás en la Calle del Muermo.<br>A pesar de su nombre, cualquiera que viva en esta calle ha de estar siempre despierto, ojo avizor, con los cinco sentidos puestos en todo lo que te rodea.<br>¡Uf, qué estrés!
+null
 253
 239
 pl_mangui
@@ -435,6 +477,7 @@ ultramarinos
 cl_muermo_2
 Calle Muermo
 Estás en la Calle del Muermo.<br>Una pareja pasea, mientras come unos helados, con pinta de estar riquísimos.<br>Los de garbanzos son los mejores.
+null
 253
 320
 cl_muermo
@@ -445,6 +488,7 @@ quiosco
 cl_trilero
 Calle Trilero
 Estás en la Calle Trilero.<br>A la calle llega un tufo, entre tinte para el pelo y arroz con leche caducado.<br>¿Cocina innovadora, procedente de algún restaurante?
+null
 113
 239
 av_caco
@@ -455,6 +499,7 @@ null
 cl_trilero_2
 Calle Trilero
 Estás en la Calle Trilero.<br>Un hombre un tanto rechoncho, sale de la oficina de Correos con un paquete más grande que él.
+null
 113
 320
 cl_trilero
@@ -465,6 +510,7 @@ null
 cl_jero
 Calle Jero
 Estás en la Calle Jero.<br>De la pizzería salen unos aromas a queso y orégano ´que quitan el sentío´.<br>Y el ´parné´ también, porque son un pelín caras.
+null
 391
 308
 pizzeria
@@ -475,6 +521,7 @@ pq_verdor
 cl_jero_2
 Calle Jero
 Estás en la Calle Jero.<br>Se oyen golpes a lo lejos.<br>¿Será un grupo de rock ensayando, o la Manoli sacudiendo las mantas?
+martillo
 489
 308
 cl_timo
@@ -485,6 +532,7 @@ cl_jero
 cl_jero_3
 Calle Jero
 Estás en la Calle Jero.<br>¡Qué porrazos se oyen!<br>¿Estarán arreglando coches en el taller o desguazándolos?
+martillo
 560
 308
 taller
@@ -495,6 +543,7 @@ cl_jero_2
 cl_jero_4
 Calle Jero
 Estás en la Calle Jero.<br>Hay dos farolas sin bombilla, y otra la rompió un motorista despistado.<br>Eso es ahorrar en electricidad, y lo demás tonterías.
+null
 627
 308
 cl_trena
@@ -505,6 +554,7 @@ cl_jero_3
 cl_trena
 Calle Trena
 Estás en la Calle Trena.<br>Hay mucho tío mazas por aquí...<br>¿Habrá una convención de musculitos?
+null
 627
 239
 av_trola_5
@@ -515,6 +565,7 @@ gimnasio
 cl_cerrojo
 Calle Cerrojo
 Estás en la Calle del Cerrojo.<br>Acaba de pasar un coche patrulla de la policía, a toda velocidad.
+policia
 391
 76
 cl_butron_3
@@ -525,6 +576,7 @@ banco
 cl_timo
 Calle Timo
 Estás en la Calle del Timo.<br>Hay varios coches patrulla aparcados por aquí.<br>Varias personas juegan al tute arrastrao, en una de las mesas de la terraza del bar.
+null
 489
 239
 av_trola_3
@@ -535,6 +587,7 @@ comisaria
 cl_ganzua
 Calle Ganzúa
 Estás en la Calle de la Ganzúa.<br>Alguien, parado en mitad de la calle, mira con cara de circunstancias un recibo de la contribución, mientras sacude la cabeza.
+null
 253
 76
 cl_butron
@@ -545,6 +598,7 @@ pq_zillo
 cl_butron
 Calle Butrón
 Estás en la Calle del Butrón.<br>Cada vez es más difícil aparcar en esta zona.<br>¡Si hasta las bicicletas las dejan aparcadas en doble fila!
+null
 253
 25
 null
@@ -555,6 +609,7 @@ null
 cl_butron_2
 Calle Butrón
 Estás en la Calle del Butrón.<br>¿Por qué habrá tanto insecto volador por aquí?<br>¿Me habrá abandonado el desodorante?
+null
 324
 25
 null
@@ -565,6 +620,7 @@ cl_butron
 cl_butron_3
 Calle Butrón
 Estás en la Calle del Butrón.<br>Un grupo de niñas y niños, pasan corriendo dándole patadas a una pelota.
+null
 391
 25
 null
