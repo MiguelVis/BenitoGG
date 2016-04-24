@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
+import android.media.Image;
 import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import android.widget.ImageView;
  * Clase que implementa la pantalla de inicio (Splash Screen).
  *
  * @author   Miguel I. García López
- * @version  1.0
+ * @version  1.1
  * @since    08 Mar 2016
  */
 public class SplashScreenActivity extends Activity {
@@ -34,11 +35,11 @@ public class SplashScreenActivity extends Activity {
     private int pasosDados = 0;
 
     // Gestion del sonido
-    private AudioManager audioManager;
-    private SoundPool soundPool;
-    private boolean puedoSonar = false;
-    private boolean sonidoCargado = false;
-    private int sonidoId;
+    private AudioManager audioManager;      // AudioManager
+    private SoundPool soundPool;            // SoundPool
+    private boolean puedoSonar = false;     // True si se puede emitir sonidos, false en caso contrario
+    private boolean sonidoCargado = false;  // True si el sonido ha sido cargado, false en caso contrario
+    private int sonidoId;                   // Id del sonido cargado
 
     /**
      * Método llamado al crear la activity.
@@ -86,7 +87,7 @@ public class SplashScreenActivity extends Activity {
         // Pausar sonido
         if(puedoSonar) {
             pausarSonido();
-        }//
+        }
     }
 
     /**
@@ -106,6 +107,16 @@ public class SplashScreenActivity extends Activity {
         // Timer para que se muestre durante cierto tiempo la Splash Screen
         timer = new CountDownTimer(MILIS_PASO * (NUM_PASOS - pasosDados), MILIS_PASO) {
 
+            // Array con las ImageView de cada paso.
+            ImageView[] pasos = new ImageView[] {
+                (ImageView) findViewById(R.id.imageViewPie1),
+                (ImageView) findViewById(R.id.imageViewPie2),
+                (ImageView) findViewById(R.id.imageViewPie3),
+                (ImageView) findViewById(R.id.imageViewPie4),
+                (ImageView) findViewById(R.id.imageViewPie5),
+                (ImageView) findViewById(R.id.imageViewPie6)
+            };
+
             /**
              * Método llamado en cada paso.
              *
@@ -117,36 +128,24 @@ public class SplashScreenActivity extends Activity {
                 // Log
                 Log.d(TAG, "Paso = " + pasosDados);
 
-                // Mostrar imagen correspondiente al
-                // número de paso.
-                switch(pasosDados++) {
-                    case 2 :
-                        ((ImageView) findViewById(R.id.imageViewPie1)).setImageResource(R.drawable.splash_pie_izquierdo);
-                        emiteSonido();
-                        break;
-                    case 3 :
-                        ((ImageView) findViewById(R.id.imageViewPie2)).setImageResource(R.drawable.splash_pie_derecho);
-                        emiteSonido();
-                        break;
-                    case 4 :
-                        ((ImageView) findViewById(R.id.imageViewPie3)).setImageResource(R.drawable.splash_pie_izquierdo);
-                        emiteSonido();
-                        break;
-                    case 5 :
-                        ((ImageView) findViewById(R.id.imageViewPie4)).setImageResource(R.drawable.splash_pie_derecho);
-                        emiteSonido();
-                        break;
-                    case 6 :
-                        ((ImageView) findViewById(R.id.imageViewPie5)).setImageResource(R.drawable.splash_pie_izquierdo);
-                        emiteSonido();
-                        break;
-                    case 7 :
-                        ((ImageView) findViewById(R.id.imageViewPie6)).setImageResource(R.drawable.splash_pie_derecho);
-                        emiteSonido();
-                        break;
-                    default :
-                        break;
+                // Mostrar imagen correspondiente al número de paso,
+                // y emitir sonido (se empieza a partir del
+                // paso 2, para dar tiempo a que el sistema de sonido sea
+                // inicializado, y no se pierda ningún paso; también se
+                // deja algún paso supérfluo al final, porque a veces se
+                // pierde alguno, dado que la temporización no es
+                // muy exacta en Android).
+                if(pasosDados >= 2 && pasosDados <= 7) {
+
+                    // Emitir sonido
+                    emiteSonido();
+
+                    // Mostrar imagen
+                    pasos[pasosDados - 2].setImageResource(pasosDados % 2 == 0 ? R.drawable.splash_pie_izquierdo : R.drawable.splash_pie_derecho);
                 }
+
+                // Incrementar el nº de pasos dados
+                ++pasosDados;
             }
 
             /**
@@ -186,10 +185,6 @@ public class SplashScreenActivity extends Activity {
         Log.i(TAG, "onStart()");
     }
 
-
-
-
-
     /**
      * Método llamado al detener la activity.
      */
@@ -208,12 +203,14 @@ public class SplashScreenActivity extends Activity {
         }
     }
 
+    /**
+     * Emitir el sonido de un paso.
+     */
     private void emiteSonido() {
+
+        // Emitir sonido
         if(puedoSonar && sonidoCargado) {
-
             soundPool.play(sonidoId, 1.0f, 1.0f, 0, 0, 1.0f);
-
-
         }
     }
 
@@ -229,33 +226,40 @@ public class SplashScreenActivity extends Activity {
         // Capturar servicio de audio
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        //
+        // Solicitar el foco de audio
         int result = audioManager.requestAudioFocus(audioFocusChangeListener,
                 AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
         // Fijar resultado
         puedoSonar = (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED);
 
+        // Indicar el tipo de Audio Stream vinculado a los controles de volumen
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         // Creamos el manejador del sonido
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
-        //
+        // Listener para gestionar la carga de sonidos
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+
+            /**
+             * Método que será llamado cuando un sonido sea cargado.
+             *
+             * @param soundPool  SoundPool
+             * @param sampleId   Id del sonido
+             * @param status     Estado
+             */
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
 
+                // Indicar que el sonido ha sido cargado
                 if (sampleId == sonidoId && status == 0) {
-
-                    //soundPool.play(sampleId, 1.0f, 1.0f, 0, 0, 1.0f);
-
                     sonidoCargado = true;
                 }
             }
         });
 
-        //
+        // Cargar sonido
         sonidoId = soundPool.load(this, R.raw.paso, 1);
     }
 
@@ -265,26 +269,28 @@ public class SplashScreenActivity extends Activity {
      */
     private void adiosSonido() {
 
-        //
+        // Proceder con el SoundPool
         if(soundPool != null) {
-            // Descargar las canciones
-            // soundPool.unload(soundId);
+            // Descargar el sonido
             if(sonidoCargado) {
                 soundPool.unload(sonidoId);
                 sonidoCargado = false;
             }
+
+            // Liberar recursos del SoundPool
             soundPool.release();
 
+            // Inhabilitar la referencia del SoundPool
             soundPool = null;
         }
 
-        // AudioPlayer. No hacer nada, si no fue inicializado.
+        // Proceder con el AudioManager
         if(audioManager != null) {
 
             // Abandonar el foco de audio
             audioManager.abandonAudioFocus(audioFocusChangeListener);
 
-            // Inhabilitar AudioManager
+            // Inhabilitar referencia del AudioManager
             audioManager = null;
         }
 
@@ -299,7 +305,6 @@ public class SplashScreenActivity extends Activity {
      * Pausar la música.
      */
     private void pausarSonido() {
-
         soundPool.autoPause();
     }
 
@@ -307,11 +312,8 @@ public class SplashScreenActivity extends Activity {
      * Reanudar / comenzar la música.
      */
     private void reanudarSonido() {
-
         soundPool.autoResume();
     }
-
-
 
     /**
      * Lístener para el foco de audio.
@@ -346,8 +348,4 @@ public class SplashScreenActivity extends Activity {
             }
         }
     };
-
-
-
-
 }

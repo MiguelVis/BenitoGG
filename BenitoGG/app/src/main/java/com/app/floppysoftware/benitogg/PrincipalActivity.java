@@ -610,26 +610,34 @@ public class PrincipalActivity extends Activity implements
         // Capturar servicio de audio
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        //
+        // Solicitar el foco de audio
         int result = audioManager.requestAudioFocus(audioFocusChangeListener,
                 AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
         // Fijar resultado
         puedoSonar = (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED);
 
+        // Listener para gestionar la carga de sonidos
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         // Creamos el manejador del sonido -- nota: deprecated en API 21, pero
         // la app ha de correr también en dispositivos con APIs anteriores.
         soundPool = new SoundPool(MAX_SONIDOS, AudioManager.STREAM_MUSIC, 0);
 
-        //
+        // Listener para gestionar la carga de sonidos
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            /**
+             * Método que será llamado cuando un sonido sea cargado.
+             *
+             * @param soundPool  SoundPool
+             * @param sampleId   Id del sonido
+             * @param status     Estado
+             */
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
 
+                // ¡Que empiece la música!
                 if(sampleId == sonidos[indiceSonido - 1] && status == 0) {
-
                     soundPool.play(sampleId, 1.0f, 1.0f, 0, 0, 1.0f);
                 }
             }
