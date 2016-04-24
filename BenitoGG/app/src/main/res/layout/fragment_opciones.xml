@@ -13,103 +13,193 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/titulo_opciones"/>
 
-    <!-- -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_nombre"
-        style="@style/TextNormal"
-        />
-
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:hint="@string/pref_nombre_hint"
-        android:ems="10"
-        android:id="@+id/editTextNombre" />
+        android:layout_height="match_parent"
+        android:id="@+id/scrollViewPrefs">
 
-    <!-- Línea separadora, compuesta por dos views -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/margen_vertical"
-        android:background="@color/linea_oscuro"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/margen_vertical"
-        android:background="@color/linea_claro"/>
+            <!-- -->
 
-    <!-- -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_nombre"
+                style="@style/TextNormal"
+                />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_sonido"
-        android:id="@+id/checkBoxSonido" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text=""
+                android:hint="@string/pref_nombre_hint"
+                android:ems="10"
+                android:id="@+id/editTextNombre" />
 
-    <!-- Línea separadora, compuesta por dos views -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_nombre_detalle"
+                android:layout_marginLeft="8sp"
+                android:layout_marginStart="8sp"
+                style="@style/TextPrefs"
+                />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/margen_vertical"
-        android:background="@color/linea_oscuro"/>
+            <!-- Línea separadora, compuesta por dos views -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margen_vertical"
+                android:background="@color/linea_oscuro"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/margen_vertical"
-        android:background="@color/linea_claro"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:background="@color/linea_claro"/>
 
-    <!-- Opciones sólo para tablet -->
+            <!-- -->
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_zurdo"
-        android:id="@+id/checkBoxZurdo" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_sonido"
+                android:id="@+id/checkBoxSonido" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_vertical"
-        android:id="@+id/checkBoxVertical" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_sonido_detalle"
+                android:layout_marginLeft="8sp"
+                android:layout_marginStart="8sp"
+                style="@style/TextPrefs"
+                />
 
-    <!-- Línea separadora, compuesta por dos views -->
+            <!-- Línea separadora, compuesta por dos views -->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/margen_vertical"
-        android:background="@color/linea_oscuro"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margen_vertical"
+                android:background="@color/linea_oscuro"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/margen_vertical"
-        android:background="@color/linea_claro"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:background="@color/linea_claro"/>
 
-    <!-- -->
+            <!-- -->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margen_vertical"
-        android:text="@string/boton_reset"
-        android:id="@+id/buttonReset" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_zurdo"
+                android:id="@+id/checkBoxZurdo" />
 
-    <!-- -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_zurdo_detalle"
+                android:layout_marginLeft="8sp"
+                android:layout_marginStart="8sp"
+                style="@style/TextPrefs"
+                />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/zurdos_friendly"/>
+            <!-- Línea separadora, compuesta por dos views -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margen_vertical"
+                android:background="@color/linea_oscuro"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:background="@color/linea_claro"/>
+
+            <!-- -->
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_vertical"
+                android:id="@+id/checkBoxVertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8sp"
+                android:layout_marginStart="8sp"
+                android:text="@string/pref_vertical_detalle"
+                style="@style/TextPrefs"
+                />
+
+            <!-- Línea separadora, compuesta por dos views -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margen_vertical"
+                android:background="@color/linea_oscuro"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:background="@color/linea_claro"/>
+
+            <!-- -->
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:text="@string/boton_reset"
+                android:id="@+id/buttonReset" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8sp"
+                android:layout_marginStart="8sp"
+                android:text="@string/pref_reset_detalle"
+                style="@style/TextPrefs"
+                />
+
+            <!-- Línea separadora, compuesta por dos views -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margen_vertical"
+                android:background="@color/linea_oscuro"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/margen_vertical"
+                android:background="@color/linea_claro"/>
+
+            <!-- -->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margen_vertical"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/zurdos_friendly"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

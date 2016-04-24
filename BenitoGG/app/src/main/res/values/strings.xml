@@ -10,14 +10,20 @@
 
     <string name="splash_presenta">presenta</string>
 
+    <!-- Opciones -->
 
     <string name="boton_reset">Reinicializar juego</string>
 
-    <string name="pref_nombre">Tu nombre:</string>
+    <string name="pref_nombre">Nombre:</string>
     <string name="pref_nombre_hint">P. ej. Benito</string>
+    <string name="pref_nombre_detalle">Cambiar el nombre de usuario.</string>
     <string name="pref_sonido">Sonido</string>
+    <string name="pref_sonido_detalle">Reproducir efectos de sonido.</string>
     <string name="pref_zurdo">Modo zurdos</string>
+    <string name="pref_zurdo_detalle">Mejorar la experiencia de usuarios zurdos.</string>
     <string name="pref_vertical">Orientación vertical</string>
+    <string name="pref_vertical_detalle">Activar la orientación vertical.</string>
+    <string name="pref_reset_detalle">Devolver el juego a su estado inicial.</string>
 
     <!-- Activity inicial -->
 
