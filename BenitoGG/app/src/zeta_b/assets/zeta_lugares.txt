@@ -1,0 +1,143 @@
+# Lugares: Id (text), Título (text), Detalle (text), Sonido (text), X (int), Y (int), Norte (text), Sur (text), Este (text), Oeste (text)
+#
+# En el detalle, <br> será sustituido por un carácter de nueva línea.
+#
+# Test:
+#
+testLugarCentro
+Lugar Centro
+Estás en el lugar Centro
+null
+0
+0
+testLugarNorte
+testLugarSur
+testLugarEste
+testLugarOeste
+#
+testLugarNorte
+Lugar Norte
+Estás en el lugar Norte
+null
+0
+0
+null
+testLugarCentro
+null
+null
+#
+testLugarSur
+Lugar Sur
+Estás en el lugar Sur
+null
+0
+0
+testLugarCentro
+null
+null
+null
+#
+testLugarEste
+Lugar Este
+Estás en el lugar Este
+null
+0
+0
+null
+null
+null
+testLugarCentro
+#
+testLugarOeste
+Lugar Oeste
+Estás en el lugar Oeste
+null
+0
+0
+null
+null
+testLugarCentro
+null
+#
+# Juego:
+#
+# Lugares especiales
+# ------------------
+bolsillo
+Bolsillo
+Bolsillo de Benito G. G.
+null
+0
+0
+null
+null
+null
+null
+#
+limbo
+Limbo
+Enviar aquí los objetos que no han de aparecer en otro lugar.
+null
+0
+0
+null
+null
+null
+null
+#
+# Casas, tiendas, etc.
+# --------------------
+centro
+Lugar Centro
+Estás en el lugar Centro
+null
+0
+0
+norte
+sur
+este
+oeste
+#
+norte
+Lugar Norte
+Estás en el lugar Norte
+null
+0
+0
+null
+centro
+null
+null
+#
+sur
+Lugar Sur
+Estás en el lugar Sur
+null
+0
+0
+centro
+null
+null
+null
+#
+este
+Lugar Este
+Estás en el lugar Este
+null
+0
+0
+null
+null
+null
+centro
+#
+oeste
+Lugar Oeste
+Estás en el lugar Oeste
+null
+0
+0
+null
+null
+centro
+null

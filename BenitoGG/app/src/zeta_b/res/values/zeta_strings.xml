@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- http://developer.android.com/intl/es/guide/topics/resources/string-resource.html -->
+
+    <!-- Cadenas de texto dependientes de la aventura -->
+
+    <!-- Nombre de la app -->
+
+    <string name="app_name">Benito Gx2</string>
+
+    <string name="zeta_copyright">&#169; 2016 Miguel I. García López</string>
+
+    <string name="info_argumento">Benito García Gómez, más conocido como <i>Benito G.G.</i>,
+        es un detective privado bla, bla, bla...</string>
+
+    <string name="info_dedicatoria">Dedicado a la memoria de mi madre, y al gran Gary Kildall.</string>
+
+    <!-- Tomar objeto -->
+
+    <string name="tomar_demasiados_objetos">No puedes tomar más objetos.</string>
+
+</resources>

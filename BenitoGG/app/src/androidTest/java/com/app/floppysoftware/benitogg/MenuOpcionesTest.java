@@ -140,6 +140,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
      * Comprobar el buen funcionamiento del reset de la base de datos.
      */
     public void testReset() {
+
         // Referencias de los botones
         Button buttonReset = (Button) activity.findViewById(R.id.buttonReset);
 
@@ -155,30 +156,11 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         // Referencia del botón de cancelar
         Button buttonCancelar;
 
-        // --------------------------------
-        // Cambiar al protagonista de lugar
-        // --------------------------------
+        // Desactivar el reset
+        Preferencias.setReset(activity, false);
 
-        // Abrir base de datos
-        BaseDatos bd = new BaseDatos(getActivity(), false);
-
-        // Comprobar que se ha abierto correctamente
-        assertNotNull(bd);
-
-        // Leer actor protagonista
-        Actor prota = bd.getActor(Actor.PROTAGONISTA);
-
-        // Comprobar que se ha leído correctamente
-        assertNotNull(prota);
-
-        // Cambiarlo a un lugar conocido
-        prota.setLugar("testLugarCentro");
-
-        // Actualizar el actor en la base de datos
-        bd.updateActor(prota);
-
-        // Cerrar base de datos
-        bd.cerrar();
+        // Comprobar que se ha cambiado
+        assertFalse(Preferencias.getReset(activity));
 
         // ------------------------------------
         // Comprobación de cancelación de reset
@@ -202,27 +184,8 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         // Clickar el botón de cancelar
         TouchUtils.clickView(this, buttonCancelar);
 
-        // -----------------------------------------------------
-        // Comprobar que el protagonista sigue en el mismo lugar
-        // -----------------------------------------------------
-
-        // Abrir base de datos
-        bd = new BaseDatos(getActivity(), false);
-
-        // Comprobar que se ha abierto correctamente
-        assertNotNull(bd);
-
-        // Leer actor protagonista
-        prota = bd.getActor(Actor.PROTAGONISTA);
-
-        // Comprobar que se ha leído correctamente
-        assertNotNull(prota);
-
-        // Comprobar que no se ha reseteado el lugar
-        assertTrue(prota.getLugar().equals("testLugarCentro"));
-
-        // Cerrar base de datos
-        bd.cerrar();
+        // Comprobar que no ha cambiado
+        assertFalse(Preferencias.getReset(activity));
 
         // -------------------------------------
         // Comprobación de confirmación de reset
@@ -261,27 +224,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
         // Clickar el botón de aceptación
         TouchUtils.clickView(this, buttonContinuar);
 
-        // --------------------------------------------------
-        // Comprobar que el protagonista ha cambiado de lugar
-        // --------------------------------------------------
-
-        // Abrir base de datos
-        bd = new BaseDatos(getActivity(), false);
-
-        // Comprobar que se ha abierto correctamente
-        assertNotNull(bd);
-
-        // Leer actor protagonista
-        prota = bd.getActor(Actor.PROTAGONISTA);
-
-        // Comprobar que se ha leído correctamente
-        assertNotNull(prota);
-
-        // Comprobar que no se ha reseteado el lugar
-        assertFalse(prota.getLugar().equals("testLugarCentro"));
-
-        // Cerrar base de datos
-        bd.cerrar();
-
+        // Comprobar que sí ha cambiado
+        assertTrue(Preferencias.getReset(activity));
     }
 }

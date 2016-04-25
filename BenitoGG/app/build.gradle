@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 22
     buildToolsVersion '22.0.1'
-
     defaultConfig {
         applicationId "com.app.floppysoftware.benitogg"
         minSdkVersion 15
@@ -18,10 +17,17 @@ android {
         }
     }
     //sourceSets { main { java.srcDirs = ['src/main/java', 'src/test/java'] } }
-
     sourceSets {
         main { java.srcDirs = ['src/main/java'] }
         test { java.srcDirs = ['src/test/java'] }
+    }
+    productFlavors {
+        zeta_a {
+            applicationId 'com.app.floppysoftware.benitogg.a'
+        }
+        zeta_b {
+            applicationId 'com.app.floppysoftware.benitogg.b'
+        }
     }
 }
 

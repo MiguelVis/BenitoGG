@@ -4,12 +4,12 @@
 #
 testObjetoUno
 Objeto #1
-testLugarCentral
+testLugarCentro
 ?
 #
 testObjetoDos
 Objeto #2
-testLugarCentral
+testLugarCentro
 ?
 #
 # Juego:

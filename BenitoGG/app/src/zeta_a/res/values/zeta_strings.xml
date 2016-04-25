@@ -5,6 +5,10 @@
 
     <!-- Cadenas de texto dependientes de la aventura -->
 
+    <!-- Nombre de la app -->
+
+    <string name="app_name">Benito G.G.</string>
+
     <string name="zeta_copyright">&#169; 2016 Miguel I. García López</string>
 
     <string name="info_argumento">Benito García Gómez, más conocido como <i>Benito G.G.</i>,

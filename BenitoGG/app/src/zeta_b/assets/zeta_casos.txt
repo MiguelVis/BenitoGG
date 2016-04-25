@@ -1,0 +1,15 @@
+# Casos: Id (int), Nombre (text), Resuelto (boolean)
+#
+# Juego:
+#
+1
+Caso número 1
+0
+#
+2
+Caso número 2
+0
+#
+3
+Caso número 3
+0

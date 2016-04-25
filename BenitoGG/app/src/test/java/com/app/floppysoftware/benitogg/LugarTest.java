@@ -8,12 +8,13 @@ import static org.junit.Assert.*;
 /**
  * Tests JUnit4 para la clase Lugar.
  */
-public class LugarTest { // FIXME !!!!! Sonido??????????????????
+public class LugarTest {
 
     // Valores para testeo
     private static final String LUGAR_ID = "Id";            // Id
     private static final String LUGAR_TITULO = "Título";    // Título
     private static final String LUGAR_DETALLE = "Detalle";  // Detalle
+    private static final String LUGAR_SONIDO = "Sonido";    // Sonido
     private static final int LUGAR_X = 99;                  // Posición X en mapa
     private static final int LUGAR_Y = 99;                  // Posición Y en mapa
     private static final String LUGAR_NORTE = "LugarNorte"; // Lugar Norte
@@ -34,7 +35,9 @@ public class LugarTest { // FIXME !!!!! Sonido??????????????????
     public void setUp() throws Exception {
 
         // Crear lugar con valores conocidos
-        lugar = new Lugar(LUGAR_ID, LUGAR_TITULO, LUGAR_DETALLE, LUGAR_X, LUGAR_Y, LUGAR_NORTE, LUGAR_SUR, LUGAR_ESTE, LUGAR_OESTE);
+        lugar = new Lugar(LUGAR_ID, LUGAR_TITULO, LUGAR_DETALLE, LUGAR_SONIDO,
+                LUGAR_X, LUGAR_Y,
+                LUGAR_NORTE, LUGAR_SUR, LUGAR_ESTE, LUGAR_OESTE);
 
         // Comprobar resultado correcto
         assertNotNull(lugar);
@@ -53,6 +56,7 @@ public class LugarTest { // FIXME !!!!! Sonido??????????????????
         assertEquals(LUGAR_ID, lugar.getId());              // Id
         assertEquals(LUGAR_TITULO, lugar.getTitulo());      // Título
         assertEquals(LUGAR_DETALLE, lugar.getDetalle());    // Detalle
+        assertEquals(LUGAR_SONIDO, lugar.getSonido());      // Sonido
         assertEquals((long) LUGAR_X, (long) lugar.getX());  // Pos. X en mapa
         assertEquals((long) LUGAR_Y, (long) lugar.getY());  // Pos. Y en mapa
         assertEquals(LUGAR_NORTE, lugar.getLugarNorte());   // Lugar Norte

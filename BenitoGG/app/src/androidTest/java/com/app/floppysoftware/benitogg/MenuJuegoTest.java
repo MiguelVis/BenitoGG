@@ -13,8 +13,8 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
     // Referencia de la activity
     private PrincipalActivity activity;
 
-    // True si es una tablet, false si es un móvil
-    private boolean esTablet;
+    // True si es una tablet con orientacion horizontal, false si es un móvil
+    private boolean esTabletHorizontal;
 
     /**
      * Constructor.
@@ -44,7 +44,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         assertNotNull(activity);
 
         // Averiguar si es tablet o móvil
-        esTablet = activity.getResources().getBoolean(R.bool.isTablet);  // FIXME!! excepción
+        esTabletHorizontal = activity.getResources().getBoolean(R.bool.isTablet);  // FIXME!! excepción
 
         // Abrir base de datos
         BaseDatos bd = new BaseDatos(activity, false);
@@ -66,6 +66,12 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
 
         // Cerrar base de datos
         bd.cerrar();
+
+        // Desactivar el reset
+        Preferencias.setReset(activity, false);
+
+        // Comprobar que se ha cambiado
+        assertFalse(Preferencias.getReset(activity));
 
         // Tomar la referencia del botón de juego
         Button botonJugar = (Button) activity.findViewById(R.id.buttonJugar);
@@ -92,7 +98,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         ImageView imViMasAcciones = getImViMas();
 
         // Comprobaciones
-        if(esTablet) {
+        if(esTabletHorizontal) {
 
             // Comprobar que la referencia al ImageView de Más Acciones es null
             assertNull(imViMasAcciones);
@@ -107,10 +113,10 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
             imViOeste = getImViOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(imViNorte.toString(), imViNorte);
+            assertNotNull(imViSur.toString(), imViSur);
+            assertNotNull(imViEste.toString(), imViEste);
+            assertNotNull(imViOeste.toString(), imViOeste);
 
             // Comprobar el funcionamiento de las direcciones
 
@@ -237,7 +243,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViNorte);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -271,7 +277,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViSur);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -311,7 +317,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViSur);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -345,7 +351,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViNorte);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -385,7 +391,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViEste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -419,7 +425,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViOeste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -459,7 +465,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViOeste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();
@@ -493,7 +499,7 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         TouchUtils.clickView(this, imViEste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
-        if(!esTablet) {
+        if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
             imViMasAcciones = getImViMas();

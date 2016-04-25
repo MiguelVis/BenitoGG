@@ -3,10 +3,10 @@
 # Test:
 #
 testActorUno
-testLugarCentral
+testLugarCentro
 #
 testActorDos
-testLugarCentral
+testLugarCentro
 #
 # Juego:
 #

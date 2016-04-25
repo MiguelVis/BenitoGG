@@ -1,0 +1,40 @@
+# Objetos: Id, Nombre, Lugar, Estado.
+#
+# Test:
+#
+testObjetoUno
+Objeto #1
+testLugarCentro
+?
+#
+testObjetoDos
+Objeto #2
+testLugarCentro
+?
+#
+# Juego:
+#
+pan
+Un trozo de pan
+centro
+?
+#
+lata_sardinas
+Una lata de sardinas
+norte
+?
+#
+abrelatas
+Un abrelatas
+sur
+?
+#
+libro_recetas
+Un libro de recetas
+este
+?
+#
+libro_historia
+Un libro de historia
+oeste
+?
