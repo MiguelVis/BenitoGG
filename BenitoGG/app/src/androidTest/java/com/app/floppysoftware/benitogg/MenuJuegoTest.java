@@ -88,118 +88,118 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
      */
     public void testAcciones() {
 
-        // Referencias de las ImageView de direcciones
-        ImageView imViNorte;
-        ImageView imViSur;
-        ImageView imViEste;
-        ImageView imViOeste;
+        // Referencias de los botones de direcciones
+        Button btnNote;
+        Button btnSur;
+        Button btnEste;
+        Button btnOeste;
 
-        // Tomar la referencia del ImageView de Más Acciones (...)
-        ImageView imViMasAcciones = getImViMas();
+        // Tomar la referencia del botón de Más Acciones (...)
+        Button btnMas = getBtnMas();
 
         // Comprobaciones
         if(esTabletHorizontal) {
 
             // Comprobar que la referencia al ImageView de Más Acciones es null
-            assertNull(imViMasAcciones);
+            assertNull(btnMas);
         } else {
             // Comprobar que la referencia al ImageView de Más Acciones es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
-            // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            // Tomar las referencias de los botones de direcciones
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte.toString(), imViNorte);
-            assertNotNull(imViSur.toString(), imViSur);
-            assertNotNull(imViEste.toString(), imViEste);
-            assertNotNull(imViOeste.toString(), imViOeste);
+            assertNotNull(btnNote.toString(), btnNote);
+            assertNotNull(btnSur.toString(), btnSur);
+            assertNotNull(btnEste.toString(), btnEste);
+            assertNotNull(btnOeste.toString(), btnOeste);
 
             // Comprobar el funcionamiento de las direcciones
 
             // Comprobar el estado de los ImageView para el Lugar Centro
-            assertTrue(imViNorte.isEnabled());
-            assertTrue(imViSur.isEnabled());
-            assertTrue(imViEste.isEnabled());
-            assertTrue(imViOeste.isEnabled());
+            assertTrue(btnNote.isEnabled());
+            assertTrue(btnSur.isEnabled());
+            assertTrue(btnEste.isEnabled());
+            assertTrue(btnOeste.isEnabled());
 
             // Ir al Lugar Norte
-            TouchUtils.clickView(this, imViNorte);
+            TouchUtils.clickView(this, btnNote);
 
             // Comprobar el estado de los ImageView para el Lugar Norte
-            assertFalse(imViNorte.isEnabled());
-            assertTrue(imViSur.isEnabled());
-            assertFalse(imViEste.isEnabled());
-            assertFalse(imViOeste.isEnabled());
+            assertFalse(btnNote.isEnabled());
+            assertTrue(btnSur.isEnabled());
+            assertFalse(btnEste.isEnabled());
+            assertFalse(btnOeste.isEnabled());
 
             // Volver al Lugar Centro
-            TouchUtils.clickView(this, imViSur);
+            TouchUtils.clickView(this, btnSur);
 
             // Comprobar el estado de los ImageView para el Lugar Centro
-            assertTrue(imViNorte.isEnabled());
-            assertTrue(imViSur.isEnabled());
-            assertTrue(imViEste.isEnabled());
-            assertTrue(imViOeste.isEnabled());
+            assertTrue(btnNote.isEnabled());
+            assertTrue(btnSur.isEnabled());
+            assertTrue(btnEste.isEnabled());
+            assertTrue(btnOeste.isEnabled());
 
             // Ir al Lugar Sur
-            TouchUtils.clickView(this, imViSur);
+            TouchUtils.clickView(this, btnSur);
 
             // Comprobar el estado de los ImageView para el Lugar Sur
-            assertTrue(imViNorte.isEnabled());
-            assertFalse(imViSur.isEnabled());
-            assertFalse(imViEste.isEnabled());
-            assertFalse(imViOeste.isEnabled());
+            assertTrue(btnNote.isEnabled());
+            assertFalse(btnSur.isEnabled());
+            assertFalse(btnEste.isEnabled());
+            assertFalse(btnOeste.isEnabled());
 
             // Volver al Lugar Centro
-            TouchUtils.clickView(this, imViNorte);
+            TouchUtils.clickView(this, btnNote);
 
             // Comprobar el estado de los ImageView para el Lugar Centro
-            assertTrue(imViNorte.isEnabled());
-            assertTrue(imViSur.isEnabled());
-            assertTrue(imViEste.isEnabled());
-            assertTrue(imViOeste.isEnabled());
+            assertTrue(btnNote.isEnabled());
+            assertTrue(btnSur.isEnabled());
+            assertTrue(btnEste.isEnabled());
+            assertTrue(btnOeste.isEnabled());
 
             // Ir al Lugar Este
-            TouchUtils.clickView(this, imViEste);
+            TouchUtils.clickView(this, btnEste);
 
             // Comprobar el estado de los ImageView para el Lugar Este
-            assertFalse(imViNorte.isEnabled());
-            assertFalse(imViSur.isEnabled());
-            assertFalse(imViEste.isEnabled());
-            assertTrue(imViOeste.isEnabled());
+            assertFalse(btnNote.isEnabled());
+            assertFalse(btnSur.isEnabled());
+            assertFalse(btnEste.isEnabled());
+            assertTrue(btnOeste.isEnabled());
 
             // Volver al Lugar Centro
-            TouchUtils.clickView(this, imViOeste);
+            TouchUtils.clickView(this, btnOeste);
 
             // Comprobar el estado de los ImageView para el Lugar Centro
-            assertTrue(imViNorte.isEnabled());
-            assertTrue(imViSur.isEnabled());
-            assertTrue(imViEste.isEnabled());
-            assertTrue(imViOeste.isEnabled());
+            assertTrue(btnNote.isEnabled());
+            assertTrue(btnSur.isEnabled());
+            assertTrue(btnEste.isEnabled());
+            assertTrue(btnOeste.isEnabled());
 
             // Ir al Lugar Oeste
-            TouchUtils.clickView(this, imViOeste);
+            TouchUtils.clickView(this, btnOeste);
 
             // Comprobar el estado de los ImageView para el Lugar Oeste
-            assertFalse(imViNorte.isEnabled());
-            assertFalse(imViSur.isEnabled());
-            assertTrue(imViEste.isEnabled());
-            assertFalse(imViOeste.isEnabled());
+            assertFalse(btnNote.isEnabled());
+            assertFalse(btnSur.isEnabled());
+            assertTrue(btnEste.isEnabled());
+            assertFalse(btnOeste.isEnabled());
 
             // Volver al Lugar Centro
-            TouchUtils.clickView(this, imViEste);
+            TouchUtils.clickView(this, btnEste);
 
             // Comprobar el estado de los ImageView para el Lugar Centro
-            assertTrue(imViNorte.isEnabled());
-            assertTrue(imViSur.isEnabled());
-            assertTrue(imViEste.isEnabled());
-            assertTrue(imViOeste.isEnabled());
+            assertTrue(btnNote.isEnabled());
+            assertTrue(btnSur.isEnabled());
+            assertTrue(btnEste.isEnabled());
+            assertTrue(btnOeste.isEnabled());
 
             // Clickar para que aparezcan todas las acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
         }
 
         // Comprobaciones sobre el fragment de acciones
@@ -222,338 +222,338 @@ public class MenuJuegoTest extends ActivityInstrumentationTestCase2<PrincipalAct
         // Comprobar direcciones
 
         // Tomar las referencias de los ImageView de direcciones
-        imViNorte = getImViNorte();
-        imViSur = getImViSur();
-        imViEste = getImViEste();
-        imViOeste = getImViOeste();
+        btnNote = getBtnNorte();
+        btnSur = getBtnSur();
+        btnEste = getBtnEste();
+        btnOeste = getBtnOeste();
 
         // Comprobar que las referencias son válidas
-        assertNotNull(imViNorte);
-        assertNotNull(imViSur);
-        assertNotNull(imViEste);
-        assertNotNull(imViOeste);
+        assertNotNull(btnNote);
+        assertNotNull(btnSur);
+        assertNotNull(btnEste);
+        assertNotNull(btnOeste);
 
         // Comprobar el estado de los ImageView para el Lugar Centro
-        assertTrue(imViNorte.isEnabled());
-        assertTrue(imViSur.isEnabled());
-        assertTrue(imViEste.isEnabled());
-        assertTrue(imViOeste.isEnabled());
+        assertTrue(btnNote.isEnabled());
+        assertTrue(btnSur.isEnabled());
+        assertTrue(btnEste.isEnabled());
+        assertTrue(btnOeste.isEnabled());
 
         // Ir al Lugar Norte
-        TouchUtils.clickView(this, imViNorte);
+        TouchUtils.clickView(this, btnNote);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar el estado de los ImageView para el Lugar Norte
-        assertFalse(imViNorte.isEnabled());
-        assertTrue(imViSur.isEnabled());
-        assertFalse(imViEste.isEnabled());
-        assertFalse(imViOeste.isEnabled());
+        assertFalse(btnNote.isEnabled());
+        assertTrue(btnSur.isEnabled());
+        assertFalse(btnEste.isEnabled());
+        assertFalse(btnOeste.isEnabled());
 
         // Volver al Lugar Centro
-        TouchUtils.clickView(this, imViSur);
+        TouchUtils.clickView(this, btnSur);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar que las referencias son válidas
-        assertNotNull(imViNorte);
-        assertNotNull(imViSur);
-        assertNotNull(imViEste);
-        assertNotNull(imViOeste);
+        assertNotNull(btnNote);
+        assertNotNull(btnSur);
+        assertNotNull(btnEste);
+        assertNotNull(btnOeste);
 
         // Comprobar el estado de los ImageView para el Lugar Centro
-        assertTrue(imViNorte.isEnabled());
-        assertTrue(imViSur.isEnabled());
-        assertTrue(imViEste.isEnabled());
-        assertTrue(imViOeste.isEnabled());
+        assertTrue(btnNote.isEnabled());
+        assertTrue(btnSur.isEnabled());
+        assertTrue(btnEste.isEnabled());
+        assertTrue(btnOeste.isEnabled());
 
         // Ir al Lugar Sur
-        TouchUtils.clickView(this, imViSur);
+        TouchUtils.clickView(this, btnSur);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar el estado de los ImageView para el Lugar Sur
-        assertTrue(imViNorte.isEnabled());
-        assertFalse(imViSur.isEnabled());
-        assertFalse(imViEste.isEnabled());
-        assertFalse(imViOeste.isEnabled());
+        assertTrue(btnNote.isEnabled());
+        assertFalse(btnSur.isEnabled());
+        assertFalse(btnEste.isEnabled());
+        assertFalse(btnOeste.isEnabled());
 
         // Volver al Lugar Centro
-        TouchUtils.clickView(this, imViNorte);
+        TouchUtils.clickView(this, btnNote);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar que las referencias son válidas
-        assertNotNull(imViNorte);
-        assertNotNull(imViSur);
-        assertNotNull(imViEste);
-        assertNotNull(imViOeste);
+        assertNotNull(btnNote);
+        assertNotNull(btnSur);
+        assertNotNull(btnEste);
+        assertNotNull(btnOeste);
 
         // Comprobar el estado de los ImageView para el Lugar Centro
-        assertTrue(imViNorte.isEnabled());
-        assertTrue(imViSur.isEnabled());
-        assertTrue(imViEste.isEnabled());
-        assertTrue(imViOeste.isEnabled());
+        assertTrue(btnNote.isEnabled());
+        assertTrue(btnSur.isEnabled());
+        assertTrue(btnEste.isEnabled());
+        assertTrue(btnOeste.isEnabled());
 
         // Ir al Lugar Este
-        TouchUtils.clickView(this, imViEste);
+        TouchUtils.clickView(this, btnEste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar el estado de los ImageView para el Lugar Este
-        assertFalse(imViNorte.isEnabled());
-        assertFalse(imViSur.isEnabled());
-        assertFalse(imViEste.isEnabled());
-        assertTrue(imViOeste.isEnabled());
+        assertFalse(btnNote.isEnabled());
+        assertFalse(btnSur.isEnabled());
+        assertFalse(btnEste.isEnabled());
+        assertTrue(btnOeste.isEnabled());
 
         // Volver al Lugar Centro
-        TouchUtils.clickView(this, imViOeste);
+        TouchUtils.clickView(this, btnOeste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar que las referencias son válidas
-        assertNotNull(imViNorte);
-        assertNotNull(imViSur);
-        assertNotNull(imViEste);
-        assertNotNull(imViOeste);
+        assertNotNull(btnNote);
+        assertNotNull(btnSur);
+        assertNotNull(btnEste);
+        assertNotNull(btnOeste);
 
         // Comprobar el estado de los ImageView para el Lugar Centro
-        assertTrue(imViNorte.isEnabled());
-        assertTrue(imViSur.isEnabled());
-        assertTrue(imViEste.isEnabled());
-        assertTrue(imViOeste.isEnabled());
+        assertTrue(btnNote.isEnabled());
+        assertTrue(btnSur.isEnabled());
+        assertTrue(btnEste.isEnabled());
+        assertTrue(btnOeste.isEnabled());
 
         // Ir al Lugar Oeste
-        TouchUtils.clickView(this, imViOeste);
+        TouchUtils.clickView(this, btnOeste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar el estado de los ImageView para el Lugar Oeste
-        assertFalse(imViNorte.isEnabled());
-        assertFalse(imViSur.isEnabled());
-        assertTrue(imViEste.isEnabled());
-        assertFalse(imViOeste.isEnabled());
+        assertFalse(btnNote.isEnabled());
+        assertFalse(btnSur.isEnabled());
+        assertTrue(btnEste.isEnabled());
+        assertFalse(btnOeste.isEnabled());
 
         // Volver al Lugar Centro
-        TouchUtils.clickView(this, imViEste);
+        TouchUtils.clickView(this, btnEste);
 
         // Móvil: Clickar para que aparezcan todas las acciones
         if(!esTabletHorizontal) {
 
             // Tomar la referencia del ImageView de Más Acciones
-            imViMasAcciones = getImViMas();
+            btnMas = getBtnMas();
 
             // Comprobar que la referencia es válida
-            assertNotNull(imViMasAcciones);
+            assertNotNull(btnMas);
 
             // Clickar en el ImageView de Más Acciones
-            TouchUtils.clickView(this, imViMasAcciones);
+            TouchUtils.clickView(this, btnMas);
 
             // Tomar las referencias de los ImageView de direcciones
-            imViNorte = getImViNorte();
-            imViSur = getImViSur();
-            imViEste = getImViEste();
-            imViOeste = getImViOeste();
+            btnNote = getBtnNorte();
+            btnSur = getBtnSur();
+            btnEste = getBtnEste();
+            btnOeste = getBtnOeste();
 
             // Comprobar que las referencias son válidas
-            assertNotNull(imViNorte);
-            assertNotNull(imViSur);
-            assertNotNull(imViEste);
-            assertNotNull(imViOeste);
+            assertNotNull(btnNote);
+            assertNotNull(btnSur);
+            assertNotNull(btnEste);
+            assertNotNull(btnOeste);
         }
 
         // Comprobar que las referencias son válidas
-        assertNotNull(imViNorte);
-        assertNotNull(imViSur);
-        assertNotNull(imViEste);
-        assertNotNull(imViOeste);
+        assertNotNull(btnNote);
+        assertNotNull(btnSur);
+        assertNotNull(btnEste);
+        assertNotNull(btnOeste);
 
         // Comprobar el estado de los ImageView para el Lugar Centro
-        assertTrue(imViNorte.isEnabled());
-        assertTrue(imViSur.isEnabled());
-        assertTrue(imViEste.isEnabled());
-        assertTrue(imViOeste.isEnabled());
+        assertTrue(btnNote.isEnabled());
+        assertTrue(btnSur.isEnabled());
+        assertTrue(btnEste.isEnabled());
+        assertTrue(btnOeste.isEnabled());
     }
 
-    private ImageView getImViNorte() {
-        return (ImageView) activity.findViewById(R.id.imageViewNorte);
+    private Button getBtnNorte() {
+        return (Button) activity.findViewById(R.id.buttonNorte);
     }
 
-    private ImageView getImViSur() {
-        return (ImageView) activity.findViewById(R.id.imageViewSur);
+    private Button getBtnSur() {
+        return (Button) activity.findViewById(R.id.buttonSur);
     }
 
-    private ImageView getImViEste() {
-        return (ImageView) activity.findViewById(R.id.imageViewEste);
+    private Button getBtnEste() {
+        return (Button) activity.findViewById(R.id.buttonEste);
     }
 
-    private ImageView getImViOeste() {
-        return (ImageView) activity.findViewById(R.id.imageViewOeste);
+    private Button getBtnOeste() {
+        return (Button) activity.findViewById(R.id.buttonOeste);
     }
 
-    private ImageView getImViMas() {
-        return (ImageView) activity.findViewById(R.id.imageViewMas);
+    private Button getBtnMas() {
+        return (Button) activity.findViewById(R.id.buttonMas);
     }
 
 

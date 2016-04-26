@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,11 +43,11 @@ public class EscenaFragment extends Fragment {
     //private Button buttonAcciones;
 
     // Botones para la versión móvil
-    private ImageView imageViewNorte;
-    private ImageView imageViewSur;
-    private ImageView imageViewEste;
-    private ImageView imageViewOeste;
-    private ImageView imageViewMas;
+    private Button buttonNorte;
+    private Button buttonSur;
+    private Button buttonEste;
+    private Button buttonOeste;
+    private Button buttonMas;
 
     // Variable que indica si el dispositivo es una tablet
     private boolean esTablet = false;
@@ -92,53 +93,53 @@ public class EscenaFragment extends Fragment {
         if(!esTablet) {
 
             // Botones de dirección
-            imageViewNorte = (ImageView) v.findViewById(R.id.imageViewNorte);
-            imageViewSur = (ImageView) v.findViewById(R.id.imageViewSur);
-            imageViewOeste = (ImageView) v.findViewById(R.id.imageViewOeste);
-            imageViewEste = (ImageView) v.findViewById(R.id.imageViewEste);
+            buttonNorte = (Button) v.findViewById(R.id.buttonNorte);
+            buttonSur   = (Button) v.findViewById(R.id.buttonSur);
+            buttonOeste = (Button) v.findViewById(R.id.buttonOeste);
+            buttonEste  = (Button) v.findViewById(R.id.buttonEste);
 
             // Botón de acciones
-            imageViewMas = (ImageView) v.findViewById(R.id.imageViewMas);
+            buttonMas = (Button) v.findViewById(R.id.buttonMas);
 
             // Inhabilitar los botones de dirección
-            imageViewNorte.setEnabled(false);
-            imageViewSur.setEnabled(false);
-            imageViewOeste.setEnabled(false);
-            imageViewEste.setEnabled(false);
+            buttonNorte.setEnabled(false);
+            buttonSur.setEnabled(false);
+            buttonOeste.setEnabled(false);
+            buttonEste.setEnabled(false);
 
             // Inhabilitar el botón de acciones
-            imageViewMas.setEnabled(false);
+            buttonMas.setEnabled(false);
 
             // Lísteners
-            imageViewNorte.setOnClickListener(new View.OnClickListener() {
+            buttonNorte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     realizaAccion(AccionesFragment.ACCION_NORTE, 0);
                 }
             });
 
-            imageViewSur.setOnClickListener(new View.OnClickListener() {
+            buttonSur.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     realizaAccion(AccionesFragment.ACCION_SUR, 0);
                 }
             });
 
-            imageViewEste.setOnClickListener(new View.OnClickListener() {
+            buttonEste.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     realizaAccion(AccionesFragment.ACCION_ESTE, 0);
                 }
             });
 
-            imageViewOeste.setOnClickListener(new View.OnClickListener() {
+            buttonOeste.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     realizaAccion(AccionesFragment.ACCION_OESTE, 0);
                 }
             });
 
-            imageViewMas.setOnClickListener(new View.OnClickListener() {
+            buttonMas.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     setAcciones();
@@ -440,11 +441,11 @@ public class EscenaFragment extends Fragment {
             if(esTablet) {
                 setAcciones();
             } else {
-                imageViewNorte.setEnabled(lugarActual.getLugarNorte() != null);
-                imageViewSur.setEnabled(lugarActual.getLugarSur() != null);
-                imageViewEste.setEnabled(lugarActual.getLugarEste() != null);
-                imageViewOeste.setEnabled(lugarActual.getLugarOeste() != null);
-                imageViewMas.setEnabled(true);
+                buttonNorte.setEnabled(lugarActual.getLugarNorte() != null);
+                buttonSur.setEnabled(lugarActual.getLugarSur() != null);
+                buttonEste.setEnabled(lugarActual.getLugarEste() != null);
+                buttonOeste.setEnabled(lugarActual.getLugarOeste() != null);
+                buttonMas.setEnabled(true);
             }
 
             if(!lugarActual.getId().equals(ultimoLugarId)) {

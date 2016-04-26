@@ -24,5 +24,15 @@
     <dimen name="text_size_normal">14sp</dimen>
     <dimen name="text_size_big">20sp</dimen>
 
+    <!-- GameButton -->
+
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="stroke_width">2dp</dimen>
+    <dimen name="layer_padding">1dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="half_button_height">25dp</dimen>
+
+
 
 </resources>

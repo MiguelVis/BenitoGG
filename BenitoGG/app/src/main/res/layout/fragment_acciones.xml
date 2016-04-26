@@ -20,76 +20,105 @@
         android:layout_marginBottom="8dp"
         >
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="64sp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewNorte"
-            android:src="@drawable/btn_norte"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            />
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_norte"
+            android:text="@string/boton_norte"
+            android:textSize="@dimen/text_size_small"
+            style="@style/GameButton"
+            android:id="@+id/buttonNorte" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="64sp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewSur"
-            android:src="@drawable/btn_sur"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            />
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_sur"
+            android:text="@string/boton_sur"
+            android:textSize="@dimen/text_size_small"
+            style="@style/GameButton"
+            android:id="@+id/buttonSur" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="64sp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewOeste"
-            android:src="@drawable/btn_oeste"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            />
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_oeste"
+            android:text="@string/boton_oeste"
+            android:textSize="@dimen/text_size_small"
+            style="@style/GameButton"
+            android:id="@+id/buttonOeste" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="64sp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewEste"
-            android:src="@drawable/btn_este"
-            />
+            android:drawableTop="@drawable/flecha_este"
+            android:text="@string/boton_este"
+            android:textSize="@dimen/text_size_small"
+            style="@style/GameButton"
+            android:id="@+id/buttonEste" />
 
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/acciones_titulo_tomar_objeto"
+        style="@style/GameButton"
         android:id="@+id/buttonTomarObjeto" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/acciones_titulo_dejar_objeto"
+        style="@style/GameButton"
         android:id="@+id/buttonDejarObjeto" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/acciones_titulo_inventario"
+        style="@style/GameButton"
         android:id="@+id/buttonInventario" />
 
-    <Button
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/acciones_titulo_otras_acciones"
-        android:id="@+id/buttonOtrasAcciones" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/acciones_titulo_otras_acciones"
+        style="@style/GameButton"
+        android:id="@+id/buttonOtrasAcciones" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/acciones_titulo_mapa"
+        style="@style/GameButton"
         android:id="@+id/buttonMapa" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/acciones_titulo_casos"
+        style="@style/GameButton"
         android:id="@+id/buttonCasos" />
 
 

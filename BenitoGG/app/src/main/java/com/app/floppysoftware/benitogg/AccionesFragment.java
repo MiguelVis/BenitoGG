@@ -38,11 +38,11 @@ public class AccionesFragment extends Fragment {
     public static final int ACCION_MAPA  = 7;  // Mostrar mapa
     public static final int ACCION_CASOS = 8;  // Mostrar casos
 
-    // ImageViews de los botones de dirección
-    private ImageView imageViewNorte;
-    private ImageView imageViewSur;
-    private ImageView imageViewEste;
-    private ImageView imageViewOeste;
+    // Botones de dirección
+    private Button buttonNorte;
+    private Button buttonSur;
+    private Button buttonEste;
+    private Button buttonOeste;
 
     // True si hay salida en la dirección indicada
     private boolean hayNorte, haySur, hayEste, hayOeste;
@@ -161,13 +161,13 @@ public class AccionesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_acciones, container, false);
 
         // Tomar las referencias de los ImageView de direcciones
-        imageViewNorte = (ImageView) v.findViewById(R.id.imageViewNorte);
-        imageViewSur = (ImageView) v.findViewById(R.id.imageViewSur);
-        imageViewEste = (ImageView) v.findViewById(R.id.imageViewEste);
-        imageViewOeste = (ImageView) v.findViewById(R.id.imageViewOeste);
+        buttonNorte = (Button) v.findViewById(R.id.buttonNorte);
+        buttonSur   = (Button) v.findViewById(R.id.buttonSur);
+        buttonOeste = (Button) v.findViewById(R.id.buttonOeste);
+        buttonEste  = (Button) v.findViewById(R.id.buttonEste);
 
         // Fijar listener para Norte
-        imageViewNorte.setOnClickListener(new View.OnClickListener() {
+        buttonNorte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onAccionSeleccionada(ACCION_NORTE, -1);
@@ -175,7 +175,7 @@ public class AccionesFragment extends Fragment {
         });
 
         // Fijar listener para Sur
-        imageViewSur.setOnClickListener(new View.OnClickListener() {
+        buttonSur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onAccionSeleccionada(ACCION_SUR, -1);
@@ -183,7 +183,7 @@ public class AccionesFragment extends Fragment {
         });
 
         // Fijar listener para Este
-        imageViewEste.setOnClickListener(new View.OnClickListener() {
+        buttonEste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onAccionSeleccionada(ACCION_ESTE, -1);
@@ -191,7 +191,7 @@ public class AccionesFragment extends Fragment {
         });
 
         // Fijar listener para Oeste
-        imageViewOeste.setOnClickListener(new View.OnClickListener() {
+        buttonOeste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onAccionSeleccionada(ACCION_OESTE, -1);
@@ -327,10 +327,10 @@ public class AccionesFragment extends Fragment {
 
             // Habilitar / deshabilitar los imageView de las direcciones,
             // según hayan o no salidas.
-            imageViewNorte.setEnabled(hayNorte);
-            imageViewSur.setEnabled(haySur);
-            imageViewEste.setEnabled(hayEste);
-            imageViewOeste.setEnabled(hayOeste);
+            buttonNorte.setEnabled(hayNorte);
+            buttonSur.setEnabled(haySur);
+            buttonEste.setEnabled(hayEste);
+            buttonOeste.setEnabled(hayOeste);
 
             // Actualizar el Popup para tomar objetos
             ArrayList<String> nombreObjetosLugar = new ArrayList<>();

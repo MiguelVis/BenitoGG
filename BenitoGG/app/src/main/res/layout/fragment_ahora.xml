@@ -49,56 +49,65 @@
         android:layout_height="wrap_content"
         >
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewNorte"
-            android:src="@drawable/btn_norte"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_norte"
+            android:text="@string/boton_norte"
+            android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
-            />
+            style="@style/GameButton"
+            android:id="@+id/buttonNorte" />
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewSur"
-            android:src="@drawable/btn_sur"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_sur"
+            android:text="@string/boton_sur"
+            android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
-            />
+            style="@style/GameButton"
+            android:id="@+id/buttonSur" />
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewOeste"
-            android:src="@drawable/btn_oeste"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_oeste"
+            android:text="@string/boton_oeste"
+            android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
-            />
+            style="@style/GameButton"
+            android:id="@+id/buttonOeste" />
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewEste"
-            android:src="@drawable/btn_este"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/flecha_este"
+            android:text="@string/boton_este"
+            android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
-            />
+            style="@style/GameButton"
+            android:id="@+id/buttonEste" />
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewMas"
-            android:src="@drawable/btn_mas"
+            android:drawableTop="@drawable/flecha_mas"
+            android:text="@string/boton_mas"
+            android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
-            />
+            style="@style/GameButton"
+            android:id="@+id/buttonMas" />
 
     </LinearLayout>
-
-    <!--Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/boton_acciones"
-        android:id="@+id/buttonAcciones"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margen_vertical"
-        /-->
 
 </LinearLayout>
 

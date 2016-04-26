@@ -15,9 +15,6 @@ public class MenuInfoTest extends ActivityInstrumentationTestCase2<PrincipalActi
     // Referencia de la activity
     private PrincipalActivity activity;
 
-    // True si es una tablet, false si es un móvil
-    private boolean esTablet;
-
     /**
      * Constructor.
      */
@@ -44,9 +41,6 @@ public class MenuInfoTest extends ActivityInstrumentationTestCase2<PrincipalActi
 
         // Comprobar que la activity ha sido creada
         assertNotNull(activity);
-
-        // Averiguar si es tablet o móvil
-        esTablet = activity.getResources().getBoolean(R.bool.isTablet);  // FIXME!! excepción
 
         // Tomar la referencia del botón de info.
         Button botonInfo = (Button) activity.findViewById(R.id.buttonInfo);

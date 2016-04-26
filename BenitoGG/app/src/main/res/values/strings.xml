@@ -31,6 +31,14 @@
     <string name="boton_opciones">Opciones</string>
     <string name="boton_info">Info.</string>
 
+    <!-- Botones de acción -->
+
+    <string name="boton_norte">Norte</string>
+    <string name="boton_sur">Sur</string>
+    <string name="boton_este">Este</string>
+    <string name="boton_oeste">Oeste</string>
+    <string name="boton_mas">Más</string>
+
     <!-- Textos complementarios para describir la escena actual -->
 
     <string name="escena_salidas">Salidas:</string>

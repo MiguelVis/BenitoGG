@@ -40,4 +40,10 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="GameButton">
+        <item name="android:background">@drawable/game_button</item>
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:textColor">@drawable/game_button_text</item>
+    </style>
+
 </resources>

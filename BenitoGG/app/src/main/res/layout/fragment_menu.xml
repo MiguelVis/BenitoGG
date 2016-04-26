@@ -35,14 +35,18 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margen_vertical"
         android:text="@string/boton_jugar"
+        style="@style/GameButton"
         android:id="@+id/buttonJugar"
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margen_vertical"
         android:text="@string/boton_opciones"
+        style="@style/GameButton"
         android:id="@+id/buttonOpciones"
         />
 
@@ -50,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/boton_info"
+        style="@style/GameButton"
         android:id="@+id/buttonInfo"
         />
 
