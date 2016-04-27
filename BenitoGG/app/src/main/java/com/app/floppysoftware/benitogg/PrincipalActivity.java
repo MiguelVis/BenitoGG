@@ -199,9 +199,11 @@ public class PrincipalActivity extends Activity implements
 
                     // Reemplazar el fragment actual en el área, por el de la escena
                     ft.replace(R.id.frameLayoutArea, getEscenaFragment(), TAG_FRAG_ESCENA);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
                     // Reemplazar el fragment actual en el menú, por el de las acciones
                     ft.replace(R.id.frameLayoutMenu, getAccionesFragment(), TAG_FRAG_MENU);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
                     // Añadirlo al BackStack, para que se pueda restaurar
                     // al estado previo (fragment de bienvenida + fragment de menú).
@@ -536,6 +538,7 @@ public class PrincipalActivity extends Activity implements
 
         // Reemplazar fragment actual, por el nuevo
         ft.replace(R.id.frameLayoutArea, fragment, tag);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
         // Activar los cambios
         ft.commit();
@@ -555,6 +558,7 @@ public class PrincipalActivity extends Activity implements
 
         // Reemplazar el fragment actual, por el nuevo
         ft.replace(R.id.frameLayoutMenu, fragment, tag);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
         // Ponerlo en el BackStack, para que se pueda volver
         // a la disposición anterior.

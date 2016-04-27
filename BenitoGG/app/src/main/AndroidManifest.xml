@@ -8,16 +8,16 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.app.floppysoftware.benitogg.PrincipalActivity"
+            android:name=".PrincipalActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.app.floppysoftware.benitogg.MapaActivity"
+            android:name=".MapaActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.app.floppysoftware.benitogg.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.Splash" >
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.app.floppysoftware.benitogg.CasosActivity"
+            android:name=".CasosActivity"
             android:label="@string/app_name" >
         </activity>
     </application>
