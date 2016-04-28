@@ -218,39 +218,14 @@ public class EscenaFragment extends Fragment {
      */
     private class MostrarEscena extends AsyncTask<Void, Void, String> {
 
-        // True si se ha de reinicializar la base de datos
-        boolean reset;
-
-        // ProgressDialog a mostrar durante la reinicialización
-        // de la base de datos.
-        ProgressDialog progressDialog;
-
         /**
          * Tarea a ejecutar en el UI, antes de doInBackground().
          */
         @Override
         protected void onPreExecute() {
 
-            // ¿Se ha de reinicializar el juego?
-            reset = Preferencias.getReset(getActivity());
+            // Nada
 
-            // Si se ha de reinicializar el juego...
-            if(reset) {
-
-                // Mostrar imagen del reloj
-                imageViewImagen.setImageResource(R.drawable.reloj);
-
-                // Mostrar ProgressDialog durante el proceso de
-                // reinicializado.
-                progressDialog = ProgressDialog.show(getActivity(),
-                        getString(R.string.dialogo_carga_titulo),
-                        getString(R.string.dialogo_carga_texto),
-                        true,
-                        false);
-
-                // La próxima vez no se reinicializará
-                Preferencias.setReset(getActivity(), false);
-            }
         }
 
         /**
@@ -264,7 +239,7 @@ public class EscenaFragment extends Fragment {
         protected String doInBackground(Void... params) {
 
             // Abrir base de datos
-            BaseDatos bd = new BaseDatos(getActivity(), reset);
+            BaseDatos bd = new BaseDatos(getActivity(), false);
 
             // Leer protagonista
             prota = bd.getActor(Actor.PROTAGONISTA);
@@ -423,12 +398,6 @@ public class EscenaFragment extends Fragment {
         @Override
         protected void onPostExecute(String detalle) {
 
-            // Quitar el ProgressDialog de reinicialización de la
-            // base de datos, si está activo.
-            if(progressDialog != null) {
-                progressDialog.dismiss();
-            }
-
             // Mostrar la descripción completa del lugar
             textViewTitulo.setText(lugarActual.getTitulo());
             imageViewImagen.setImageResource(getResources().getIdentifier("zeta_lugar_" + lugarActual.getId(), "drawable", getActivity().getPackageName()));
@@ -456,7 +425,6 @@ public class EscenaFragment extends Fragment {
                     mListener.emiteSonido(getResources().getIdentifier("zeta_" + lugarActual.getSonido(), "raw", getActivity().getPackageName()));
                 }
             }
-            ///mListener.emiteSonido(getResources().getIdentifier("zeta_sonido_" + "prueba", "raw", getActivity().getPackageName()));
         }
     }
 
@@ -574,7 +542,7 @@ public class EscenaFragment extends Fragment {
 
                 mListener.emiteSonido(R.raw.caso_resuelto);
 
-                Mensaje.continuar(getActivity(), R.drawable.ic_check,
+                Mensaje.continuar(getActivity(), R.drawable.ic_solved,
                         getString(R.string.dialogo_caso_resuelto_titulo),
                         getString(R.string.dialogo_caso_resuelto_texto) + " '" + casoResuelto + "'!",
                         null);

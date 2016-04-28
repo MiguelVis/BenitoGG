@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -184,6 +186,7 @@ public class PrincipalActivity extends Activity implements
         switch(opcion) {
             case MenuFragment.MENU_OPCION_JUGAR :
 
+                /************************************
                 // Actuar según sea tablet con orientación horizontal,
                 // o no.
                 if(esTabletHorizontal) {
@@ -218,6 +221,9 @@ public class PrincipalActivity extends Activity implements
                     // Poner el fragment de la escena
                     ponFragmentMovil(getEscenaFragment(), TAG_FRAG_ESCENA);
                 }
+                ****************************/
+                new Jugar().execute();
+
                 break;
             case MenuFragment.MENU_OPCION_OPCIONES :
 
@@ -335,7 +341,7 @@ public class PrincipalActivity extends Activity implements
                 // Cuadro de diálogo, para indicar al usuario
                 // que el juego ha sido reinicializado.
                 Mensaje.continuar(PrincipalActivity.this,
-                        R.drawable.ic_information,
+                        R.drawable.ic_done,
                         getString(R.string.dialogo_reset_titulo),
                         getString(R.string.dialogo_reset_hecho),
                         null);
@@ -775,4 +781,136 @@ public class PrincipalActivity extends Activity implements
             }
         }
     };
+
+    /**
+     * Clase interna para iniciar el juego, reinicializando
+     * la base de datos si es necesario.
+     */
+    private class Jugar extends AsyncTask<Void, Void, Void> {
+
+        // True si se ha de reinicializar la base de datos
+        boolean reset;
+
+        // ProgressDialog a mostrar durante la reinicialización
+        // de la base de datos.
+        ProgressDialog progressDialog;
+
+        /**
+         * Tarea a ejecutar en el UI, antes de doInBackground().
+         */
+        @Override
+        protected void onPreExecute() {
+
+            if(esTabletHorizontal) {
+
+                // Tablet con orientación horizontal
+
+                // Poner primero el fragment de bienvenida en el área,
+                // para que se pueda volver a él.
+                ponFragmentArea(getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
+            }
+
+            // ¿Se ha de reinicializar el juego?
+            reset = Preferencias.getReset(PrincipalActivity.this);
+
+            // Si se ha de reinicializar el juego...
+            if(reset) {
+
+                // La próxima vez no se reinicializará
+                Preferencias.setReset(PrincipalActivity.this, false);
+
+                // Mostrar ProgressDialog durante el proceso de
+                // reinicializado.
+                /*******************
+                progressDialog = ProgressDialog.show(PrincipalActivity.this,
+                        getString(R.string.dialogo_carga_titulo),
+                        getString(R.string.dialogo_carga_texto),
+                        true,
+                        false);
+                 *******************/
+
+                progressDialog = new ProgressDialog(PrincipalActivity.this);
+
+                progressDialog.setIcon(R.drawable.ic_wait);
+                progressDialog.setTitle(R.string.dialogo_carga_titulo);
+                progressDialog.setMessage(getString(R.string.dialogo_carga_texto));
+                progressDialog.setIndeterminate(true);
+                progressDialog.setCancelable(false);
+
+                progressDialog.show();
+            }
+        }
+
+        /**
+         * Tarea a realizar en background, fuera del thread del UI. Reinicializa
+         * la base de datos si es necesario.
+         *
+         * @param params  nada
+         * @return  nada
+         */
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            // Si se ha de reinicializar el juego...
+            if(reset) {
+                // Abrir base de datos
+                BaseDatos bd = new BaseDatos(PrincipalActivity.this, true);
+
+                // Cerrar base de datos
+                bd.cerrar();
+            }
+
+            //
+            return null;
+        }
+
+        /**
+         * Tarea a realizar en el thread del UI, una vez finalizada la tarea
+         * en background. Pone cada fragment en su sitio, e inicia el juego.
+         */
+        @Override
+        protected void onPostExecute(Void param) {
+
+            // Quitar el ProgressDialog de reinicialización de la
+            // base de datos, si está activo.
+            if(progressDialog != null) {
+                progressDialog.dismiss();
+            }
+
+            // Actuar según sea tablet con orientación horizontal,
+            // o no.
+            if(esTabletHorizontal) {
+
+                // Tablet con orientación horizontal
+
+                // Poner primero el fragment de bienvenida en el área,
+                // para que se pueda volver a él.
+                /////ponFragmentArea(getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
+
+                // Comenzar transacción
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+                // Reemplazar el fragment actual en el área, por el de la escena
+                ft.replace(R.id.frameLayoutArea, getEscenaFragment(), TAG_FRAG_ESCENA);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+                // Reemplazar el fragment actual en el menú, por el de las acciones
+                ft.replace(R.id.frameLayoutMenu, getAccionesFragment(), TAG_FRAG_MENU);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+                // Añadirlo al BackStack, para que se pueda restaurar
+                // al estado previo (fragment de bienvenida + fragment de menú).
+                ft.addToBackStack(null);
+
+                // Activar los cambios
+                ft.commit();
+            } else {
+
+                // Móvil, o tablet con orientación vertical
+
+                // Poner el fragment de la escena
+                ponFragmentMovil(getEscenaFragment(), TAG_FRAG_ESCENA);
+            }
+        }
+    }
 }
