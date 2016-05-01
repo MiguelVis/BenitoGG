@@ -72,6 +72,24 @@ public class Mensaje {
         return alertDialog;
     }
 
+    public static AlertDialog seleccionar(Context contexto, int icono, String titulo, CharSequence[] items,
+                                             DialogInterface.OnClickListener onClick) {
+
+        // Crear un AlertDialog
+        AlertDialog.Builder dlgBuilder = new AlertDialog.Builder(contexto);
+
+        // Mostrar AlertDialog según parámetros de entrada.
+        alertDialog =  dlgBuilder.setTitle(titulo)
+                .setIcon(icono)
+                .setItems(items, onClick)
+                .setNegativeButton(R.string.dialogo_cancelar, null)
+                .setCancelable(false)
+                .show();
+
+        // Devolverlo
+        return alertDialog;
+    }
+
     /**
      * Devolver referencia al último AlertDialog construido.
      *

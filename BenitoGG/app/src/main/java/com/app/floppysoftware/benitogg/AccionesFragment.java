@@ -1,17 +1,14 @@
 package com.app.floppysoftware.benitogg;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
 
 import java.util.ArrayList;
 
@@ -52,11 +49,6 @@ public class AccionesFragment extends Fragment {
     private Button buttonDejarObjeto;      // Dejar objeto
     private Button buttonOtrasAcciones;    // Otras acciones
     private Button buttonInventario;       // Inventario
-
-    // Popups para los botones de acción
-    private PopupMenu popupMenuTomarObjeto;    // Tomar objeto
-    private PopupMenu popupMenuDejarObjeto;    // Dejar objetos
-    private PopupMenu popupMenuOtrasAcciones;  // Otra acciones
 
     // ArrayList de los objetos y acciones
     private ArrayList<Objeto> arrayListObjetosLugar;      // Tomar objeto: objetos en el lugar
@@ -160,13 +152,13 @@ public class AccionesFragment extends Fragment {
         // Inflar el layout del fragment
         View v = inflater.inflate(R.layout.fragment_acciones, container, false);
 
-        // Tomar las referencias de los ImageView de direcciones
+        // Tomar las referencias de los botones de direcciones
         buttonNorte = (Button) v.findViewById(R.id.buttonNorte);
         buttonSur   = (Button) v.findViewById(R.id.buttonSur);
         buttonOeste = (Button) v.findViewById(R.id.buttonOeste);
         buttonEste  = (Button) v.findViewById(R.id.buttonEste);
 
-        // Fijar listener para Norte
+        // Fijar listeners
         buttonNorte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +166,6 @@ public class AccionesFragment extends Fragment {
             }
         });
 
-        // Fijar listener para Sur
         buttonSur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +173,6 @@ public class AccionesFragment extends Fragment {
             }
         });
 
-        // Fijar listener para Este
         buttonEste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,7 +180,6 @@ public class AccionesFragment extends Fragment {
             }
         });
 
-        // Fijar listener para Oeste
         buttonOeste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,6 +191,34 @@ public class AccionesFragment extends Fragment {
         buttonTomarObjeto   = (Button) v.findViewById(R.id.buttonTomarObjeto);
         buttonDejarObjeto   = (Button) v.findViewById(R.id.buttonDejarObjeto);
         buttonOtrasAcciones = (Button) v.findViewById(R.id.buttonOtrasAcciones);
+
+        // Fijar listeners
+        buttonTomarObjeto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Tomar objeto
+                tomarObjeto();
+            }
+        });
+
+        buttonDejarObjeto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Dejar objeto
+                dejarObjeto();
+            }
+        });
+
+        buttonOtrasAcciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Realizar acción
+                otraAccion();
+            }
+        });
 
         // Botón para el inventario
         buttonInventario = (Button) v.findViewById(R.id.buttonInventario);
@@ -247,7 +264,7 @@ public class AccionesFragment extends Fragment {
     }
 
     /**
-     * Método llamadao cuando el fragment es enlazado a la activity
+     * Método llamado cuando el fragment es enlazado a la activity
      *
      * @param activity  Activity
      */
@@ -325,41 +342,18 @@ public class AccionesFragment extends Fragment {
             // Log
             Log.d(TAG, "Refrescando");
 
-            // Habilitar / deshabilitar los imageView de las direcciones,
-            // según hayan o no salidas.
+            // Habilitar / deshabilitar los botones de las direcciones.
             buttonNorte.setEnabled(hayNorte);
             buttonSur.setEnabled(haySur);
             buttonEste.setEnabled(hayEste);
             buttonOeste.setEnabled(hayOeste);
 
-            // Actualizar el Popup para tomar objetos
-            ArrayList<String> nombreObjetosLugar = new ArrayList<>();
+            // Habilitar / deshabilitar los botones de acción.
+            buttonTomarObjeto.setEnabled(!arrayListObjetosLugar.isEmpty());
+            buttonDejarObjeto.setEnabled(!arrayListObjetosBolsillo.isEmpty());
+            buttonOtrasAcciones.setEnabled(!arrayListOtrasAcciones.isEmpty());
 
-            for(Objeto obj: arrayListObjetosLugar) {
-                nombreObjetosLugar.add(obj.getNombre());
-            }
-            popupMenuTomarObjeto = creaPopupMenu(buttonTomarObjeto, nombreObjetosLugar, ACCION_TOMAR);
-
-            // Actualizar el Popup para dejar objetos
-            ArrayList<String> nombreObjetosBolsillo = new ArrayList<>();
-
-            for(Objeto obj: arrayListObjetosBolsillo) {
-                nombreObjetosBolsillo.add(obj.getNombre());
-            }
-
-            popupMenuDejarObjeto = creaPopupMenu(buttonDejarObjeto, nombreObjetosBolsillo, ACCION_DEJAR);
-
-            // Actualizar el Popup de otras acciones
-            ArrayList<String> nombreOtrasAcciones = new ArrayList<>();
-
-            for(Accion acc: arrayListOtrasAcciones) {
-                nombreOtrasAcciones.add(getString(acc.getStringId()));
-            }
-
-            popupMenuOtrasAcciones = creaPopupMenu(buttonOtrasAcciones, nombreOtrasAcciones, ACCION_OTRAS);
-
-            // Habilitar / deshabilitar el botón de inventario,
-            // según lleve objetos o no el protagonista.
+            // Habilitar / deshabilitar el botón de inventario.
             buttonInventario.setEnabled(!arrayListObjetosBolsillo.isEmpty());
 
             // Indicar que se ha refrescado el fragment
@@ -368,160 +362,154 @@ public class AccionesFragment extends Fragment {
     }
 
     /**
-     * Listener para los botones de acción que tienen un Popup asociado.
+     * Tomar un objeto.
      */
-    private class BotonListener implements View.OnClickListener {
+    private void tomarObjeto() {
 
-        /**
-         * Método llamado al clickar el botón.
-         *
-         * @param v  View del botón
-         */
-        @Override
-        public void onClick(View v) {
+        // Generar una lista de nombres de objetos
+        ArrayList<String> nombreObjetosLugar = new ArrayList<>();
 
-            // Mostrar el Popup correspondiente
-            if (v == buttonTomarObjeto) {
-                popupMenuTomarObjeto.show();
-            } else if (v == buttonDejarObjeto) {
-                popupMenuDejarObjeto.show();
-            } else if (v == buttonOtrasAcciones) {
-                popupMenuOtrasAcciones.show();
-            }
-        }
-    }
-
-    /**
-     * Crear Popup asociado a un botón. En el caso de que la lista de items
-     * del Popup esté vacía, deshabilitará el botón, e invalidará el listener
-     * del mismo.
-     *
-     * @param button      Botón
-     * @param items       Elementos del Popup
-     * @param accionId    Id de la acción asociada al botón
-     *
-     * @return            Popup creado, o null si la lista de items está vacía
-     */
-    private PopupMenu creaPopupMenu(Button button, ArrayList<String> items, int accionId) {
-
-        // Comprobar si la lista de items está vacía
-        if(items.isEmpty()) {
-
-            // Está vacía
-
-            // Deshabilitar el botón
-            button.setEnabled(false);
-
-            // Invalidar el listener del botón
-            button.setOnClickListener(null);
-
-            // Devolver null
-            return null;
+        for(Objeto obj: arrayListObjetosLugar) {
+            nombreObjetosLugar.add(obj.getNombre().concat("."));
         }
 
-        // La lista contiene items
+        // Listener de selección de un objeto de la lista
+        DialogInterface.OnClickListener onClick = new DialogInterface.OnClickListener() {
 
-        // Habilitar el botón
-        button.setEnabled(true);
+            /**
+             * Método que se llamará cuando se seleccione un
+             * elemento de la lista.
+             *
+             * @param dialog  Diálogo
+             * @param which   Nº de elemento
+             */
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-        // Fijar listener del botón
-        button.setOnClickListener(new BotonListener());
+                // Comprobar que el objeto puede ser tomado
+                int errId = Zeta.puedeTomarObjeto(arrayListObjetosLugar.get(which), arrayListObjetosBolsillo);
 
-        // Crear Popup asociado al botón, con la lista de items
-        PopupMenu popupMenu = new PopupMenu(getActivity(), button);
+                // Mostrar mensaje de error, si no puede ser tomado
+                if(Zeta.puedeTomarObjeto(arrayListObjetosLugar.get(which), arrayListObjetosBolsillo) > 0) {
 
-        // Añadir tantos elementos al Popup, como items
-        // haya en la lista.
-        for(int i = 0; i < items.size(); ++i) {
+                    // Sonido
+                    mListener.emiteSonido(R.raw.error);
 
-            // Añadir elemento
-            popupMenu.getMenu().add(accionId + 1, i + 1, Menu.NONE, items.get(i));
-        }
-
-        // Fijar listener del Popup
-        popupMenu.setOnMenuItemClickListener(new PopupMenuListener());
-
-        // Devolver referencia al Popup
-        return popupMenu;
-    }
-
-
-    /**
-     * Listener para los Popup asociados a botones de acción.
-     */
-    private class PopupMenuListener implements PopupMenu.OnMenuItemClickListener {
-
-        /**
-         * Método llamado cuando se seleccione un elemento.
-         *
-         * @param item   Número de elemento seleccionado
-         * @return       True si se ha tratado el evento
-         */
-        public boolean onMenuItemClick(MenuItem item) {
-
-            // Id de la acción que corresponde al Popup
-            int accionId = item.getGroupId() - 1;
-
-            // Posición del elemento en la lista
-            int pos = item.getItemId() - 1;
-
-            // Filtrar las acciones posibles, y
-            // obtener la posición del elemento seleccionado.
-            switch(accionId) {
-
-                case ACCION_TOMAR:  // Tomar objeto
-
-                    // Comprobar que el objeto puede ser tomado
-                    int errId = Zeta.puedeTomarObjeto(arrayListObjetosLugar.get(pos), arrayListObjetosBolsillo);
-
-                    // Mostrar mensaje de error, si no puede ser tomado
-                    if(errId > 0) {
-
-                        // Sonido
-                        mListener.emiteSonido(R.raw.error);
-
-                        // Mostrar mensaje de error
-                        Mensaje.continuar(getActivity(), R.drawable.ic_information,
-                                getString(R.string.dialogo_tomar_objeto_titulo),
-                                getString(errId),
-                                null);
-
-                        // Retornar
-                        return true;
-                    }
+                    // Mostrar mensaje de error
+                    Mensaje.continuar(getActivity(), R.drawable.ic_forbidden,
+                            getString(R.string.acciones_titulo_tomar_objeto),
+                            getString(errId),
+                            null);
+                } else {
 
                     // El objeto puede ser tomado
-                    break;
-                default:
-                    // Resto de acciones
-                    break;
+
+                    // Indicar a la activity la acción y el elemento
+                    mListener.onAccionSeleccionada(ACCION_TOMAR, which);
+                }
             }
+        };
 
-            // Indicar a la activity la acción y elemento seleccionados
-            mListener.onAccionSeleccionada(accionId, pos);
-
-            // Indicar que ha sido tratado el evento
-            return true;
-        }
+        // Mostrar el cuadro de diálogo de selección del objeto
+        Mensaje.seleccionar(getActivity(),
+                R.drawable.ic_add,
+                getString(R.string.acciones_titulo_tomar_objeto),
+                nombreObjetosLugar.toArray(new CharSequence[nombreObjetosLugar.size()]),
+                onClick);
     }
 
     /**
-     * Mostrar el inventario (lista de cosas que lleva el protagonista).
+     * Dejar un objeto.
+     */
+    private void dejarObjeto() {
+
+        // Generar la lista de nombres de objetos
+        ArrayList<String> nombreObjetosBolsillo = new ArrayList<>();
+
+        for(Objeto obj: arrayListObjetosBolsillo) {
+            nombreObjetosBolsillo.add(obj.getNombre().concat("."));
+        }
+
+        // Listener de selección de un objeto de la lista
+        DialogInterface.OnClickListener onClick = new DialogInterface.OnClickListener() {
+
+            /**
+             * Método que se llamará cuando se seleccione un
+             * elemento de la lista.
+             *
+             * @param dialog  Diálogo
+             * @param which   Nº de elemento
+             */
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                    // Indicar a la activity la acción y el elemento
+                    mListener.onAccionSeleccionada(ACCION_DEJAR, which);
+            }
+        };
+
+        // Mostrar el cuadro de diálogo de selección del objeto
+        Mensaje.seleccionar(getActivity(),
+                R.drawable.ic_remove,
+                getString(R.string.acciones_titulo_dejar_objeto),
+                nombreObjetosBolsillo.toArray(new CharSequence[nombreObjetosBolsillo.size()]),
+                onClick);
+    }
+
+    /**
+     * Realizar una accion.
+     */
+    private void otraAccion() {
+
+        // Generar lista de nombres de objetos
+        ArrayList<String> nombreOtrasAcciones = new ArrayList<>();
+
+        for(Accion acc: arrayListOtrasAcciones) {
+            nombreOtrasAcciones.add(getString(acc.getStringId()).concat("."));
+        }
+
+        // Listener de selección de un objeto de la lista
+        DialogInterface.OnClickListener onClick = new DialogInterface.OnClickListener() {
+
+            /**
+             * Método que se llamará cuando se seleccione un
+             * elemento de la lista.
+             *
+             * @param dialog  Diálogo
+             * @param which   Nº de elemento
+             */
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Indicar a la activity la acción y el elemento
+                mListener.onAccionSeleccionada(ACCION_OTRAS, which);
+            }
+        };
+
+        // Mostrar el cuadro de diálogo de selección del objeto
+        Mensaje.seleccionar(getActivity(),
+                R.drawable.ic_action,
+                getString(R.string.acciones_titulo_otras_acciones),
+                nombreOtrasAcciones.toArray(new CharSequence[nombreOtrasAcciones.size()]),
+                onClick);
+    }
+
+    /**
+     * Mostrar la lista de cosas que lleva el protagonista.
      */
     private void verInventario() {
 
-        // Cadena de texto que contendrá la lista de objetos
-        // que lleva el protagonista.
+        // Cadena de texto con la lista de objetos que lleva el protagonista
         String inventario = "";
 
         // Construir la cadena de texto
         for(Objeto cosa : arrayListObjetosBolsillo) {
 
             // Añadir una línea por objeto
-            inventario = inventario.concat(cosa.getNombre().concat("\n"));
+            inventario = inventario.concat(cosa.getNombre().concat(".\n"));
         }
 
         // Mostrar mensaje con el inventario
-        Mensaje.continuar(getActivity(), R.drawable.ic_information, getString(R.string.dialogo_inventario_titulo), inventario, null);
+        Mensaje.continuar(getActivity(), R.drawable.ic_bag, getString(R.string.acciones_titulo_inventario), inventario, null);
     }
 }

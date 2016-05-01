@@ -71,10 +71,6 @@
     <string name="dialogo_caso_resuelto_titulo">Caso resuelto</string>
     <string name="dialogo_caso_resuelto_texto">¡Enhorabuena, has resuelto</string>
 
-    <string name="dialogo_tomar_objeto_titulo">Tomar objeto</string>
-
-    <string name="dialogo_inventario_titulo">Inventario</string>
-
     <string name="dialogo_si">Sí</string>
     <string name="dialogo_cancelar">Cancelar</string>
     <string name="dialogo_continuar">Continuar</string>
