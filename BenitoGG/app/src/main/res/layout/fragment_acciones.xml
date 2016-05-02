@@ -4,123 +4,145 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/fondo"
-    tools:context="com.app.floppysoftware.benitogg.AccionesFragment">
+    tools:context="com.app.floppysoftware.benitogg.fragments.AccionesFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/titulo_acciones"/>
+    <!-- Botones de acción para dispositivos con orientación vertical -->
+
+    <!-- Norte, Sur, Oeste, Este, Mapa -->
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"
         >
 
         <Button
-            android:layout_width="64sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
             android:layout_marginEnd="2dp"
-            android:drawableTop="@drawable/flecha_norte"
+            android:drawableTop="@drawable/btn_norte"
             android:text="@string/boton_norte"
             android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
             style="@style/GameButton"
             android:id="@+id/buttonNorte" />
 
         <Button
-            android:layout_width="64sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
             android:layout_marginEnd="2dp"
-            android:drawableTop="@drawable/flecha_sur"
+            android:drawableTop="@drawable/btn_sur"
             android:text="@string/boton_sur"
             android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
             style="@style/GameButton"
             android:id="@+id/buttonSur" />
 
         <Button
-            android:layout_width="64sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
             android:layout_marginEnd="2dp"
-            android:drawableTop="@drawable/flecha_oeste"
+            android:drawableTop="@drawable/btn_oeste"
             android:text="@string/boton_oeste"
             android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
             style="@style/GameButton"
             android:id="@+id/buttonOeste" />
 
         <Button
-            android:layout_width="64sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/flecha_este"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/btn_este"
             android:text="@string/boton_este"
             android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
             style="@style/GameButton"
             android:id="@+id/buttonEste" />
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/btn_mapa"
+            android:text="@string/boton_mapa"
+            android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
+            style="@style/GameButton"
+            android:id="@+id/buttonMapa" />
+
     </LinearLayout>
 
-    <Button
+    <!-- Tomar, Dejar, Inventario, Otras acc., Casos -->
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/acciones_titulo_tomar_objeto"
-        style="@style/GameButton"
-        android:id="@+id/buttonTomarObjeto" />
+        >
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/acciones_titulo_dejar_objeto"
-        style="@style/GameButton"
-        android:id="@+id/buttonDejarObjeto" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/btn_tomar"
+            android:text="@string/boton_tomar"
+            android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
+            style="@style/GameButton"
+            android:id="@+id/buttonTomarObjeto" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/acciones_titulo_inventario"
-        style="@style/GameButton"
-        android:id="@+id/buttonInventario" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/btn_dejar"
+            android:text="@string/boton_dejar"
+            android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
+            style="@style/GameButton"
+            android:id="@+id/buttonDejarObjeto" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/btn_inventario"
+            android:text="@string/boton_inventario"
+            android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
+            style="@style/GameButton"
+            android:id="@+id/buttonInventario" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/acciones_titulo_otras_acciones"
-        style="@style/GameButton"
-        android:id="@+id/buttonOtrasAcciones" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:drawableTop="@drawable/btn_otras"
+            android:text="@string/boton_otras"
+            android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
+            style="@style/GameButton"
+            android:id="@+id/buttonOtrasAcciones" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/btn_casos"
+            android:text="@string/boton_casos"
+            android:textSize="@dimen/text_size_small"
+            android:layout_weight="1"
+            style="@style/GameButton"
+            android:id="@+id/buttonCasos" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/acciones_titulo_mapa"
-        style="@style/GameButton"
-        android:id="@+id/buttonMapa" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/acciones_titulo_casos"
-        style="@style/GameButton"
-        android:id="@+id/buttonCasos" />
-
+    </LinearLayout>
 
 </LinearLayout>
 

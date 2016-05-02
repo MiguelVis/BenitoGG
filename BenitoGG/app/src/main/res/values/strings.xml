@@ -31,13 +31,30 @@
     <string name="boton_opciones">Opciones</string>
     <string name="boton_info">Info.</string>
 
-    <!-- Botones de acción -->
+    <!-- Botones de acción comunes vertical y horizontal -->
 
     <string name="boton_norte">Norte</string>
     <string name="boton_sur">Sur</string>
     <string name="boton_este">Este</string>
     <string name="boton_oeste">Oeste</string>
-    <string name="boton_mas">Más</string>
+
+    <!-- Botones de acción, versión vertical -->
+
+    <string name="boton_mapa">Mapa</string>
+    <string name="boton_tomar">Tomar</string>
+    <string name="boton_dejar">Dejar</string>
+    <string name="boton_inventario">Inv.</string>
+    <string name="boton_otras">Acc.</string>
+    <string name="boton_casos">Casos</string>
+
+    <!-- Botones de acción, versión horizontal -->
+
+    <string name="acciones_titulo_tomar_objeto">Tomar objeto</string>
+    <string name="acciones_titulo_dejar_objeto">Dejar objeto</string>
+    <string name="acciones_titulo_inventario">Inventario</string>
+    <string name="acciones_titulo_otras_acciones">Otras acciones</string>
+    <string name="acciones_titulo_mapa">Mapa</string>
+    <string name="acciones_titulo_casos">Casos</string>
 
     <!-- Textos complementarios para describir la escena actual -->
 
@@ -49,15 +66,6 @@
 
     <string name="escena_hay_1_objeto">Hay un objeto aquí:</string>
     <string name="escena_hay_varios_objetos">Hay varios objetos aquí:</string>
-
-    <!-- Acciones -->
-
-    <string name="acciones_titulo_tomar_objeto">Tomar objeto</string>
-    <string name="acciones_titulo_dejar_objeto">Dejar objeto</string>
-    <string name="acciones_titulo_inventario">Inventario</string>
-    <string name="acciones_titulo_otras_acciones">Otras acciones</string>
-    <string name="acciones_titulo_mapa">Mapa</string>
-    <string name="acciones_titulo_casos">Casos</string>
 
     <!-- Diálogos -->
 
@@ -87,5 +95,9 @@
     <string name="info_titulo_copyright">Copyright</string>
 
     <string name="boton_visitar_web">Visitar Web</string>
+    <string name="title_activity_juego">JuegoActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

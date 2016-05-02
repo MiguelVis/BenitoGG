@@ -7,6 +7,10 @@ import android.test.TouchUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.app.floppysoftware.benitogg.activities.PrincipalActivity;
+import com.app.floppysoftware.benitogg.utils.Preferencias;
+import com.app.floppysoftware.benitogg.utils.Mensaje;
+
 /**
  * Tests para el apartado 'Opciones' del menú.
  */

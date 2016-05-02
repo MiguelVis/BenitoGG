@@ -6,7 +6,7 @@
     android:padding="@dimen/activity_padding"
     android:orientation="vertical"
     android:background="@color/fondo"
-    tools:context="com.app.floppysoftware.benitogg.CasosActivity">
+    tools:context="com.app.floppysoftware.benitogg.activities.CasosActivity">
 
     <ImageView
         android:layout_width="match_parent"

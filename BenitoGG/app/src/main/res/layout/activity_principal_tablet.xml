@@ -7,7 +7,7 @@
     android:padding="@dimen/activity_padding"
     android:orientation="horizontal"
     android:background="@color/fondo"
-    tools:context="com.app.floppysoftware.benitogg.PrincipalActivity"
+    tools:context="com.app.floppysoftware.benitogg.activities.PrincipalActivity"
     >
 
     <FrameLayout

@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo"
-    tools:context="com.app.floppysoftware.benitogg.OpcionesFragment">
+    tools:context="com.app.floppysoftware.benitogg.fragments.OpcionesFragment">
 
+    <!-- ###########################################
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:src="@drawable/titulo_opciones"/>
+        ############################################ -->
 
     <ScrollView
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.app.floppysoftware.benitogg;
 
+import com.app.floppysoftware.benitogg.models.Lugar;
+
 import org.junit.Before;
 import org.junit.Test;
 

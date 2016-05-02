@@ -1,11 +1,10 @@
 package com.app.floppysoftware.benitogg;
 
-import com.app.floppysoftware.benitogg.Accion;
-import com.app.floppysoftware.benitogg.Actor;
-import com.app.floppysoftware.benitogg.BaseDatos;
-import com.app.floppysoftware.benitogg.Lugar;
-import com.app.floppysoftware.benitogg.Objeto;
-import com.app.floppysoftware.benitogg.R;
+import com.app.floppysoftware.benitogg.database.BaseDatos;
+import com.app.floppysoftware.benitogg.models.Accion;
+import com.app.floppysoftware.benitogg.models.Actor;
+import com.app.floppysoftware.benitogg.models.Lugar;
+import com.app.floppysoftware.benitogg.models.Objeto;
 
 import java.util.ArrayList;
 

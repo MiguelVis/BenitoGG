@@ -8,16 +8,16 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".activities.PrincipalActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".MapaActivity"
+            android:name=".activities.MapaActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".activities.SplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.Splash" >
             <intent-filter>
@@ -27,8 +27,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CasosActivity"
+            android:name=".activities.CasosActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activities.JuegoActivity"
+            android:label="@string/title_activity_juego" >
         </activity>
     </application>
 

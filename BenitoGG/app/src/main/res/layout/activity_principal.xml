@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_padding"
     android:background="@color/fondo"
-    tools:context="com.app.floppysoftware.benitogg.PrincipalActivity"
+    tools:context="com.app.floppysoftware.benitogg.activities.PrincipalActivity"
     >
 
     <FrameLayout

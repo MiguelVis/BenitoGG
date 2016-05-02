@@ -7,6 +7,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
 
+import com.app.floppysoftware.benitogg.activities.PrincipalActivity;
+
 /**
  * Tests para el apartado 'Info.' del menú.
  */

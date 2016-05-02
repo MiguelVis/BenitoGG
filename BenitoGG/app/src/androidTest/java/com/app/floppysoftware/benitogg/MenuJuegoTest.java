@@ -3,7 +3,11 @@ package com.app.floppysoftware.benitogg;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
-import android.widget.ImageView;
+
+import com.app.floppysoftware.benitogg.activities.PrincipalActivity;
+import com.app.floppysoftware.benitogg.database.BaseDatos;
+import com.app.floppysoftware.benitogg.models.Actor;
+import com.app.floppysoftware.benitogg.utils.Preferencias;
 
 /**
  * Tests para el apartado 'Jugar' del menú.
