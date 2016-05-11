@@ -15,15 +15,18 @@
         es un detective privado peculiar, inteligente pero un poco desastre,
         cuya zona de acción es el barrio de <i>Chapuceros</i>, enclavado en los bajos
         fondos de la ciudad de <i>Sanpufo</i>.
-        \n\nEn su quehacer diario, ha de habérselas
-        con maleantes casposos, gamberretes recalcitrantes, ancianas desconfiadas
-        y algún que otro misterio impenetrable.
         \n\nBenito es famoso por haber llevado a cabo la resolución de casos difíciles,
         como encontrar al gato de la señora Paquita (que no tenía gato; ahora sí),
         y descubrir al ladrón de jamones de la fábrica <i>Pernil, S.L.</i> mediante un método
         insólito: el de practicar análisis de sangre a todos los empleados (Pepe, el
-        encargado, tenía más colesterol que todos los habitantes del barrio juntos).
-        \n\n¿Ayudarás a Benito a resolver los misteriosos casos que le aguardan?</string>
+        encargado, tenía más colesterol que todos los habitantes del barrio juntos).</string>
+
+    <string name="info_instrucciones">En este juego, tú eres Benito.
+        \n\nPara resolver los casos que se te irán presentando, necesitarás utilizar algunos
+        objetos (juntos o por separado), o dejarlos en un lugar concreto.
+        \n\n¡Ah, y presta mucha atención a lo que te digan los habitantes del barrio!
+        \n\n¡Mucha suerte, la necesitarás!</string>
+
     <string name="info_dedicatoria">Dedicado a la memoria de mi madre, y al gran Gary Kildall.</string>
 
     <!-- Tomar objeto -->
@@ -89,6 +92,5 @@
 
     <string name="perro_ladrando">Hay un perro por aquí, que no para de ladrar.</string>
     <string name="perro_hueso">Hay un perro mordisqueando silenciosamente un hueso.</string>
-
 
 </resources>

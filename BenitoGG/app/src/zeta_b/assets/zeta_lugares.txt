@@ -4,40 +4,40 @@
 #
 # Test:
 #
-testLugarCentro
+test_lugar_centro
 Lugar Centro
 Estás en el lugar Centro
 null
 0
 0
-testLugarNorte
-testLugarSur
-testLugarEste
-testLugarOeste
+test_lugar_norte
+test_lugar_sur
+test_lugar_este
+test_lugar_oeste
 #
-testLugarNorte
+test_lugar_norte
 Lugar Norte
 Estás en el lugar Norte
 null
 0
 0
 null
-testLugarCentro
+test_lugar_centro
 null
 null
 #
-testLugarSur
+test_lugar_sur
 Lugar Sur
 Estás en el lugar Sur
 null
 0
 0
-testLugarCentro
+test_lugar_centro
 null
 null
 null
 #
-testLugarEste
+test_lugar_este
 Lugar Este
 Estás en el lugar Este
 null
@@ -46,9 +46,9 @@ null
 null
 null
 null
-testLugarCentro
+test_lugar_centro
 #
-testLugarOeste
+test_lugar_oeste
 Lugar Oeste
 Estás en el lugar Oeste
 null
@@ -56,7 +56,7 @@ null
 0
 null
 null
-testLugarCentro
+test_lugar_centro
 null
 #
 # Juego:

@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margen_vertical"
-        android:text="@string/boton_opciones"
+        android:text="@string/boton_preferencias"
         style="@style/GameButton"
         android:id="@+id/buttonOpciones"
         />

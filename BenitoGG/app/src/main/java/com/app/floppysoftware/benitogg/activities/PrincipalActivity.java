@@ -5,19 +5,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.app.floppysoftware.benitogg.models.Accion;
-import com.app.floppysoftware.benitogg.fragments.AccionesFragment;
-import com.app.floppysoftware.benitogg.fragments.EscenaFragment;
+import com.app.floppysoftware.benitogg.fragments.PreferenciasFragment;
 import com.app.floppysoftware.benitogg.utils.Mensaje;
 import com.app.floppysoftware.benitogg.utils.Preferencias;
 import com.app.floppysoftware.benitogg.R;
@@ -25,10 +20,6 @@ import com.app.floppysoftware.benitogg.database.BaseDatos;
 import com.app.floppysoftware.benitogg.fragments.BienvenidaFragment;
 import com.app.floppysoftware.benitogg.fragments.InfoFragment;
 import com.app.floppysoftware.benitogg.fragments.MenuFragment;
-import com.app.floppysoftware.benitogg.fragments.OpcionesFragment;
-import com.app.floppysoftware.benitogg.models.Objeto;
-
-import java.util.ArrayList;
 
 /**
  * Clase que implementa el menú principal.
@@ -39,7 +30,7 @@ import java.util.ArrayList;
  */
 public class PrincipalActivity extends Activity implements
         MenuFragment.OnMenuListener,
-        OpcionesFragment.OnOpcionesListener {
+        PreferenciasFragment.OnPreferenciasListener {
 
     // Tag para el log
     private final static String TAG = "Principal";
@@ -51,13 +42,13 @@ public class PrincipalActivity extends Activity implements
     // Tags para los fragments
     private final static String TAG_FRAG_MENU = "FrMenu";
     private final static String TAG_FRAG_BIENVENIDA = "FrBienvenida";
-    private final static String TAG_FRAG_OPCIONES = "FrOpciones";
+    private final static String TAG_FRAG_PREFERENCIAS = "FrPreferencias";
     private final static String TAG_FRAG_INFO = "FrInfo";
 
     // Fragments
     private MenuFragment menuFragment;
     private BienvenidaFragment bienvenidaFragment;
-    private OpcionesFragment opcionesFragment;
+    private PreferenciasFragment preferenciasFragment;
     private InfoFragment infoFragment;
 
     // Variable que indica si el dispositivo es una tablet,
@@ -118,18 +109,18 @@ public class PrincipalActivity extends Activity implements
                 new Jugar().execute();
 
                 break;
-            case MenuFragment.MENU_OPCION_OPCIONES :
+            case MenuFragment.MENU_OPCION_PREFERENCIAS:
 
                 // Actuar según sea tablet con orientación horizontal,
                 // o no.
                 if(esTabletHorizontal) {
 
                     // Tablet con orientación horizontal
-                    ponFragmentArea(getOpcionesFragment(), TAG_FRAG_OPCIONES);
+                    ponFragmentArea(getPreferenciasFragment(), TAG_FRAG_PREFERENCIAS);
                 } else {
 
                     // Móvil, o tablet con orientación vertical
-                    ponFragmentMovil(getOpcionesFragment(), TAG_FRAG_OPCIONES);
+                    ponFragmentMovil(getPreferenciasFragment(), TAG_FRAG_PREFERENCIAS);
                 }
 
                 break;
@@ -154,9 +145,9 @@ public class PrincipalActivity extends Activity implements
         }
     }
 
-    // ------------------------------------------------------
-    // Implementación de la interfaz del fragment de opciones
-    // ------------------------------------------------------
+    // ----------------------------------------------------------
+    // Implementación de la interfaz del fragment de preferencias
+    // ----------------------------------------------------------
 
     /**
      * Cambiar al modo diestro o zurdo.
@@ -164,7 +155,7 @@ public class PrincipalActivity extends Activity implements
     public void onCambioZurdo() {
 
         // Recrear la activity; de esta forma
-        // se pondrá cada fragment (opciones y menú) en su lugar.
+        // se pondrá cada fragment (preferencias y menú) en su lugar.
         recreate();
     }
 
@@ -315,13 +306,13 @@ public class PrincipalActivity extends Activity implements
             // Tomar referencias de los fragments
             menuFragment = (MenuFragment) fm.findFragmentByTag(TAG_FRAG_MENU);
             bienvenidaFragment = (BienvenidaFragment) fm.findFragmentByTag(TAG_FRAG_BIENVENIDA);
-            opcionesFragment = (OpcionesFragment) fm.findFragmentByTag(TAG_FRAG_OPCIONES);
+            preferenciasFragment = (PreferenciasFragment) fm.findFragmentByTag(TAG_FRAG_PREFERENCIAS);
             infoFragment = (InfoFragment) fm.findFragmentByTag(TAG_FRAG_INFO);
 
             // Log
             Log.d(TAG, "menuFragment = " + menuFragment);
             Log.d(TAG, "bienvenidaFragment = " + bienvenidaFragment);
-            Log.d(TAG, "opcionesFragment = " + opcionesFragment);
+            Log.d(TAG, "preferenciasFragment = " + preferenciasFragment);
             Log.d(TAG, "infoFragment = " + infoFragment);
         }
 
@@ -332,8 +323,8 @@ public class PrincipalActivity extends Activity implements
             // Quitar el extra
             getIntent().removeExtra(EXTRA_VERTICAL);
 
-            // Forzar la activación de las opciones
-            menuFragment.forzarOpcion(MenuFragment.MENU_OPCION_OPCIONES);
+            // Forzar la activación de la opción de preferencias
+            menuFragment.forzarOpcion(MenuFragment.MENU_OPCION_PREFERENCIAS);
         }
     }
 
@@ -434,14 +425,14 @@ public class PrincipalActivity extends Activity implements
     }
 
     /**
-     * Devolver fragment de opciones, creando uno nuevo
+     * Devolver fragment de preferencias, creando uno nuevo
      * si fuera necesario.
      *
      * @return  fragment
      */
-    private OpcionesFragment getOpcionesFragment() {
+    private PreferenciasFragment getPreferenciasFragment() {
 
-        return (opcionesFragment = (opcionesFragment != null ? opcionesFragment : new OpcionesFragment()));
+        return (preferenciasFragment = (preferenciasFragment != null ? preferenciasFragment : new PreferenciasFragment()));
     }
 
     /**

@@ -57,37 +57,4 @@ Ejemplo:
 
 La estructura de las tablas es la siguiente:
 
-create table Actores (
-	_id text primary key not null,
-	lugar_id_fk text not null,
-	foreign key(lugar_id_fk) referencies Lugares(_id)
-	 );
 
-create table Casos (
-	_id int primary key not null,
-	nombre text not null,
-	resuelto int not null,
-	);
-
-create table Lugares (
-	_id text primary key not null,
-	titulo text not null,
-	detalle text not null,
-	sonido text,
-	lugar_norte_fk text,
-	lugar_sur_fk text,
-	lugar_este_fk text,
-	lugar_oeste_fk text,
-	foreign key(lugar_norte_fk) references Lugares(_id),
-	foreign key(lugar_sur_fk) references Lugares(_id),
-	foreign key(lugar_este_fk) references Lugares(_id),
-	foreign key(lugar_oeste_fk) references Lugares(_id)
-	);
-
-create table Objetos (
-	_id text primary key not null,
-	nombre text not null,
-	lugar_id_fk text not null,
-	estado text not null,
-	foreign key(lugar_id_fk) references Lugares(_id)
-	);

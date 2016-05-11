@@ -5,6 +5,7 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.app.floppysoftware.benitogg.activities.PrincipalActivity;
 import com.app.floppysoftware.benitogg.database.BaseDatos;
+import com.app.floppysoftware.benitogg.models.Actor;
 import com.app.floppysoftware.benitogg.models.Lugar;
 
 import java.util.ArrayList;
@@ -96,6 +97,18 @@ public class BaseDatosTest extends ActivityInstrumentationTestCase2<PrincipalAct
 
         }
 
+        //
+        // Leer actor protagonista
+        Actor prota = bd.getActor(Actor.PROTAGONISTA);
+
+        // Comprobar que se ha leído correctamente
+        assertNotNull(prota);
+
+        // Cambiarlo al Lugar Centro
+        prota.setLugar("test_lugar_centro");
+
+        // Actualizar el actor en la base de datos
+        bd.updateActor(prota);
 
         // Cerrar base de datos
         bd.cerrar();

@@ -74,26 +74,43 @@ function nombreJugador() {
 }
 
 /**
- *  Devuelve la edad del jugador, leyéndola de los
- *  argumentos de la URL, o el valor 0, si
- *  no existe o no es correcta.
+ *  Devuelve la escala de casos resueltos, leyéndola de los
+ *  argumentos de la URL, o el valor -1,
+ *  si no existe o no es correcta.
  *
- *  @return   Edad del jugador
+ *  @return   Escala 0..4, o -1 en caso de error
  */
-function edadJugador() {
+function escalaCasos() {
 
 	// Devolver el valor del parámetro que contiene
-	// la edad del jugador, o el valor 0, si no
+	// la escala, o el valor -1, si no
 	// existe el dato.
-	var edad = getValor("edad", 0);
+	var escala = getValor("escala", -1);
 	
-	// Comprobar la validez de la edad,
-	// reemplazando el dato por 0, si no
+	// Comprobar la validez de la escala,
+	// reemplazando el dato por -1, si no
 	// parece correcta.
-	if(edad < 1 || edad > 99 || isNaN(edad)) {
-		edad = 0;
+	if(escala < 0 || escala > 4 || isNaN(escala)) {
+		escala = -1;
 	}
 	
-	// Devolver edad
-	return edad;
+	// Devolver escala
+	return escala;
 }
+
+/**
+ *  Indica si el usuario es zurdo, leyendo el dato de los
+ *  argumentos de la URL.
+ *
+ *  @return   True si es zurdo, false en caso contrario o error
+ */
+function esZurdo() {
+
+	// Devolver el valor del parámetro que contiene el dato,
+	// o el valor 0, si no existe.
+	var zurdo = getValor("zurdo", 0);
+	
+	// Devolver dato, como true o false
+	return zurdo > 0;
+}
+

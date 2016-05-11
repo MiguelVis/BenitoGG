@@ -12,9 +12,9 @@ import com.app.floppysoftware.benitogg.utils.Preferencias;
 import com.app.floppysoftware.benitogg.utils.Mensaje;
 
 /**
- * Tests para el apartado 'Opciones' del menú.
+ * Tests para el apartado 'Preferencias' del menú.
  */
-public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<PrincipalActivity> {
+public class MenuPreferenciasTest extends ActivityInstrumentationTestCase2<PrincipalActivity> {
 
     // Referencia de la activity
     private PrincipalActivity activity;
@@ -25,7 +25,7 @@ public class MenuOpcionesTest extends ActivityInstrumentationTestCase2<Principal
     /**
      * Constructor.
      */
-    public MenuOpcionesTest() {
+    public MenuPreferenciasTest() {
 
         // Llamar a la superclase
         super(PrincipalActivity.class);

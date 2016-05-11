@@ -65,10 +65,30 @@
 				
 				<script type="text/javascript">
 
+					// Nombre del jugador
 					var nombre = nombreJugador();
 					
-					document.write("<h3>¡Hola " + nombre + "!</h3>")
-
+					document.write("<h3>¡Hola " + nombre + "!</h3>");
+					
+					// Nivel de juego
+					var escala = escalaCasos();
+					
+					if(escala >= 0 && escala <= 4) {
+						var nivel = [
+							"¡Adelante, ya queda menos para resolver tu primer caso!",
+							"¡Ánimo, veo que ya has resuelto algún caso!",
+							"¡Vas por muy buen camino, veo que has resuelto la mitad de los casos!",
+							"¡Ánimo, veo que ya te quedan pocos casos por resolver!",
+							"¡Enhorabuena, veo que eres un gran detective y has resuelto todos los casos!"
+							];
+						
+						document.write("<p>" + nivel[escala] + "</p>");
+					}
+					
+					// Zurdo
+					
+					// document.write(esZurdo());
+					
 				</script>
 				
 				<!-- TEXTO ESTÁNDAR DE BIENVENIDA -->
@@ -82,7 +102,7 @@
 				</noscript>
 				
 				<p>
-					¿Necesitas alguna ayudita para resolver un caso? ¿Quieres conocer las &uacute;ltimas novedades
+					¿Quieres conocer las &uacute;ltimas novedades
 					acerca de Benito y sus aventuras?
 				</p>
 				
@@ -143,17 +163,17 @@
 					Para luchar contra el crimen, Benito cuenta con las mejores t&eacute;cnicas
 					de investigaci&oacute;n, y la &uacute;ltima tecnolog&iacute;a. La &uacute;ltima
 					que pudo comprar con sus menguados beneficios, claro est&aacute;. Menos mal
-					que hab&iacute;a una buena oferta en el CarroFul, que si no, t&uacute; me dir&aacute;s
+					que hab&iacute;a una buena oferta en el CarroFull, que si no, t&uacute; me dir&aacute;s
 					c&oacute;mo se las iba a apañar con la m&aacute;quina de escribir Oliveretta
 					de su abuelo.
 				</p>
 				
 				<p>
 					Entre los t&iacute;tulos y galardones varios que ostenta, el m&aacute;s codiciado
-					sin duda es el Diploma de Grafolog&iacute;a y Papiroflexia, obtenido en la
+					sin duda es el Diploma en Grafolog&iacute;a y Papiroflexia, obtenido en la
 					UCLA (Universidad Conquense de Licenciados Asturianos), aunque no
 					menos importante es su Licenciatura en Criminolog&iacute;a y Macram&eacute;,
-					cursada a distancia en la Univerdidad de Masaxuxes.
+					cursada a distancia en la Univerdidad de Massaxuxes.
 				</p>
 				
 				<p>
@@ -212,7 +232,7 @@
 						<p>
 							Esta &uacute;ltima cualidad
 							te puede ser muy &uacute;til si utilizas ese mel&oacute;n que tienes
-							por cabeza para algo m&aacute;s que ponerte el sombrero de detective.
+							por cabeza, para algo m&aacute;s que ponerte el sombrero de detective.
 						</p>
 						<p>
 							¡Ah, y no compres demasiadas chuches!
@@ -231,16 +251,16 @@
 						
 						<p>
 							<em>Gustavo Porrot</em> es el gerente del <em>Hotel Hucho</em>,
-							aunque prefiere que le llamen <em>Mister Porrot</em>, dado
+							aunque prefiere que le llamen <em>M&iacute;ster Porrot</em>, dado
 							que le gustan mucho las novelas de detectives
 							de <a href="http://www.agathachristie.com/" target="_blank">Agatha Christie</a>,
 							sobre todo las de <a href="http://www.agathachristie.com/characters/hercule-poirot" target="_blank">Poirot</a>. Como
 							puedes ver, trata de imitar su aspecto.
 						</p>
 						<p>
-							Mister Porrot intentar&aacute; ayudarte en tus pesquisas, pero
+							M&iacute;ster Porrot intentar&aacute; ayudarte en tus pesquisas, pero
 							la mayor&iacute;a de las veces s&oacute;lo conseguir&aacute;
-							embarullarlo todo a&aacute;n m&aacute;s.
+							embarullarlo todo a&uacute;n m&aacute;s.
 						</p>
 					
 					</div>
@@ -326,11 +346,11 @@
 
 					<div class="left" >
 					
-						<img class="right" src="gg_caso_no_solicitado.png" alt="Imagen del caso">
-					
 						<p>
 							<em>Un caso no solicitado</em>
 						</p>
+						
+						<img class="right" src="gg_caso_no_solicitado.png" alt="Imagen del caso">
 						
 						<p>
 							Necesitaba un plan B. O uno C.
@@ -351,7 +371,7 @@
 							-Aqu&iacute; no tenemos gas -dijo la misma voz masculina, pero bastante m&aacute;s antip&aacute;tica, por cierto.
 						</p>
 						<p>
-							-Y, ¿c&oacute;mo cocinan sus pucheros, oiga? – me atrev&iacute; a decir, aunque la verdad es que no estuve muy acertado. O s&iacute;, no se. Juzguen ustedes.
+							-Y ¿c&oacute;mo cocinan sus pucheros, oiga? – me atrev&iacute; a decir, aunque la verdad es que no estuve muy acertado. O s&iacute;, no s&eacute;. Juzguen ustedes.
 						</p>
 						<p>
 							-A ver, que s&iacute; que tenemos gas en el edificio. Lo que quiero decir, es que es el de las tuber&iacute;as esas, ¿me entiende? Que no usamos bombonas… ¿C&oacute;mo se llama? ¡El gas ciudad, &eacute;se! -dijo el señor, en tono resabidillo.
@@ -366,17 +386,17 @@
 					
 					<div class="right" >
 					
-						<img class="right" src="gg_caso_sabueso.png" alt="Imagen del caso">
-					
 						<p>
 							<em>El caso del sabueso diminuto</em>
 						</p>
+						
+						<img class="right" src="gg_caso_sabueso.png" alt="Imagen del caso">
 					
 						<p>
 							Ten&iacute;a ante m&iacute; uno de esos casos en los que preciso de todas mis facultades, aunque, huelga decirlo, son tantas y de tan variable &iacute;ndole, que resulta extremadamente dif&iacute;cil hallar un misterio que las requiera en su totalidad.
 						</p>
 						<p>
-							A pesar de esto, mi profesionalidad me obliga a tratar el caso m&aacute;s nimio tal como si fuera el asesinato del siglo. Siempre pongo toda la carne en el asador, y tras devorarla convenientemente acompañ&aacute;ndola de un buen Rioja, echo la consabida siesta.
+							A pesar de esto, mi profesionalidad me obliga a tratar el caso m&aacute;s nimio tal como si fuera el asesinato del siglo. Siempre pongo toda la carne en el asador, y tras devorarla convenientemente, acompañ&aacute;ndola de un buen Rioja, echo la consabida siesta.
 						</p>
 						<p>
 							Mano de santo, pues una vez descansada la neurona, pongo toda mi atenci&oacute;n en el misterio de turno, de tal forma, que es s&oacute;lo cuesti&oacute;n de tiempo el hallar la soluci&oacute;n, por oculta que &eacute;sta pueda presentarse.
@@ -389,17 +409,17 @@
 				
 					<div class="left" >
 					
-						<img class="right" src="gg_caso_anonimos.png" alt="Imagen del caso">
-					
 						<p>
 							<em>El caso de los an&oacute;nimos multicolor</em>
 						</p>
+						
+						<img class="right" src="gg_caso_anonimos.png" alt="Imagen del caso">
 					
 						<p>
 							En mi larga carrera contra el crimen, jam&aacute;s hab&iacute;a topado con un caso como aqu&eacute;l.
 						</p>
 						<p>
-							Mi cliente, doña Julia, esposa de un mangante… esto… un magnate de los de tomo y lomo, con m&uacute;ltiples negocios a cual m&aacute;s rentable, o como se dice ahora, diversificaci&oacute;n de inversiones, estaba muy asustada.
+							Mi clienta, doña Julia, esposa de un mangante… esto… un magnate de los de tomo y lomo, con m&uacute;ltiples negocios a cual m&aacute;s rentable, o como se dice ahora, diversificaci&oacute;n de inversiones, estaba muy asustada.
 						</p>
 						<p>
 							Y no era para menos. En las &uacute;ltimas semanas, hab&iacute;a recibido la friolera de cuatro escritos amenazantes, de autor desconocido.
@@ -411,11 +431,11 @@
 
 					<div class="right" >
 					
-						<img class="right" src="gg_caso_guerra_fria.png" alt="Imagen del caso">
-					
 						<p>
 							<em>La guerra fr&iacute;a</em>
 						</p>
+						
+						<img class="right" src="gg_caso_guerra_fria.png" alt="Imagen del caso">
 					
 						<p>
 							Todav&iacute;a pude vivir, durante el inicio de mi carrera profesional, los &uacute;ltimos estertores de la llamada guerra fr&iacute;a.
@@ -465,7 +485,8 @@
 				</p>
 				
 				<p>
-					Su c&oacute;digo fuente ha sido comprobado con los validadores
+					Se ha diseñado para ser <cite>responsive</cite>, y
+					su c&oacute;digo fuente ha sido comprobado con los validadores
 					de <a href="https://validator.w3.org/" target="_blank">HTML5</a>
 					y <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS3</a> de
 					la <a href="https://www.w3.org/" target="_blank">W3C</a>.
@@ -492,12 +513,21 @@
 
 			</article>
 			
+			<!-- LOGOS DE LA W3C -->
+			
+			<hr>
+					
+			<p>
+				<img src="logo_w3c_html.png" alt="¡HTML5 V&aacute;lido!" />
+				<img src="logo_w3c_css.png" alt="¡CSS V&aacute;lido!" />
+			</p>
+
 		</section>
 		
 		<!-- PIE -->
 		
 		<footer>
-			&copy; 2016 Miguel I. Garc&iacute;a L&oacute;pez / FloppySoftware
+			&copy; 2016 Miguel I. Garc&iacute;a L&oacute;pez
 		</footer>
 		
 	</body>

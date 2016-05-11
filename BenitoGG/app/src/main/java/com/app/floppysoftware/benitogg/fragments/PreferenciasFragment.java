@@ -14,13 +14,13 @@ import com.app.floppysoftware.benitogg.utils.Preferencias;
 import com.app.floppysoftware.benitogg.R;
 
 /**
- * Clase que implementa el apartado de opciones / configuración del menú.
+ * Clase que implementa el apartado de preferencias del menú.
  *
  * @author   Miguel I. García López
  * @version  1.0
  * @since    12 Mar 2016
  */
-public class OpcionesFragment extends Fragment {
+public class PreferenciasFragment extends Fragment {
 
     // Views
     private EditText editTextNombre;    // Nombre del usuario
@@ -29,13 +29,13 @@ public class OpcionesFragment extends Fragment {
     private CheckBox checkBoxVertical;  // Preferencia de modo vertical (sólo tablet)
 
     // Lístener que ha de implementar la activity
-    private OnOpcionesListener mListener;
+    private OnPreferenciasListener mListener;
 
     /**
      * Interfaz que ha de implementar la activity que utilice
      * este fragment.
      */
-    public interface OnOpcionesListener {
+    public interface OnPreferenciasListener {
 
         // Métodos a implementar
 
@@ -48,7 +48,7 @@ public class OpcionesFragment extends Fragment {
     /**
      * Constructor.
      */
-    public OpcionesFragment() {
+    public PreferenciasFragment() {
 
         // Nada, de momento
     }
@@ -67,7 +67,7 @@ public class OpcionesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflar el layout del fragment
-        View v =  inflater.inflate(R.layout.fragment_opciones, container, false);
+        View v =  inflater.inflate(R.layout.fragment_preferencias, container, false);
 
         // Averiguar si el dispositivo es una tablet
         boolean esTablet = getResources().getBoolean(R.bool.isTablet);
@@ -201,13 +201,13 @@ public class OpcionesFragment extends Fragment {
         try {
 
             // Tomar la referencia del listener
-            mListener = (OnOpcionesListener) activity;
+            mListener = (OnPreferenciasListener) activity;
 
         } catch (ClassCastException e) {
 
             // No ha sido implementado
             throw new ClassCastException(activity.toString()
-                    + " must implement OnOpcionesListener");
+                    + " must implement OnPreferenciasListener");
         }
     }
 

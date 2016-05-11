@@ -109,6 +109,8 @@ public final class Contract {
          *    titulo text not null,
          *    detalle text not null,
          *    sonido text,
+         *    x int not null,
+         *    y int not null,
          *    lugar_norte_fk text,
          *    lugar_sur_fk text,
          *    lugar_este_fk text,
@@ -163,7 +165,7 @@ public final class Contract {
          * create table Actores (
          *    _id text primary key not null,
          *    lugar_id_fk text not null,
-         *    foreign key(lugar_id_fk) referencies Lugares(_id)
+         *    foreign key(lugar_id_fk) references Lugares(_id)
          * );
          */
         public static final String SQL_CREATE_TABLE = "create table " + TABLE_NAME + "(" +

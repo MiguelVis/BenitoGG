@@ -10,12 +10,12 @@
 
     <string name="splash_presenta">presenta</string>
 
-    <!-- Opciones -->
+    <!-- Preferencias -->
 
     <string name="boton_reset">Reinicializar juego</string>
 
     <string name="pref_nombre">Nombre:</string>
-    <string name="pref_nombre_hint">P. ej. Benito</string>
+    <string name="pref_nombre_hint">Nombre, por ej. Benito</string>
     <string name="pref_nombre_detalle">Cambiar el nombre de usuario.</string>
     <string name="pref_sonido">Sonido</string>
     <string name="pref_sonido_detalle">Reproducir efectos de sonido.</string>
@@ -28,8 +28,8 @@
     <!-- Activity inicial -->
 
     <string name="boton_jugar">Jugar</string>
-    <string name="boton_opciones">Opciones</string>
-    <string name="boton_info">Info.</string>
+    <string name="boton_preferencias">Preferencias</string>
+    <string name="boton_info">Información</string>
 
     <!-- Botones de acción comunes vertical y horizontal -->
 
@@ -73,7 +73,7 @@
     <string name="dialogo_carga_texto">Será un momentito...</string>
 
     <string name="dialogo_reset_titulo">Reinicializar juego</string>
-    <string name="dialogo_reset_texto">¿Reinicializar el juego? El estado actual del juego se perderá, y comenzará de nuevo.</string>
+    <string name="dialogo_reset_texto">Si reinicializas, el estado actual del juego se perderá, y comenzarás de nuevo.</string>
     <string name="dialogo_reset_hecho">El juego ha sido reinicializado.</string>
 
     <string name="dialogo_caso_resuelto_titulo">Caso resuelto</string>
@@ -85,12 +85,16 @@
 
     <!-- Casos resueltos -->
 
-    <string name="casos_resueltos_todos">¡Has resuelto todos los casos!</string>
-    <string name="casos_resueltos_quedan">¡Aún quedan casos por resolver!</string>
+    <string name="casos_resueltos_ninguno">¡Venga, tú puedes!</string>
+    <string name="casos_resueltos_pocos">¡Ánimo, vas muy bien!</string>
+    <string name="casos_resueltos_mitad">¡Ya has resuelto la mitad!</string>
+    <string name="casos_resueltos_muchos">¡Ya casi los tienes!</string>
+    <string name="casos_resueltos_todos">¡Enhorabuena detective!</string>
 
     <!-- Información -->
 
-    <string name="info_titulo_argumento">Argumento</string>
+    <string name="info_titulo_argumento">El juego</string>
+    <string name="info_titulo_instrucciones">Instrucciones</string>
     <string name="info_titulo_dedicatoria">Dedicatoria</string>
     <string name="info_titulo_copyright">Copyright</string>
 

@@ -90,6 +90,4 @@ public class MenuInfoTest extends ActivityInstrumentationTestCase2<PrincipalActi
         inst.removeMonitor(monitor);
 
     }
-
-
 }

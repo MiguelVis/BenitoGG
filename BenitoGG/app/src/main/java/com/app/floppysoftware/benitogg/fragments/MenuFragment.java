@@ -22,7 +22,7 @@ public class MenuFragment extends Fragment {
 
     // Id de las opciones del menú
     public static final int MENU_OPCION_JUGAR = 1;    // Jugar
-    public static final int MENU_OPCION_OPCIONES = 2; // Opciones / configuración
+    public static final int MENU_OPCION_PREFERENCIAS = 2; // Opciones / configuración
     public static final int MENU_OPCION_INFO = 3;     // Información
 
     // Claves para guardar el estado
@@ -82,7 +82,7 @@ public class MenuFragment extends Fragment {
             case MENU_OPCION_JUGAR :
                 buttonJugar.performClick();
                 break;
-            case MENU_OPCION_OPCIONES :
+            case MENU_OPCION_PREFERENCIAS:
                 buttonOpciones.performClick();
                 break;
             case MENU_OPCION_INFO :
@@ -155,7 +155,7 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
 
                 // Seleccionar opción
-                clickOpcion(MENU_OPCION_OPCIONES);
+                clickOpcion(MENU_OPCION_PREFERENCIAS);
             }
         });
 
@@ -255,7 +255,7 @@ public class MenuFragment extends Fragment {
         // de la opción seleccionada, habilitando los demás.
         if(esTabletHorizontal) {
             //buttonJugar.setEnabled(!(opcionId == MENU_OPCION_JUGAR));
-            buttonOpciones.setEnabled(!(opcionId == MENU_OPCION_OPCIONES));
+            buttonOpciones.setEnabled(!(opcionId == MENU_OPCION_PREFERENCIAS));
             buttonInfo.setEnabled(!(opcionId == MENU_OPCION_INFO));
         }
 

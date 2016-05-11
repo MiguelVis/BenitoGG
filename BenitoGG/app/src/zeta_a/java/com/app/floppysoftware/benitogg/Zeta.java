@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public final class Zeta {
 
     // Website
-    public static final String WEBSITE = "http://www.floppysoftware.es/gg";
+    public static final String WEBSITE = "http://benitogg.floppysoftware.es";
 
     // Máximo número de objetos que puede llevar el protagonista
     private static final int MAX_OBJETOS_BOLSILLO = 3;

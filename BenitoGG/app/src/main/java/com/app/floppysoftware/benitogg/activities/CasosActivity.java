@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.app.floppysoftware.benitogg.utils.Preferencias;
@@ -31,8 +33,9 @@ import java.util.ArrayList;
 public class CasosActivity extends Activity {
 
     // Views del layout
-    private ListView listViewCasos;  // Lista de casos
-    private TextView textViewCasos;  // Texto informativo
+    private ListView listViewCasos;   // Lista de casos
+    private RatingBar ratingBarNivel; // Nivel de juego
+    private TextView textViewCasos;   // Texto informativo
 
     /**
      * Método llamado al crear la activity.
@@ -64,8 +67,9 @@ public class CasosActivity extends Activity {
         setContentView(R.layout.activity_casos);
 
         // Tomar la referencia de los views
-        listViewCasos = (ListView) findViewById(R.id.listViewCasos);  // Lista de casos
-        textViewCasos = (TextView) findViewById(R.id.textViewCasos);  // Texto adicional
+        listViewCasos = (ListView) findViewById(R.id.listViewCasos);     // Lista de casos
+        ratingBarNivel = (RatingBar) findViewById(R.id.ratingBarNivel);  // Nivel de juego
+        textViewCasos = (TextView) findViewById(R.id.textViewCasos);     // Texto adicional
 
         // Mostrar lista de casos
         new MostrarCasosResueltos().execute();
@@ -73,9 +77,12 @@ public class CasosActivity extends Activity {
 
     /**
      * Clase interna, para mostrar la lista de casos. Extiende de AsyncTask, para
-     * no saturar el thread del UI.
+     * no saturar el thread del UI, durante el acceso a la base de datos.
      */
     private class MostrarCasosResueltos extends AsyncTask<Void, Void, ArrayList<Caso>> {
+
+        // Nº de casos resueltos
+        int numCasosResueltos = 0;
 
         /**
          * Tarea a realizar en background, fuera del thread del UI. Devuelve
@@ -93,6 +100,9 @@ public class CasosActivity extends Activity {
             // Tomar lista de casos
             ArrayList<Caso> casos = bd.getCasos();
 
+            // Tomar nº de casos resueltos
+            numCasosResueltos = bd.getNumCasos(true);
+
             // Cerrar base de datos
             bd.cerrar();
 
@@ -109,7 +119,8 @@ public class CasosActivity extends Activity {
 
         /**
          * Tarea a realizar en el thread del UI, una vez finalizada la tarea
-         * en background. Muestra la lista de casos.
+         * en background. Muestra la lista de casos, actualiza la RatingBar
+         * del nivel de juego, y un mensaje según el nº de casos resueltos.
          *
          * @param casos  Lista de casos
          */
@@ -122,26 +133,19 @@ public class CasosActivity extends Activity {
             // Asignar el adapter al ListView
             listViewCasos.setAdapter(adapter);
 
-            // Texto informativo sobre los casos resueltos (por
-            // defecto: todos resueltos).
-            int textoId = R.string.casos_resueltos_todos;
+            // Actualizar la RatingBar
+            ratingBarNivel.setRating((float) numCasosResueltos * 5 / casos.size());
 
-            // Cambiar el texto informativo si hay casos pendientes
-            // de resolver
-            for(Caso caso : casos) {
-
-                // Si hay al menos un caso no resuelto,
-                // cambiar el texto.
-                if(!caso.getResuelto()) {
-
-                    // Cambiar el texto; quedan casos por resolver
-                    textoId = R.string.casos_resueltos_quedan;
-                    break;
-                }
-            }
+            // Array de mensajes según escala del 0 al 4
+            int msgId[] = new int[] {
+                    R.string.casos_resueltos_ninguno,
+                    R.string.casos_resueltos_pocos,
+                    R.string.casos_resueltos_mitad,
+                    R.string.casos_resueltos_muchos,
+                    R.string.casos_resueltos_todos };
 
             // Mostrar el texto
-            textViewCasos.setText(textoId);
+            textViewCasos.setText(msgId[numCasosResueltos * 4 / casos.size()]);
         }
     }
 

@@ -4,40 +4,40 @@
 #
 # Test:
 #
-testLugarCentro
+test_lugar_centro
 Lugar Centro
 Estás en el lugar Centro
 null
 0
 0
-testLugarNorte
-testLugarSur
-testLugarEste
-testLugarOeste
+test_lugar_norte
+test_lugar_sur
+test_lugar_este
+test_lugar_oeste
 #
-testLugarNorte
+test_lugar_norte
 Lugar Norte
 Estás en el lugar Norte
 null
 0
 0
 null
-testLugarCentro
+test_lugar_centro
 null
 null
 #
-testLugarSur
+test_lugar_sur
 Lugar Sur
 Estás en el lugar Sur
 null
 0
 0
-testLugarCentro
+test_lugar_centro
 null
 null
 null
 #
-testLugarEste
+test_lugar_este
 Lugar Este
 Estás en el lugar Este
 null
@@ -46,9 +46,9 @@ null
 null
 null
 null
-testLugarCentro
+test_lugar_centro
 #
-testLugarOeste
+test_lugar_oeste
 Lugar Oeste
 Estás en el lugar Oeste
 null
@@ -56,7 +56,7 @@ null
 0
 null
 null
-testLugarCentro
+test_lugar_centro
 null
 #
 # Juego:
@@ -89,7 +89,7 @@ null
 # --------------------
 ayuntamiento
 Ayuntamiento
-Estás en el Ayuntamiento.<br>D. Remigio, el Alcalde, sale a saludarte nada más verte:<br>- ¿Qué, Benito, a pagar la contribución? Ya sabes que la subimos el mes pasado, ¿verdad?
+Estás en el Ayuntamiento.<br>Don Remigio, el Alcalde, sale a saludarte nada más verte:<br>- ¿Qué, Benito, a pagar la contribución? Ya sabes que la subimos el mes pasado, ¿verdad? Jijijiji...
 null
 290
 76
@@ -100,7 +100,7 @@ cl_ganzua
 #
 biblioteca
 Biblioteca
-Estás en la biblioteca municipal.<br>Hay una persona leyendo un grueso tomo de jardinería, lo cual resulta muy extraño, pues normalmente no hay nadie.
+Estás en la biblioteca municipal.<br>Hay una persona leyendo un grueso tomo de jardinería, lo cual resulta muy extraño, pues normalmente no hay nadie. Además, si por aquí no hay huertos...
 silencio
 324
 124
@@ -111,7 +111,7 @@ null
 #
 comisaria
 Comisaría de Policía
-Estás en la Comisaria de Policía.<br>El inspector Romuáldez está rellenando unos formularios de color verde. La de trastos que hay en la sección de objetos perdidos...
+Estás en la Comisaria de Policía.<br>El inspector Romuáldez está cumplimentando unos formularios de color verde, con un bolígrafo de color rojo. La de trastos que hay en la sección de objetos perdidos...
 null
 456
 239
@@ -133,7 +133,7 @@ null
 #
 peluqueria
 Peluquería
-Estás en la peluquería.<br>Hay una montaña de rulos a la izquierda. Dos señoras, un tanto remilgadas, cuchichean mientras te miran de reojo.
+Estás en la peluquería.<br>Huele a laca que alimenta, y hay una montaña de rulos a la izquierda. Dos señoras, un tanto remilgadas, cuchichean mientras te miran de reojo.
 null
 151
 239
@@ -144,7 +144,7 @@ cl_trilero
 #
 oficina
 Oficina de Benito G.G.
-Estás en tu oficina.<br>Un día de estos, habrá que limpiar y quitar el polvo, ¿eh, Benito?
+Estás en tu oficina, aunque cualquiera diría que es un trastero.<br>El ordenador está encendido. Un día de estos, habrá que limpiar y quitar el polvo...
 null
 290
 239
@@ -155,7 +155,7 @@ cl_muermo
 #
 quiosco
 Quiosco Loli
-Estás en el Quiosco de Loli.<br>Los estantes están repletos de golosinas y cromos de futbolistas.<br>La revista Jelou!, viene con una noticia impactante en la portada: el Conde Nao ha escrito un libro lleno de letras. Increíble.
+Estás en el Quiosco de Loli.<br>Los estantes están repletos de golosinas y cromos de futbolistas.<br>La revista Jelou!, viene con una noticia impactante en la portada: el Conde Nao ha escrito un libro lleno de letras, ¡increíble!.
 null
 221
 320
@@ -166,7 +166,7 @@ null
 #
 pq_verdor
 Parque El Verdor
-Estás en el parque municipal El Verdor.<br>Los niños juegan, gritan, saltan, corren, te pisan si te descuidas...
+Estás en el parque municipal El Verdor.<br>Los pajaritos cantan, las nubes se levantan, y los niños juegan, gritan, saltan, corren, te pisan si te descuidas...
 null
 324
 320
@@ -188,7 +188,7 @@ null
 #
 consultorio
 Consultorio
-Estás en el consultorio médico.<br>El Doctor Zido acaba de salir de la consulta. Cada vez está más encogido, el pobre.
+Estás en el consultorio médico.<br>El Doctor Zido acaba de salir de la consulta. Cada vez está más encogido, el pobre. Parece que hay un concurso de estornudos, y está ganando un señor con bigote.
 null
 179
 362
@@ -199,7 +199,7 @@ null
 #
 hotel
 Hotel Hucho
-Estás en el Hotel Hucho.<br>Gustavo Porrot, el gerente, está observando con lupa una manchita en la pared. Se cree Poirot, el pobre.
+Estás en el Hotel Hucho.<br>Gustavo Porrot, el gerente, está observando atentamente con lupa, una manchita en la pared. Se cree Poirot, el pobre.
 null
 324
 197
@@ -221,7 +221,7 @@ null
 #
 correos
 Oficina de Correos
-Estás en la oficina de Correos.<br>Un chaval está empeñado en enviar una carta con pegatinas de dinosaurios, en lugar de sellos.
+Estás en la oficina de Correos.<br>Hay una cola de miedo. Un chaval, está empeñado en enviar una carta con pegatinas de dinosaurios, en lugar de sellos.
 null
 151
 320
@@ -232,7 +232,7 @@ cl_trilero_2
 #
 ultramarinos
 Ultramarinos Concha
-Estás en Ultramarinos Concha.<br>Hay latas de conserva para dar y vender. Bueno, sólo para vender. Concha está pesando unas patatas, mientras su clienta la mira sin perder detalle (ya sabes, tiene fama de trucar el peso, a la mínima que te descuides).
+Estás en Ultramarinos Concha.<br>Hay latas de conserva para dar y vender. Bueno, sólo para vender. Concha está pesando unas patatas, mientras su clienta la mira sin perder detalle. Ya sabes, tiene fama de trucar el peso, a la mínima que te descuides...
 null
 221
 239
@@ -243,7 +243,7 @@ null
 #
 pizzeria
 Pizzería
-Estás en la Pizzería.<br>Luiggi, el cocinero, tiene harina hasta en las orejas. ¿Cómo hará las pizzas este hombre? Mejor no pensarlo mucho.
+Estás en la Pizzería.<br>Luiggi, el cocinero, tiene harina hasta en las orejas. ¿Cómo hará las pizzas este hombre? Mejor no pensarlo mucho...
 null
 426
 261
@@ -254,7 +254,7 @@ null
 #
 banco
 Banco Chambroso
-Estás en el Banco Chambroso.<br>Fermín Pastoso, el director, está atendiendo a una señora inmensa, igual que su caja de caudales.
+Estás en el Banco Chambroso.<br>Fermín Pastoso, el director, está atendiendo a una señora inmensa, igual que su caja de caudales. El esmirriado de su marido, asiente a todo con la cabeza.
 null
 359
 76
@@ -265,7 +265,7 @@ null
 #
 floristeria
 Floristería Rosa
-Estás en la Floristería Rosa.<br>Hay unas flores de plástico muy bonitas, que huelen a ambientador barato.
+Estás en la Floristería Rosa.<br>Hay unas flores de plástico muy bonitas, que huelen a ambientador de coche. Un cartel, anuncia la oferta de la semana: 3x2 en cactus del desierto.
 null
 324
 57
@@ -276,7 +276,7 @@ null
 #
 pq_zillo
 Parque Zillo
-Estás en el Parque Zillo.<br>Dos personas mayores discuten acaloradamente. Una le dice a la otra:<br>- Lo que yo te diga, las migas de galleta con chorizo no valen nada. ¡Y me dan un ardor...!
+Estás en el Parque Zillo.<br>Dos personas mayores, discuten acaloradamente. Una le dice a la otra:<br>- Lo que yo te diga, Indalecio, las migas de galleta con chorizo, no valen nada. ¡Y además me dan un ardor...!
 null
 179
 100
@@ -287,7 +287,7 @@ null
 #
 bar_genaro
 Bar Genaro
-Estás en el Bar Genaro.<br>Es competencia directa del Bar Manolo, por lo que no se hablan desde hace años. Las croquetas parecen erizos de mar. Es más, huelen igual. O peor.
+Estás en el Bar Genaro.<br>Es competencia directa del Bar Manolo, por lo que sus dueños no se hablan desde hace años. Eso sí, se envían cartas el uno al otro. Las croquetas parecen erizos de mar. Es más, huelen igual. O peor.
 null
 521
 239
@@ -298,7 +298,7 @@ cl_timo
 #
 pension
 Pensión Engracia
-Estás en la Pensión de la Sra. Engracia.<br>El comedor está listo para la comida. De la cocina surge un jaleo de platos rotos. Y un olor raro, para ser comida... comestible, se entiende.
+Estás en la Pensión de la Señora Engracia.<br>El comedor está listo para la comida. De la cocina, surge un jaleo de platos rotos, y un olor raro, como a paella de queso.
 null
 560
 197
@@ -309,7 +309,7 @@ null
 #
 taller
 Taller Salus
-Estás en el Taller Salus, especialistas en reparar vehículos de alta gama y baja estopa. La de grasa que hay por aquí.
+Estás en el Taller Salus, especialistas en reparar vehículos de alta gama y baja estopa. Un operario está pintando una bicicleta con sidecar. La de grasa que hay por aquí.
 null
 560
 261
@@ -322,7 +322,7 @@ null
 # ------------------------------
 pl_mangui
 Plaza del Mangui
-Estás en la Plaza del Mangui.<br>El sol, radiante, ilumina todos los rincones de la plaza.<br>Los pájaros cantan, las nubes se levantan, y todo eso que se suele decir en estos casos.
+Estás en la Plaza del Mangui.<br>El sol, radiante, ilumina todos los rincones de la plaza. Las nubes le miran de reojo.
 null
 253
 161
@@ -344,7 +344,7 @@ null
 #
 av_caco_2
 Avda. del Caco
-Estás en la Avenida del Caco.<br>Hay un perrito haciendo pis en el poste de una señal de tráfico.<br>¡Qué mono...! El poste, digo.
+Estás en la Avenida del Caco.<br>Hay un perrito, haciendo pis en el poste de una señal de tráfico.<br>¡Qué mono...! El poste, digo.
 null
 179
 161
@@ -355,7 +355,7 @@ av_caco
 #
 av_trola
 Avda. de la Trola
-Estás en la Avenida de la Trola.<br>El bullicio de los negocios llega hasta la calle.<br>¡Qué jaleo, oiga!
+Estás en la Avenida de la Trola.<br>El bullicio de los negocios, llega hasta la calle.<br>¡Qué jaleo, oiga!
 null
 324
 161
@@ -377,7 +377,7 @@ av_trola
 #
 av_trola_3
 Avda. de la Trola
-Estás en la Avenida de la Trola.<br>Dos chiquillos discuten por un trozo de chicle de segunda mano. Por el color, parece de fresa ácida.
+Estás en la Avenida de la Trola.<br>Dos chiquillos, discuten por un trozo de chicle de segunda mano. Por el color, parece de fresa ácida caramelizada, con toques de hierbabuena.
 null
 489
 161
@@ -432,7 +432,7 @@ av_pufo
 #
 av_pufo_3
 Avda. del Pufo
-Estás en la Avenida del Pufo.<br>La zona está bastante tranquila. Los cacos deben estar de vacaciones, o durmiendo la siesta.<br>Benito, ándate con ojo que hay un charco de... ¡chof, chof! Bueno, ya es igual...
+Estás en la Avenida del Pufo.<br>La zona está bastante tranquila. Los cacos deben estar de vacaciones o durmiendo la siesta.<br>Hay que andarse con ojo, porque hay un charco de... ¡chof, chof! Bueno, ya es igual...
 charco
 253
 394
@@ -443,7 +443,7 @@ av_pufo_2
 #
 av_pufo_4
 Avda. del Pufo
-Estás en la Avenida del Pufo.<br>Se oye jugar a lo lejos a los niños en el parque.<br>Una paloma despistada, deja un regalito encima de tu zapato reluciente (que ya no está reluciente, claro).
+Estás en la Avenida del Pufo.<br>Se oye jugar, a lo lejos, a los niños en el parque.<br>Una paloma despistada, deja un regalito encima de tu zapato reluciente (que ya no está tan reluciente, claro).
 null
 324
 394
@@ -465,7 +465,7 @@ av_pufo_4
 #
 cl_muermo
 Calle Muermo
-Estás en la Calle del Muermo.<br>A pesar de su nombre, cualquiera que viva en esta calle ha de estar siempre despierto, ojo avizor, con los cinco sentidos puestos en todo lo que te rodea.<br>¡Uf, qué estrés!
+Estás en la Calle del Muermo.<br>A pesar de su nombre, cualquiera que pase por esta calle, ha de estar siempre despierto, ojo avizor, con los cinco sentidos en alerta máxima.<br>¡Uf, qué estrés!
 null
 253
 239
@@ -476,7 +476,7 @@ ultramarinos
 #
 cl_muermo_2
 Calle Muermo
-Estás en la Calle del Muermo.<br>Una pareja pasea, mientras come unos helados, con pinta de estar riquísimos.<br>Los de garbanzos son los mejores.
+Estás en la Calle del Muermo.<br>Una pareja, pasea mientras come unos helados, con pinta de estar riquísimos.<br>Los de garbanzos son los mejores.
 null
 253
 320
@@ -487,7 +487,7 @@ quiosco
 #
 cl_trilero
 Calle Trilero
-Estás en la Calle Trilero.<br>A la calle llega un tufo, entre tinte para el pelo y arroz con leche caducado.<br>¿Cocina innovadora, procedente de algún restaurante?
+Estás en la Calle Trilero.<br>Hasta aquí llega un tufo, entre tinte para el pelo y arroz con leche caducado.<br>¿Cocina innovadora, procedente de algún restaurante próximo?
 null
 113
 239
@@ -498,7 +498,7 @@ null
 #
 cl_trilero_2
 Calle Trilero
-Estás en la Calle Trilero.<br>Un hombre un tanto rechoncho, sale de la oficina de Correos con un paquete más grande que él.
+Estás en la Calle Trilero.<br>Un hombre un tanto rechoncho, sale de la oficina de Correos, con un paquete más grande que él.
 null
 113
 320
@@ -509,7 +509,7 @@ null
 #
 cl_jero
 Calle Jero
-Estás en la Calle Jero.<br>De la pizzería salen unos aromas a queso y orégano ´que quitan el sentío´.<br>Y el ´parné´ también, porque son un pelín caras.
+Estás en la Calle Jero.<br>De la pizzería, salen unos aromas a queso y orégano, ´que quitan el sentío´.<br>Y el ´parné´ también, porque son un pelín caras.
 null
 391
 308
@@ -542,7 +542,7 @@ cl_jero_2
 #
 cl_jero_4
 Calle Jero
-Estás en la Calle Jero.<br>Hay dos farolas sin bombilla, y otra la rompió un motorista despistado.<br>Eso es ahorrar en electricidad, y lo demás tonterías.
+Estás en la Calle Jero.<br>Hay dos farolas sin bombilla, y otra la rompió un motorista despistado.<br>Eso es ahorrar en electricidad, y lo demás son tonterías.
 null
 627
 308

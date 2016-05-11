@@ -3,6 +3,7 @@ package com.app.floppysoftware.benitogg.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
@@ -341,7 +342,7 @@ public class BaseDatos {
                 null, null, null, null);
 
         // Lista de casos a devolver
-        ArrayList<Caso> casos = new ArrayList<Caso>();;
+        ArrayList<Caso> casos = new ArrayList<Caso>();
 
         // Tomar datos leídos
         if(cur != null) {
@@ -425,5 +426,41 @@ public class BaseDatos {
 
         // Devolver caso
         return caso;
+    }
+
+    /**
+     * Devolver nº de casos, según su estado de resolución.
+     *
+     * @param   resuelto true para casos resueltos; false para casos no resueltos
+     * @return  nº de casos
+     */
+    public int getNumCasos(boolean resuelto) {
+
+        // Cursor para realizar la query
+        Cursor cur;
+
+        // Realizar petición de nº de casos
+        cur = db_database.rawQuery("select count(*) from " + Contract.Casos.TABLE_NAME +
+                " where " + Contract.Casos.RESUELTO_NAME +
+                " = " + (resuelto ? "1" : "0"),
+                null);
+
+        // Dato a devolver
+        int num = 0;
+
+        // Leer el dato
+        if(cur != null) {
+            // Ir al 1er registro
+            cur.moveToFirst();
+
+            // Leer dato
+            num = cur.getInt(0);
+
+            // Cerrar cursor
+            cur.close();
+        }
+
+        // Devolver nº
+        return num;
     }
 }
