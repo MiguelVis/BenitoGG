@@ -39,10 +39,10 @@ public class PreferenciasFragment extends Fragment {
 
         // Métodos a implementar
 
-        public void onCambioVertical();  // Cambio de modo vertical / horizontal
-        public void onCambioZurdo();     // Cambio de modo diestro / zurdo
-        public void onCambioSonido();    // Cambio de preferencia de sonido
-        public void onResetJuego();      // Resetear la base de datos
+        void onCambioVertical();  // Cambio de modo vertical / horizontal
+        void onCambioZurdo();     // Cambio de modo diestro / zurdo
+        void onCambioSonido();    // Cambio de preferencia de sonido
+        void onResetJuego();      // Resetear la base de datos
     }
 
     /**

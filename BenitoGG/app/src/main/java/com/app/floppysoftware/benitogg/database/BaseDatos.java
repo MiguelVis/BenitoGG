@@ -3,7 +3,6 @@ package com.app.floppysoftware.benitogg.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
@@ -429,10 +428,10 @@ public class BaseDatos {
     }
 
     /**
-     * Devolver nº de casos, según su estado de resolución.
+     * Devolver número de casos, según su estado de resolución.
      *
      * @param   resuelto true para casos resueltos; false para casos no resueltos
-     * @return  nº de casos
+     * @return  número de casos
      */
     public int getNumCasos(boolean resuelto) {
 
@@ -460,7 +459,7 @@ public class BaseDatos {
             cur.close();
         }
 
-        // Devolver nº
+        // Devolver número de casos
         return num;
     }
 }

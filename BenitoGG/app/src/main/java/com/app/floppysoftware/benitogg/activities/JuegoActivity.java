@@ -9,7 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 
 import com.app.floppysoftware.benitogg.models.Accion;
 import com.app.floppysoftware.benitogg.fragments.AccionesFragment;
@@ -32,7 +32,7 @@ public class JuegoActivity extends Activity implements
         EscenaFragment.OnEscenaListener {
 
     // Tag para el log
-    private final static String TAG = "Juego";
+    //private final static String TAG = "Juego";
 
     // Tags para los fragments
     private final static String TAG_FRAG_ESCENA = "FrEscena";
@@ -199,7 +199,7 @@ public class JuegoActivity extends Activity implements
         if(savedInstanceState == null) {
 
             // Log
-            Log.d(TAG, "onCreate - primera vez");
+            //Log.d(TAG, "onCreate - primera vez");
 
             // Comenzar transacción
             FragmentTransaction ft = fm.beginTransaction();
@@ -217,15 +217,15 @@ public class JuegoActivity extends Activity implements
             // Restaurando el estado de la activity
 
             // Log
-            Log.d(TAG, "onCreate - restaurar");
+            //Log.d(TAG, "onCreate - restaurar");
 
             // Tomar referencias de los fragments
             escenaFragment = (EscenaFragment) fm.findFragmentByTag(TAG_FRAG_ESCENA);
             accionesFragment = (AccionesFragment) fm.findFragmentByTag(TAG_FRAG_ACCIONES);
 
             // Log
-            Log.d(TAG, "escenaFragment = " + escenaFragment);
-            Log.d(TAG, "accionesFragment = " + accionesFragment);
+            //Log.d(TAG, "escenaFragment = " + escenaFragment);
+            //Log.d(TAG, "accionesFragment = " + accionesFragment);
         }
     }
 
@@ -244,7 +244,7 @@ public class JuegoActivity extends Activity implements
         }
 
         // Log
-        Log.d(TAG, "onStart()");
+        //Log.d(TAG, "onStart()");
     }
 
     /**
@@ -257,7 +257,7 @@ public class JuegoActivity extends Activity implements
         super.onResume();
 
         // Log
-        Log.d(TAG, "onResume()");
+        //Log.d(TAG, "onResume()");
 
         // Reanudar sonido
         if(puedoSonar) {
@@ -275,7 +275,7 @@ public class JuegoActivity extends Activity implements
         super.onPause();
 
         // Log
-        Log.d(TAG, "onPause()");
+        //Log.d(TAG, "onPause()");
 
         // Pausar sonido
         if(puedoSonar) {
@@ -293,7 +293,7 @@ public class JuegoActivity extends Activity implements
         super.onStop();
 
         // Log
-        Log.d(TAG, "onStop()");
+        //Log.d(TAG, "onStop()");
 
         // Finalizar gestión del sonido
         if(puedoSonar) {
@@ -443,25 +443,25 @@ public class JuegoActivity extends Activity implements
          */
         public void onAudioFocusChange(int focusChange) {
 
-            // Actuar según el tipo de cambio de foco de audio
-            switch(focusChange) {
+        // Actuar según el tipo de cambio de foco de audio
+        switch(focusChange) {
 
-                // Pérdida de foco de audio
-                case AudioManager.AUDIOFOCUS_LOSS :
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT :
+            // Pérdida de foco de audio
+            case AudioManager.AUDIOFOCUS_LOSS :
+            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT :
 
-                    // Pausar sonido
-                    pausarSonido();
-                    break;
+                // Pausar sonido
+                pausarSonido();
+                break;
 
-                // Ganancia de foco de audio
-                case AudioManager.AUDIOFOCUS_GAIN :
-                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT :
+            // Ganancia de foco de audio
+            case AudioManager.AUDIOFOCUS_GAIN :
+            case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT :
 
-                    // Reanudar sonido
-                    reanudarSonido();
-                    break;
-            }
+                // Reanudar sonido
+                reanudarSonido();
+                break;
+        }
         }
     };
 }

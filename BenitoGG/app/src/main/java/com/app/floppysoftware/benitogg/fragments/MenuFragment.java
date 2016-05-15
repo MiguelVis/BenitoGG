@@ -21,20 +21,19 @@ import com.app.floppysoftware.benitogg.R;
 public class MenuFragment extends Fragment {
 
     // Id de las opciones del menú
-    public static final int MENU_OPCION_JUGAR = 1;    // Jugar
-    public static final int MENU_OPCION_PREFERENCIAS = 2; // Opciones / configuración
-    public static final int MENU_OPCION_INFO = 3;     // Información
+    public static final int MENU_OPCION_JUGAR = 1;        // Jugar
+    public static final int MENU_OPCION_PREFERENCIAS = 2; // Preferencias
+    public static final int MENU_OPCION_INFO = 3;         // Información
 
-    // Claves para guardar el estado
-    // de las opciones del menú, para recrear
-    // el fragment.
-    private static final String KEY_JUGAR = "tagJugar";       // Opción Jugar
-    private static final String KEY_OPCIONES = "tagOpciones"; // Opción Opciones
-    private static final String KEY_INFO = "tagInfo";         // Opción Info
+    // Claves para guardar el estado de las opciones del menú,
+    // para recrear el fragment.
+    private static final String KEY_JUGAR = "tagJugar";               // Opción Jugar
+    private static final String KEY_PREFERENCIAS = "tagPreferencias"; // Opción Preferencias
+    private static final String KEY_INFO = "tagInfo";                 // Opción Info
 
     // Botones de las opciones
     private Button buttonJugar;
-    private Button buttonOpciones;
+    private Button buttonPreferencias;
     private Button buttonInfo;
 
     // Variable que indica si el dispositivo es una tablet,
@@ -55,7 +54,7 @@ public class MenuFragment extends Fragment {
     public interface OnMenuListener {
 
         // Indicar opción seleccionada
-        public void onOpcionSeleccionada(int opcion);
+        void onOpcionSeleccionada(int opcion);
     }
 
     /**
@@ -68,7 +67,7 @@ public class MenuFragment extends Fragment {
 
         // Si algún botón de opción no está disponible,
         // dejarlo para después.
-        if(buttonJugar == null || buttonOpciones == null || buttonInfo == null) {
+        if(buttonJugar == null || buttonPreferencias == null || buttonInfo == null) {
 
             // Indicar la opción a forzar
             opcionForzada = opcion;
@@ -83,7 +82,7 @@ public class MenuFragment extends Fragment {
                 buttonJugar.performClick();
                 break;
             case MENU_OPCION_PREFERENCIAS:
-                buttonOpciones.performClick();
+                buttonPreferencias.performClick();
                 break;
             case MENU_OPCION_INFO :
                 buttonInfo.performClick();
@@ -136,35 +135,30 @@ public class MenuFragment extends Fragment {
 
         // Referencias de los botones
         buttonJugar = (Button) v.findViewById(R.id.buttonJugar);
-        buttonOpciones = (Button) v.findViewById(R.id.buttonOpciones);
+        buttonPreferencias = (Button) v.findViewById(R.id.buttonOpciones);
         buttonInfo = (Button) v.findViewById(R.id.buttonInfo);
 
-        // Listener del botón Jugar
+        // Listeners
         buttonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Seleccionar opción
                 clickOpcion(MENU_OPCION_JUGAR);
             }
         });
 
-        // Listener del botón Opciones
-        buttonOpciones.setOnClickListener(new View.OnClickListener() {
+        buttonPreferencias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Seleccionar opción
                 clickOpcion(MENU_OPCION_PREFERENCIAS);
             }
         });
 
-        // Listener del botón Info
         buttonInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Seleccionar opción
                 clickOpcion(MENU_OPCION_INFO);
             }
         });
@@ -174,7 +168,7 @@ public class MenuFragment extends Fragment {
 
             // Fijar estado
             buttonJugar.setEnabled(savedInstanceState.getBoolean(KEY_JUGAR, true));
-            buttonOpciones.setEnabled(savedInstanceState.getBoolean(KEY_OPCIONES, true));
+            buttonPreferencias.setEnabled(savedInstanceState.getBoolean(KEY_PREFERENCIAS, true));
             buttonInfo.setEnabled(savedInstanceState.getBoolean(KEY_INFO, true));
         }
 
@@ -203,7 +197,7 @@ public class MenuFragment extends Fragment {
 
         // Guardar estado de los botones
         outState.putBoolean(KEY_JUGAR, buttonJugar.isEnabled());
-        outState.putBoolean(KEY_OPCIONES, buttonOpciones.isEnabled());
+        outState.putBoolean(KEY_PREFERENCIAS, buttonPreferencias.isEnabled());
         outState.putBoolean(KEY_INFO, buttonInfo.isEnabled());
     }
 
@@ -254,8 +248,9 @@ public class MenuFragment extends Fragment {
         // Si la orientación es horizontal, inhabilitar el botón
         // de la opción seleccionada, habilitando los demás.
         if(esTabletHorizontal) {
+
             //buttonJugar.setEnabled(!(opcionId == MENU_OPCION_JUGAR));
-            buttonOpciones.setEnabled(!(opcionId == MENU_OPCION_PREFERENCIAS));
+            buttonPreferencias.setEnabled(!(opcionId == MENU_OPCION_PREFERENCIAS));
             buttonInfo.setEnabled(!(opcionId == MENU_OPCION_INFO));
         }
 

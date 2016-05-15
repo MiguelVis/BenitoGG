@@ -26,9 +26,6 @@ public class Mensaje {
      * Mostrar AlertDialog con mensaje para el usuario, y
      * el botón 'Continuar'.
      *
-     * Devuelve el AlertDialog creado, para poder ser
-     * utilizado en tests instrumentales.
-     *
      * @param contexto  Contexto
      * @param icono     Icono
      * @param titulo    Título del mensaje
@@ -54,6 +51,19 @@ public class Mensaje {
         return alertDialog;
     }
 
+    /**
+     * Mostrar AlertDialog para preguntar al usuario si desea proceder
+     * con una acción determinada, o cancelar.
+     *
+     * @param contexto         Contexto
+     * @param icono            Icono
+     * @param titulo           Título del mensaje
+     * @param texto            Texto del mensaje
+     * @param onClickSi        Listener para el botón 'Sí'
+     * @param onClickCancelar  Listener para el botón 'Cancelar'
+     *
+     * @return                 AlertDialog
+     */
     public static AlertDialog preguntarSiCancelar(Context contexto, int icono, String titulo, String texto,
                                                   DialogInterface.OnClickListener onClickSi,
                                                   DialogInterface.OnClickListener onClickCancelar) {
@@ -74,6 +84,18 @@ public class Mensaje {
         return alertDialog;
     }
 
+    /**
+     * Mostrar AlertDialog para que el usuario seleccione un elemento
+     * de una lista, o cancelar.
+     *
+     * @param contexto   Contexto
+     * @param icono      Icono
+     * @param titulo     Título del mensaje
+     * @param items      Lista de elementos
+     * @param onClick    Listener para la selección
+     *
+     * @return           AlertDialog
+     */
     public static AlertDialog seleccionar(Context contexto, int icono, String titulo, CharSequence[] items,
                                              DialogInterface.OnClickListener onClick) {
 
@@ -93,12 +115,13 @@ public class Mensaje {
     }
 
     /**
-     * Devolver referencia al último AlertDialog construido.
+     * Devolver referencia del último AlertDialog construido.
      *
-     * @return  último AlertDialog creado, o null si no se ha creado ninguno
+     * @return  Último AlertDialog creado, o null si no se ha creado ninguno
      */
     public static AlertDialog getAlertDialog() {
 
+        // Devolver último AlertDialog
         return alertDialog;
     }
 }

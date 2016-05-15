@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 
 import com.app.floppysoftware.benitogg.fragments.PreferenciasFragment;
 import com.app.floppysoftware.benitogg.utils.Mensaje;
@@ -33,7 +33,7 @@ public class PrincipalActivity extends Activity implements
         PreferenciasFragment.OnPreferenciasListener {
 
     // Tag para el log
-    private final static String TAG = "Principal";
+    //private final static String TAG = "Principal";
 
     // Parámetro extra para indicar que la activity se está
     // recreando, debido a un cambio de orientación.
@@ -70,42 +70,7 @@ public class PrincipalActivity extends Activity implements
         switch(opcion) {
             case MenuFragment.MENU_OPCION_JUGAR :
 
-                /************************************
-                // Actuar según sea tablet con orientación horizontal,
-                // o no.
-                if(esTabletHorizontal) {
-
-                    // Tablet con orientación horizontal
-
-                    // Poner primero el fragment de bienvenida en el área,
-                    // para que se pueda volver a él.
-                    ponFragmentArea(getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
-
-                    // Comenzar transacción
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-                    // Reemplazar el fragment actual en el área, por el de la escena
-                    ft.replace(R.id.frameLayoutArea, getEscenaFragment(), TAG_FRAG_ESCENA);
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-
-                    // Reemplazar el fragment actual en el menú, por el de las acciones
-                    ft.replace(R.id.frameLayoutMenu, getAccionesFragment(), TAG_FRAG_MENU);
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-
-                    // Añadirlo al BackStack, para que se pueda restaurar
-                    // al estado previo (fragment de bienvenida + fragment de menú).
-                    ft.addToBackStack(null);
-
-                    // Activar los cambios
-                    ft.commit();
-                } else {
-
-                    // Móvil, o tablet con orientación vertical
-
-                    // Poner el fragment de la escena
-                    ponFragmentMovil(getEscenaFragment(), TAG_FRAG_ESCENA);
-                }
-                ****************************/
+                // Lanzar el juego
                 new Jugar().execute();
 
                 break;
@@ -188,7 +153,7 @@ public class PrincipalActivity extends Activity implements
      */
     public void onCambioSonido() {
 
-        // Nada
+        // Nada de momento
     }
 
     /**
@@ -280,7 +245,7 @@ public class PrincipalActivity extends Activity implements
         if(savedInstanceState == null) {
 
             // Log
-            Log.d(TAG, "onCreate - primera vez");
+            //Log.d(TAG, "onCreate - primera vez");
 
             // Comenzar transacción
             FragmentTransaction ft = fm.beginTransaction();
@@ -301,7 +266,7 @@ public class PrincipalActivity extends Activity implements
             // Restaurando el estado de la activity
 
             // Log
-            Log.d(TAG, "onCreate - restaurar");
+            //Log.d(TAG, "onCreate - restaurar");
 
             // Tomar referencias de los fragments
             menuFragment = (MenuFragment) fm.findFragmentByTag(TAG_FRAG_MENU);
@@ -310,10 +275,10 @@ public class PrincipalActivity extends Activity implements
             infoFragment = (InfoFragment) fm.findFragmentByTag(TAG_FRAG_INFO);
 
             // Log
-            Log.d(TAG, "menuFragment = " + menuFragment);
-            Log.d(TAG, "bienvenidaFragment = " + bienvenidaFragment);
-            Log.d(TAG, "preferenciasFragment = " + preferenciasFragment);
-            Log.d(TAG, "infoFragment = " + infoFragment);
+            //Log.d(TAG, "menuFragment = " + menuFragment);
+            //Log.d(TAG, "bienvenidaFragment = " + bienvenidaFragment);
+            //Log.d(TAG, "preferenciasFragment = " + preferenciasFragment);
+            //Log.d(TAG, "infoFragment = " + infoFragment);
         }
 
         // Si se está restaurando la activity debido a un cambio
@@ -326,58 +291,6 @@ public class PrincipalActivity extends Activity implements
             // Forzar la activación de la opción de preferencias
             menuFragment.forzarOpcion(MenuFragment.MENU_OPCION_PREFERENCIAS);
         }
-    }
-
-    /**
-     * Método llamado tras onCreate() y tras onStop() > onRestart().
-     */
-    @Override
-    protected void onStart() {
-
-        // Llamar a la superclase
-        super.onStart();
-
-        // Log
-        Log.d(TAG, "onStart()");
-    }
-
-    /**
-     * Método llamado tras onPause() y onStart().
-     */
-    @Override
-    protected void onResume() {
-
-        // Llamar a la superclase
-        super.onResume();
-
-        // Log
-        Log.d(TAG, "onResume()");
-    }
-
-    /**
-     * Método llamado al pausar la activity.
-     */
-    @Override
-    protected void onPause() {
-
-        // Llamar a la superclase
-        super.onPause();
-
-        // Log
-        Log.d(TAG, "onPause()");
-    }
-
-    /**
-     * Método llamado al detener la activity.
-     */
-    @Override
-    protected void onStop() {
-
-        // Llamar a la superclase
-        super.onStop();
-
-        // Log
-        Log.d(TAG, "onStop()");
     }
 
     /**
@@ -507,22 +420,16 @@ public class PrincipalActivity extends Activity implements
 
                 // Mostrar ProgressDialog durante el proceso de
                 // reinicializado.
-                /*******************
-                progressDialog = ProgressDialog.show(PrincipalActivity.this,
-                        getString(R.string.dialogo_carga_titulo),
-                        getString(R.string.dialogo_carga_texto),
-                        true,
-                        false);
-                 *******************/
-
                 progressDialog = new ProgressDialog(PrincipalActivity.this);
 
+                // Configurar el ProgressDialog
                 progressDialog.setIcon(R.drawable.ic_wait);
                 progressDialog.setTitle(R.string.dialogo_carga_titulo);
                 progressDialog.setMessage(getString(R.string.dialogo_carga_texto));
                 progressDialog.setIndeterminate(true);
                 progressDialog.setCancelable(false);
 
+                // Mostrar el ProgressDialog
                 progressDialog.show();
             }
         }
@@ -546,7 +453,7 @@ public class PrincipalActivity extends Activity implements
                 bd.cerrar();
             }
 
-            //
+            // Retornar
             return null;
         }
 
@@ -563,44 +470,7 @@ public class PrincipalActivity extends Activity implements
                 progressDialog.dismiss();
             }
 
-            /*************************************************************** 02/05
-            // Actuar según sea tablet con orientación horizontal,
-            // o no.
-            if(esTabletHorizontal) {
-
-                // Tablet con orientación horizontal
-
-                // Poner primero el fragment de bienvenida en el área,
-                // para que se pueda volver a él.
-                /////ponFragmentArea(getBienvenidaFragment(), TAG_FRAG_BIENVENIDA);
-
-                // Comenzar transacción
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-                // Reemplazar el fragment actual en el área, por el de la escena
-                ft.replace(R.id.frameLayoutArea, getEscenaFragment(), TAG_FRAG_ESCENA);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-
-                // Reemplazar el fragment actual en el menú, por el de las acciones
-                ft.replace(R.id.frameLayoutMenu, getAccionesFragment(), TAG_FRAG_MENU);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-
-                // Añadirlo al BackStack, para que se pueda restaurar
-                // al estado previo (fragment de bienvenida + fragment de menú).
-                ft.addToBackStack(null);
-
-                // Activar los cambios
-                ft.commit();
-            } else {
-
-                // Móvil, o tablet con orientación vertical
-
-                // Poner el fragment de la escena
-                ponFragmentMovil(getEscenaFragment(), TAG_FRAG_ESCENA);
-            }
-             ******************************/
-
-            // 02/05
+            // Lanzar la activity del juego
             startActivity(new Intent(PrincipalActivity.this, JuegoActivity.class));
         }
     }

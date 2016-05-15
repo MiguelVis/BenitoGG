@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'BenitoGGKey'
+            keyPassword 'Elvis1976+1'
+            storeFile file('C:/Users/Miguel/Pendrive/AndroidKeyStore/android.jks')
+            storePassword 'Elvis1976+1'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion '22.0.1'
     defaultConfig {
@@ -14,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     //sourceSets { main { java.srcDirs = ['src/main/java', 'src/test/java'] } }
@@ -24,6 +33,8 @@ android {
     productFlavors {
         zeta_a {
             applicationId 'com.app.floppysoftware.benitogg.a'
+            versionCode 1
+            versionName "1.0"
         }
         zeta_b {
             applicationId 'com.app.floppysoftware.benitogg.b'

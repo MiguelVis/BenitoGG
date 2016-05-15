@@ -5,8 +5,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.app.floppysoftware.benitogg.database.Contract;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,7 +72,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             // Eliminar las tablas
             try {
-                ////////db.execSQL(Contract.Lugares.SQL_DROP_TABLE);
+                //db.execSQL(Contract.Lugares.SQL_DROP_TABLE);
                 db.execSQL(Contract.Actores.SQL_DROP_TABLE);
                 db.execSQL(Contract.Objetos.SQL_DROP_TABLE);
                 db.execSQL(Contract.Casos.SQL_DROP_TABLE);
@@ -105,7 +103,8 @@ public class DbHelper extends SQLiteOpenHelper {
     /**
      * Crear base de datos, e insertar datos en las tablas.
      *
-     * @param db  Base de datos
+     * @param db       Base de datos
+     * @param lugares  True para crear la tabla de Lugares, false en caso contrario
      */
     private void creaBaseDatos(SQLiteDatabase db, boolean lugares) {
 
@@ -146,7 +145,7 @@ public class DbHelper extends SQLiteOpenHelper {
         BufferedReader br = null;      // BufferedReader
 
         // Datos
-        String line = null;   // Línea leída
+        String line;          // Línea leída
         String values = null; // Valores a insertar
 
         // Leer los datos desde el fichero

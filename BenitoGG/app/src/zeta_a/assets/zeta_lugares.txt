@@ -65,7 +65,7 @@ null
 # ------------------
 bolsillo
 Bolsillo
-Bolsillo de Benito G. G.
+Bolsillo de Benito GG
 null
 0
 0
@@ -143,7 +143,7 @@ null
 cl_trilero
 #
 oficina
-Oficina de Benito G.G.
+Oficina de Benito GG
 Estás en tu oficina, aunque cualquiera diría que es un trastero.<br>El ordenador está encendido. Un día de estos, habrá que limpiar y quitar el polvo...
 null
 290
@@ -155,7 +155,7 @@ cl_muermo
 #
 quiosco
 Quiosco Loli
-Estás en el Quiosco de Loli.<br>Los estantes están repletos de golosinas y cromos de futbolistas.<br>La revista Jelou!, viene con una noticia impactante en la portada: el Conde Nao ha escrito un libro lleno de letras, ¡increíble!.
+Estás en el Quiosco de Loli.<br>Los estantes están repletos de golosinas y cromos de futbolistas.<br>La revista Jelou!, viene con una noticia impactante en la portada: el Conde Nao ha escrito un libro lleno de letras, ¡increíble!
 null
 221
 320

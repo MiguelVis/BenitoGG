@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.app.floppysoftware.benitogg.database.BaseDatos;
-import com.app.floppysoftware.benitogg.models.Caso;
 import com.app.floppysoftware.benitogg.utils.Preferencias;
 import com.app.floppysoftware.benitogg.R;
 import com.app.floppysoftware.benitogg.Zeta;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 /**
  * Clase que implementa el fragment de información de la aplicación.
@@ -34,6 +32,7 @@ public class InfoFragment extends Fragment {
      * Constructor.
      */
     public InfoFragment() {
+
         // Nada
     }
 
@@ -129,11 +128,10 @@ public class InfoFragment extends Fragment {
             } catch (UnsupportedEncodingException e) {
 
                 // Excepción
-                e.printStackTrace(); // -- FIXME
+                e.printStackTrace();
             }
 
-            // Lanzar el navegador con la URL completa, controlando
-            // posibles excepciones
+            // Lanzar el navegador con la URL completa
             try {
 
                 // Lanzar activity
@@ -142,7 +140,7 @@ public class InfoFragment extends Fragment {
             } catch (ActivityNotFoundException e) {
 
                 // Excepción
-                e.printStackTrace();  // -- FIXME
+                e.printStackTrace();
             }
         }
     }

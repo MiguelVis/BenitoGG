@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
+//import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class AccionesFragment extends Fragment {
 
     // Log
-    private static final String TAG = "AccionesFragment";
+    //private static final String TAG = "AccionesFragment";
 
     // Códigos de las acciones
     public static final int ACCION_NORTE = 0;  // Ir hayNorte
@@ -77,10 +77,10 @@ public class AccionesFragment extends Fragment {
     public interface OnAccionesListener {
 
         // Acción seleccionada
-        public void onAccionSeleccionada(int accionId, int param);
+        void onAccionSeleccionada(int accionId, int param);
 
         // Emitir un sonido
-        public void emiteSonido(int resId);
+        void emiteSonido(int resId);
     }
 
     /**
@@ -126,7 +126,7 @@ public class AccionesFragment extends Fragment {
         refrescoPendiente = true;
 
         // Log
-        Log.d(TAG, "Datos recibidos; refresco pendiente");
+        //Log.d(TAG, "Datos recibidos; refresco pendiente");
 
         // Refrescar
         refrescar();
@@ -275,7 +275,7 @@ public class AccionesFragment extends Fragment {
     }
 
     /**
-     * Método llamado cuando el fragment es enlazado a la activity
+     * Método llamado cuando el fragment es enlazado a la activity.
      *
      * @param activity  Activity
      */
@@ -295,7 +295,7 @@ public class AccionesFragment extends Fragment {
     }
 
     /**
-     * Método llamado cuando el fragment es desenlazado de la activity
+     * Método llamado cuando el fragment es desenlazado de la activity.
      */
     @Override
     public void onDetach() {
@@ -320,7 +320,7 @@ public class AccionesFragment extends Fragment {
         fragmentOk = true;
 
         // Log
-        Log.d(TAG, "onResume; fragmento ok");
+        //Log.d(TAG, "onResume; fragmento ok");
 
         // Refrescar
         refrescar();
@@ -345,13 +345,13 @@ public class AccionesFragment extends Fragment {
     private void refrescar() {
 
         // Log
-        Log.d(TAG, "fragmentOk: " + fragmentOk + "; refrescoPendiente: " + refrescoPendiente);
+        //Log.d(TAG, "fragmentOk: " + fragmentOk + "; refrescoPendiente: " + refrescoPendiente);
 
         // Refrescar el fragment, si está listo y el refresco está pendiente
         if(fragmentOk && refrescoPendiente) {
 
             // Log
-            Log.d(TAG, "Refrescando");
+            //Log.d(TAG, "Refrescando");
 
             // Habilitar / deshabilitar los botones de las direcciones.
             buttonNorte.setEnabled(hayNorte);

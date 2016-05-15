@@ -8,7 +8,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.widget.ImageView;
 
 import com.app.floppysoftware.benitogg.utils.Preferencias;
@@ -24,7 +24,7 @@ import com.app.floppysoftware.benitogg.R;
 public class SplashScreenActivity extends Activity {
 
     // Tag para el log
-    private final static String TAG = "SplashScreen";
+    //private final static String TAG = "SplashScreen";
 
     // Valores
     private final static int NUM_PASOS = 9;      // 6 pasos, más 3
@@ -128,7 +128,7 @@ public class SplashScreenActivity extends Activity {
             public void onTick(long millisUntilFinished) {
 
                 // Log
-                Log.d(TAG, "Paso = " + pasosDados);
+                //Log.d(TAG, "Paso = " + pasosDados);
 
                 // Mostrar imagen correspondiente al número de paso,
                 // y emitir sonido (se empieza a partir del
@@ -184,7 +184,7 @@ public class SplashScreenActivity extends Activity {
         }
 
         // Log
-        Log.d(TAG, "onStart()");
+        //Log.d(TAG, "onStart()");
     }
 
     /**
@@ -197,7 +197,7 @@ public class SplashScreenActivity extends Activity {
         super.onStop();
 
         // Log
-        Log.d(TAG, "onStop()");
+        //Log.d(TAG, "onStop()");
 
         // Finalizar gestión del sonido
         if(puedoSonar) {
@@ -325,25 +325,25 @@ public class SplashScreenActivity extends Activity {
          */
         public void onAudioFocusChange(int focusChange) {
 
-            // Actuar según el tipo de cambio de foco de audio
-            switch(focusChange) {
+        // Actuar según el tipo de cambio de foco de audio
+        switch(focusChange) {
 
-                // Pérdida de foco de audio
-                case AudioManager.AUDIOFOCUS_LOSS :
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT :
+            // Pérdida de foco de audio
+            case AudioManager.AUDIOFOCUS_LOSS :
+            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT :
 
-                    // Pausar sonido
-                    pausarSonido();
-                    break;
+                // Pausar sonido
+                pausarSonido();
+                break;
 
-                // Ganancia de foco de audio
-                case AudioManager.AUDIOFOCUS_GAIN :
-                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT :
+            // Ganancia de foco de audio
+            case AudioManager.AUDIOFOCUS_GAIN :
+            case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT :
 
-                    // Reanudar sonido
-                    reanudarSonido();
-                    break;
-            }
+                // Reanudar sonido
+                reanudarSonido();
+                break;
+        }
         }
     };
 }
