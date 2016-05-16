@@ -88,7 +88,7 @@
 
     <!-- El caso del perro cansino -->
 
-    <string name="perro_ladrando">Hay un perro por aquí, que no para de ladrar.</string>
+    <string name="perro_ladrando">Un perro te sigue a todas partes.</string>
     <string name="perro_hueso">Hay un perro mordisqueando silenciosamente un hueso.</string>
 
 </resources>

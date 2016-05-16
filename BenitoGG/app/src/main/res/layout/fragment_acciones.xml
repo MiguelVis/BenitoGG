@@ -26,6 +26,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonNorte" />
 
         <Button
@@ -38,6 +39,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonSur" />
 
         <Button
@@ -50,6 +52,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonOeste" />
 
         <Button
@@ -62,6 +65,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonEste" />
 
         <Button
@@ -94,6 +98,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonTomarObjeto" />
 
         <Button
@@ -106,6 +111,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonDejarObjeto" />
 
         <Button
@@ -118,6 +124,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonInventario" />
 
         <Button
@@ -130,6 +137,7 @@
             android:textSize="@dimen/text_size_small"
             android:layout_weight="1"
             style="@style/GameButton"
+            android:enabled="false"
             android:id="@+id/buttonOtrasAcciones" />
 
         <Button

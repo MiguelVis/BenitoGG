@@ -14,6 +14,29 @@
         android:src="@drawable/floppy_software_logo"
         />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        style="@style/TextNormal"
+        android:text="@string/zeta_copyright"
+        />
+
+    <!--
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/floppy_software_logo"
+        />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -21,5 +44,6 @@
         android:layout_gravity="top|center_horizontal"
         android:src="@drawable/zeta_info"
         />
+    -->
 
 </LinearLayout>

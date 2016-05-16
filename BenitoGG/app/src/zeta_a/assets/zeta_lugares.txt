@@ -92,7 +92,7 @@ Ayuntamiento
 Estás en el Ayuntamiento.<br>Don Remigio, el Alcalde, sale a saludarte nada más verte:<br>- ¿Qué, Benito, a pagar la contribución? Ya sabes que la subimos el mes pasado, ¿verdad? Jijijiji...
 null
 290
-76
+98
 null
 null
 null
@@ -178,7 +178,7 @@ cl_muermo_2
 gimnasio
 Gimnasio Tirillas
 Estás en el Gimnasio Tirillas.<br>Josechu, el instructor de Kárate, está partiendo un ladrillo con la oreja izquierda, mientras sus alumnos hacen muecas de dolor.
-null
+golpe_karate
 604
 239
 null
@@ -189,7 +189,7 @@ null
 consultorio
 Consultorio
 Estás en el consultorio médico.<br>El Doctor Zido acaba de salir de la consulta. Cada vez está más encogido, el pobre. Parece que hay un concurso de estornudos, y está ganando un señor con bigote.
-null
+toses
 179
 362
 null
@@ -244,7 +244,7 @@ null
 pizzeria
 Pizzería
 Estás en la Pizzería.<br>Luiggi, el cocinero, tiene harina hasta en las orejas. ¿Cómo hará las pizzas este hombre? Mejor no pensarlo mucho...
-null
+oh_sole_mio
 426
 261
 null
@@ -257,7 +257,7 @@ Banco Chambroso
 Estás en el Banco Chambroso.<br>Fermín Pastoso, el director, está atendiendo a una señora inmensa, igual que su caja de caudales. El esmirriado de su marido, asiente a todo con la cabeza.
 null
 359
-76
+98
 null
 null
 cl_cerrojo
@@ -268,7 +268,7 @@ Floristería Rosa
 Estás en la Floristería Rosa.<br>Hay unas flores de plástico muy bonitas, que huelen a ambientador de coche. Un cartel, anuncia la oferta de la semana: 3x2 en cactus del desierto.
 null
 324
-57
+76
 cl_butron_2
 null
 null
@@ -299,7 +299,7 @@ cl_timo
 pension
 Pensión Engracia
 Estás en la Pensión de la Señora Engracia.<br>El comedor está listo para la comida. De la cocina, surge un jaleo de platos rotos, y un olor raro, como a paella de queso.
-null
+platos_rotos
 560
 197
 av_trola_4
@@ -310,7 +310,7 @@ null
 taller
 Taller Salus
 Estás en el Taller Salus, especialistas en reparar vehículos de alta gama y baja estopa. Un operario está pintando una bicicleta con sidecar. La de grasa que hay por aquí.
-null
+martillo
 560
 261
 null
@@ -325,7 +325,7 @@ Plaza del Mangui
 Estás en la Plaza del Mangui.<br>El sol, radiante, ilumina todos los rincones de la plaza. Las nubes le miran de reojo.
 null
 253
-161
+165
 cl_ganzua
 cl_muermo
 av_trola
@@ -335,8 +335,8 @@ av_caco
 Avda. del Caco
 Estás en la Avenida del Caco.<br>La gente va y viene, sumida en sus propios pensamientos, ajena a lo que le rodea.<br>Y claro, más de uno se da de morros con una farola mal puesta.
 null
-113
-161
+116
+165
 null
 cl_trilero
 av_caco_2
@@ -347,7 +347,7 @@ Avda. del Caco
 Estás en la Avenida del Caco.<br>Hay un perrito, haciendo pis en el poste de una señal de tráfico.<br>¡Qué mono...! El poste, digo.
 null
 179
-161
+165
 pq_zillo
 cine
 pl_mangui
@@ -358,7 +358,7 @@ Avda. de la Trola
 Estás en la Avenida de la Trola.<br>El bullicio de los negocios, llega hasta la calle.<br>¡Qué jaleo, oiga!
 null
 324
-161
+165
 biblioteca
 hotel
 av_trola_2
@@ -369,7 +369,7 @@ Avda. de la Trola
 Estás en la Avenida de la Trola.<br>El tráfico es bastante intenso, el ruido descomunal, y la contaminación, pues qué quieres que te dig... ¡cof, cof, cof!
 claxon
 391
-161
+165
 cl_cerrojo
 bar_manolo
 av_trola_3
@@ -380,7 +380,7 @@ Avda. de la Trola
 Estás en la Avenida de la Trola.<br>Dos chiquillos, discuten por un trozo de chicle de segunda mano. Por el color, parece de fresa ácida caramelizada, con toques de hierbabuena.
 null
 489
-161
+165
 null
 cl_timo
 av_trola_4
@@ -391,7 +391,7 @@ Avda. de la Trola
 Estás en la Avenida de la Trola.<br>Hasta aquí llegan los efluvios de las ¿comidas? que se preparan en las cercanías.
 null
 560
-161
+165
 null
 pension
 av_trola_5
@@ -402,7 +402,7 @@ Avda. de la Trola
 Estas en la Avenida de la Trola.<br>Dos jubilados con las manos en los bolsillos, observan atentamente cómo trabajan unos obreros en la calle.
 null
 627
-161
+165
 null
 cl_trena
 null
@@ -412,8 +412,8 @@ av_pufo
 Avda. del Pufo
 Estás en la Avenida del Pufo.<br>Se oye una sirena de ambulancia a lo lejos: ¡ni, no, ni, no, ni...!<br>En fin, ya sabes.
 ambulancia
-113
-394
+116
+402
 cl_trilero_2
 null
 av_pufo_2
@@ -424,7 +424,7 @@ Avda. del Pufo
 Estás en la Avenida del Pufo.<br>La cola de los enfermos que esperan su turno, llega hasta la calle.<br>Las toses, también.
 toses
 179
-394
+402
 consultorio
 null
 av_pufo_3
@@ -435,7 +435,7 @@ Avda. del Pufo
 Estás en la Avenida del Pufo.<br>La zona está bastante tranquila. Los cacos deben estar de vacaciones o durmiendo la siesta.<br>Hay que andarse con ojo, porque hay un charco de... ¡chof, chof! Bueno, ya es igual...
 charco
 253
-394
+402
 cl_muermo_2
 null
 av_pufo_4
@@ -443,10 +443,10 @@ av_pufo_2
 #
 av_pufo_4
 Avda. del Pufo
-Estás en la Avenida del Pufo.<br>Se oye jugar, a lo lejos, a los niños en el parque.<br>Una paloma despistada, deja un regalito encima de tu zapato reluciente (que ya no está tan reluciente, claro).
+Estás en la Avenida del Pufo.<br>Se oye jugar, a lo lejos, a los niños en el parque.<br>Una paloma despistada, deja un regalito encima de tu zapato reluciente (que ya no reluce tanto, claro).
 null
 324
-394
+402
 pq_verdor
 null
 av_pufo_5
@@ -457,7 +457,7 @@ Avda. del Pufo
 Estás en la Avenida del Pufo.<br>Alguien pasa con una caja de cartón en la mano.<br>¡Hum... parece pizza de acelgas, mi favorita!
 null
 391
-394
+402
 cl_jero
 null
 null
@@ -489,7 +489,7 @@ cl_trilero
 Calle Trilero
 Estás en la Calle Trilero.<br>Hasta aquí llega un tufo, entre tinte para el pelo y arroz con leche caducado.<br>¿Cocina innovadora, procedente de algún restaurante próximo?
 null
-113
+116
 239
 av_caco
 cl_trilero_2
@@ -500,7 +500,7 @@ cl_trilero_2
 Calle Trilero
 Estás en la Calle Trilero.<br>Un hombre un tanto rechoncho, sale de la oficina de Correos, con un paquete más grande que él.
 null
-113
+116
 320
 cl_trilero
 av_pufo
@@ -567,7 +567,7 @@ Calle Cerrojo
 Estás en la Calle del Cerrojo.<br>Acaba de pasar un coche patrulla de la policía, a toda velocidad.
 policia
 391
-76
+98
 cl_butron_3
 av_trola_2
 null
@@ -589,7 +589,7 @@ Calle Ganzúa
 Estás en la Calle de la Ganzúa.<br>Alguien, parado en mitad de la calle, mira con cara de circunstancias un recibo de la contribución, mientras sacude la cabeza.
 null
 253
-76
+98
 cl_butron
 pl_mangui
 ayuntamiento
