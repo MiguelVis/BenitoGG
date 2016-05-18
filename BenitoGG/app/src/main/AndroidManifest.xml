@@ -5,20 +5,20 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/zeta_app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.PrincipalActivity"
-            android:label="@string/app_name" >
+            android:label="@string/zeta_app_name" >
         </activity>
         <activity
             android:name=".activities.MapaActivity"
-            android:label="@string/app_name"
+            android:label="@string/zeta_app_name"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:label="@string/app_name"
+            android:label="@string/zeta_app_name"
             android:theme="@style/AppTheme.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".activities.CasosActivity"
-            android:label="@string/app_name" >
+            android:label="@string/zeta_app_name" >
         </activity>
         <activity
             android:name=".activities.JuegoActivity"

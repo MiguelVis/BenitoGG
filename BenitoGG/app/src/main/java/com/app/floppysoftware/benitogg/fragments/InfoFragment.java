@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.app.floppysoftware.benitogg.BuildConfig;
 import com.app.floppysoftware.benitogg.database.BaseDatos;
 import com.app.floppysoftware.benitogg.utils.Preferencias;
 import com.app.floppysoftware.benitogg.R;
@@ -49,6 +51,12 @@ public class InfoFragment extends Fragment {
 
         // Inflar el layout del fragment
         View v =  inflater.inflate(R.layout.fragment_info, container, false);
+
+        // Tomar la referencia del TextView de la versión
+        TextView textViewVersion = (TextView) v.findViewById(R.id.textViewVersion);
+
+        // Asignarle la versión
+        textViewVersion.setText("v." + BuildConfig.VERSION_NAME);
 
         // Tomar la referencia del botón para visitar la web
         Button buttonVisitarWeb = (Button) v.findViewById(R.id.buttonWeb);
@@ -92,6 +100,9 @@ public class InfoFragment extends Fragment {
             // Tomar nº de casos totales
             int numCasosTotales = numCasosResueltos + bd.getNumCasos(false);
 
+            // Cerrar base de datos
+            bd.cerrar();
+
             // Devolver escala
             return numCasosResueltos * 4 / numCasosTotales;
         }
@@ -119,7 +130,7 @@ public class InfoFragment extends Fragment {
 
                 // Añadir el nombre como argumento a la URL
                 if(!nombre.isEmpty()) {
-                    url = url.concat("&nombre=" + URLEncoder.encode(nombre, "UTF-8"));
+                    url = url.concat("&nombre=" + URLEncoder.encode(nombre, "UTF-8").replace("+", "%20"));
                 }
 
                 // ¿Usuario zurdo?

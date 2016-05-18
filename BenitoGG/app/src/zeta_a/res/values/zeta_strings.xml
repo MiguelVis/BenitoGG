@@ -7,7 +7,9 @@
 
     <!-- Nombre de la app -->
 
-    <string name="app_name">Benito G.G.</string>
+    <string name="zeta_app_name">Benito G.G.</string>
+
+    <string name="zeta_app_titulo">Investigador Privado</string>
 
     <string name="zeta_copyright">&#169; 2016 Miguel I. García López</string>
 

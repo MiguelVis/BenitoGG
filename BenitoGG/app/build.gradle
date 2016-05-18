@@ -38,6 +38,8 @@ android {
         }
         zeta_b {
             applicationId 'com.app.floppysoftware.benitogg.b'
+            versionCode 1
+            versionName "1.0"
         }
     }
 }

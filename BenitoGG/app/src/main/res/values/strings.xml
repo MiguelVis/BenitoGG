@@ -2,10 +2,6 @@
 
     <!-- Cadenas de texto independientes de la aventura -->
 
-    <!-- Nombre de la app -->
-
-    <string name="app_name">Benito G.G.</string>
-
     <!-- Splash Screen -->
 
     <string name="splash_presenta">presenta</string>
@@ -95,7 +91,7 @@
 
     <string name="info_titulo_argumento">El juego</string>
     <string name="info_titulo_instrucciones">Instrucciones</string>
-    <string name="info_titulo_copyright">Copyright</string>
+    <string name="info_titulo_acerca">Acerca de</string>
 
     <string name="boton_visitar_web">Visitar Web</string>
     <string name="title_activity_juego">JuegoActivity</string>

@@ -46,7 +46,7 @@ function getValor(parametro, defecto) {
 		}
 		
 		// Tomar el valor del argumento
-		arg = arg.substring(0, fin);
+		arg = decodeURIComponent(arg.substring(0, fin));
 		
 		// Devolver el valor si parece correcto
 		if(arg.length > 0) {
