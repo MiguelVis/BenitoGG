@@ -69,6 +69,15 @@ public class Objeto {
     }
 
     /**
+     * Cambiar de nombre el objeto.
+     *
+     * @param nombre  Nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
      * Cambiar de lugar el objeto.
      *
      * @param lugar  Lugar

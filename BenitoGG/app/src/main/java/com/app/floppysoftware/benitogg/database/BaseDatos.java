@@ -317,6 +317,7 @@ public class BaseDatos {
 
         // Actualizar id del lugar y estado del objeto
         values.put(Contract.Objetos.LUGAR_ID_NAME, objeto.getLugar());
+        values.put(Contract.Objetos.NOMBRE_NAME, objeto.getNombre());
         values.put(Contract.Objetos.ESTADO_NAME, objeto.getEstado());
 
         // Indicar el objeto a actualizar

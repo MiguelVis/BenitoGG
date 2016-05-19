@@ -512,11 +512,13 @@ public final class Zeta {
                 return CASO_GATO_COLORAO;
             case ACCION_ABRIR_LATA:
                 obj = bd.getObjeto(OBJETO_LATA_SARDINAS);
+                obj.setNombre(obj.getNombre() + " abierta");
                 obj.setEstado(ESTADO_ABIERTO);
                 bd.updateObjeto(obj);
                 break;
             case ACCION_ROMPER_HUCHA:
                 obj = bd.getObjeto(OBJETO_HUCHA);
+                obj.setNombre(obj.getNombre() + " rota");
                 obj.setEstado(ESTADO_ROTO);
                 bd.updateObjeto(obj);
                 obj = bd.getObjeto(OBJETO_MONEDA);

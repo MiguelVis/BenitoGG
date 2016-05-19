@@ -76,6 +76,31 @@ public class InfoFragment extends Fragment {
     }
 
     /**
+     * Método llamado cuando se precise guardar el estado del
+     * fragment.
+     *
+     * @param outState  Estado
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+        // Parche que resuelve errores de Null Pointer Exception en algunos
+        // dispositivos Samsung con Android v4+.
+
+        // El error se presenta al lanzar el Intent del navegador web,
+        // y presionar la tecla HOME.
+
+        // Workaround to avoid NPE from support library bug:
+        // https://android-review.googlesource.com/#/c/31261/
+        // https://android-review.googlesource.com/#/c/31261/1/v4/java/android/support/v4/app/FragmentManager.java
+        // http://answerswell.com/question/3406402/zCGGai/NullPointerException-on-onSaveInstanceState-with-AndroidFragments
+        setUserVisibleHint(false);
+
+        // Llamar a la superclase
+        super.onSaveInstanceState(outState);
+    }
+
+    /**
      * Clase interna, para lanzar el navegador. Extiende de AsyncTask, para
      * no saturar el thread del UI, mientras se accede a la base de datos.
      */
