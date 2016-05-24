@@ -19,7 +19,8 @@
 # Thumbnails de imágenes
 # ----------------------
 Thumbs.db
-# ------------------
-# Directorio 'cosas'
-# ------------------
+# -----------
+# Directorios
+# -----------
 /cosas
+/docs
