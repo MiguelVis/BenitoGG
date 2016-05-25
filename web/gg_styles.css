@@ -210,6 +210,11 @@ figure.right {
 		padding-left: 0em;
 		padding-right: 0em;
 	}
+	
+	img.w3c {
+		display: block;
+		margin-bottom: 4px;
+	}
 }
 
 /* Iframe: Vídeo a derecha
