@@ -118,6 +118,13 @@ a.cabecera {
 	color: white;
 }
 
+/* A : En imágenes
+*/
+
+a.image {
+	color: white;
+}
+
 /* Ul
 */
 ul {
